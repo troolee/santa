@@ -1,0 +1,9 @@
+{
+  "verbose": false,
+  "ext": "ts,graphql",
+  "watch": [
+    "src/",
+    "types/",
+    "schema/"
+  ]
+}

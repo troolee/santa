@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "app"
+		},
+		{
+			"path": "graph"
+		},
+		{
+			"path": "auth"
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true,
+        "jest.rootPath": "./",
+        "editor.tabSize": 2,
+        "editor.detectIndentation": false
+	}
+}

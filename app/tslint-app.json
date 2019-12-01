@@ -1,0 +1,20 @@
+{
+  "defaultSeverity": "error",
+  "jsRules": {},
+  "rules": {
+      "ordered-imports": false,
+      "quotemark": false,
+      "no-console": false,
+      "object-literal-sort-keys": false,
+      "arrow-parens": false,
+      "jsx-wrap-multiline": false,
+      "jsx-no-multiline-js": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+      "exclude": [
+          "config/**/*.js",
+          "node_modules/**/*.ts"
+     ]
+ }
+}

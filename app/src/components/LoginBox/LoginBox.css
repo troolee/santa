@@ -1,0 +1,30 @@
+.hero.login-container {
+  background-color: #ffffff;
+  background-image: url("./garage-door.jpg");
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero.login-container .login-button {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(233, 78, 89, 0.7) !important;
+}
+
+.hero.login-container .login-button:hover {
+  background-color: rgba(233, 78, 89, 0.9) !important;
+}
+
+.hero.login-container .navbar-brand .navbar-item {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+}
+
+.hero.login-container .unsplash-credit {
+  color: #efefef;
+}
+
+.hero.login-container .unsplash-credit a {
+  color: #efefef;
+  text-decoration: underline;
+}

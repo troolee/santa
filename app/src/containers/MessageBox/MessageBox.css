@@ -1,0 +1,33 @@
+.modal-background-lignt .modal-background {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-background-lignt .modal-card {
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
+}
+
+.modal-position-top .modal-card-head {
+  border-radius: 0;
+}
+
+.modal-position-top.modal {
+  justify-content: flex-start;
+}
+
+.modal-position-top.modal .modal-card {
+  border-radius: 0 0 6px 6px;
+  max-width: calc(100vw - 200px);
+  width: auto;
+}
+
+.modal-card-foot .level {
+  width: 100%;
+}
+
+@media (max-width: 769px) {
+  .modal-position-top.modal .modal-card {
+    min-width: none;
+    max-width: none;
+    width: auto !important;
+  }
+}

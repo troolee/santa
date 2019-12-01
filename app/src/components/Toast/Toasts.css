@@ -1,0 +1,63 @@
+.toast-container {
+  position: fixed;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2em;
+  overflow: hidden;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+.toast-container.toast-conatiner-blocked {
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.toast-container.is-top {
+  flex-direction: column;
+}
+
+.toast-container.is-bottom {
+  flex-direction: column-reverse;
+}
+
+.toast-container .toast {
+  display: inline-flex;
+  animation-duration: 150ms;
+  margin: .5em 0;
+  text-align: center;
+  box-shadow: 0 4px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04);
+  border-radius: 0.75em;
+  padding: .75em 1.5em;
+  pointer-events: auto;
+  opacity: .92;
+  background: white;
+
+  align-self: center;
+}
+
+
+.toast-container .toast-enter {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.toast-container .toast-enter-active {
+  opacity: .92;
+  transform: scale(1);
+  transition: opacity 200ms ease-in, all 200ms;
+}
+
+.toast-container .toast-exit {
+  opacity: .92;
+  transform: scale(1);
+}
+
+.toast-container .toast-exit-active {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 200ms ease-in, all 200ms;
+}

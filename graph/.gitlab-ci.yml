@@ -1,0 +1,32 @@
+image: node:10
+
+stages:
+  - test
+  - update-apollo-engine
+
+services:
+  - mongo:4.0-xenial
+
+Run Tests:
+  stage: test
+  script:
+    - npm install
+    - npm test -- --all --no-cache --verbose
+  environment:
+    name: test
+  variables:
+    MONGODB_URI: "mongodb://mongo:27017/test"
+
+
+Update Apollo Engine:
+  stage: update-apollo-engine
+  script:
+    - npm install
+    - npm install -g apollo ts-node
+    - nohup ts-node -r dotenv/config --files src/server.ts &
+    - sleep 20
+    - apollo service:push --tag=master
+  environment:
+    name: update-apollo-engine
+  variables:
+    MONGODB_URI: "mongodb://mongo:27017/test"

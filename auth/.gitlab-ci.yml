@@ -1,0 +1,15 @@
+image: node:10
+
+stages:
+  - test
+
+services:
+  - mongo:4.0-xenial
+
+test:
+  stage: test
+  script: npm install && npm test -- --all --no-cache --verbose
+  environment:
+    name: test
+  variables:
+    MONGODB_URI: "mongodb://mongo:27017/test"

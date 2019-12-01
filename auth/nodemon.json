@@ -1,0 +1,8 @@
+{
+  "verbose": false,
+  "ext": "ts",
+  "watch": [
+    "src/",
+    "types/"
+  ]
+}

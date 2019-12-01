@@ -1,0 +1,16 @@
+{
+    "extends": [
+        "tslint-react",
+        "./tslint-app.json"
+    ],
+    "jsRules": {},
+    "rules": {
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+       ]
+   }
+}
