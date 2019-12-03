@@ -26,5 +26,9 @@
 
 .hero.login-container .unsplash-credit a {
   color: #efefef;
+}
+
+.hero.login-container .unsplash-credit a:hover {
+  color: white;
   text-decoration: underline;
 }
