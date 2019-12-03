@@ -49,7 +49,7 @@ const WelcomePageComponent: React.SFC<IProps> = ({user, onLogout}) => (
             </Bulma.Column>
             <Bulma.Column isSize="1/3">
               <a href="#">
-                One of my crazy friend wrote a secret code on your hand...
+                One of my crazy friend wrote a secret code on my hand...
               </a>
             </Bulma.Column>
             <Bulma.Column>&nbsp;</Bulma.Column>
