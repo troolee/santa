@@ -1,0 +1,67 @@
+interface Node {
+  id: ID!
+}
+
+type Query {
+  app: App!
+  user: User
+  node(id: ID!): Node
+}
+
+type Mutation {
+  parties: PartiesOpts!
+}
+
+type App {
+  author: String!
+  name: String!
+  version: String!
+}
+
+type User implements Node {
+  id: ID!
+  name: String!
+  picture: String!
+}
+
+type Party implements Node {
+  id: ID!
+}
+
+enum MutationStatus {
+  ok
+  error
+}
+
+type PartiesOpts {
+  createParty(input: CreatePartyInput!): CreatePartyPayload!
+  updateParty(input: UpdatePartyInput!): UpdatePartyPayload!
+  deleteParty(input: DeletePartyInput!): DeletePartyPayload
+}
+
+input CreatePartyInput {
+  name: String
+}
+
+type CreatePartyPayload {
+  status: MutationStatus!
+  node: Party
+}
+
+input UpdatePartyInput {
+  id: ID!
+  name: String
+}
+
+type UpdatePartyPayload {
+  status: MutationStatus!
+  node: Party
+}
+
+input DeletePartyInput {
+  id: ID!
+}
+
+type DeletePartyPayload {
+  status: MutationStatus!
+}

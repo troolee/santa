@@ -1,6 +1,6 @@
 import { MongoClient, MongoClientOptions, MongoError, Db } from 'mongodb';
-import { initDb as _initDb } from './lib/db';
-import { logger } from './logging';
+import { initDb as _initDb } from '../lib/db';
+import { logger } from '../logging';
 
 export let client: MongoClient;
 export let db: Db;

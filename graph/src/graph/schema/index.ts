@@ -1,26 +1,10 @@
-import { gql } from "apollo-server-express";
+import { importSchema } from 'graphql-import';
 import { makeExecutableSchema } from 'graphql-tools';
 import { applyMiddleware } from 'graphql-middleware';
 import { authMiddleware, guardMiddleware } from "./middlewares";
+import { resolvers } from './resolvers';
 
-const typeDefs = gql`
-  type User {
-    id: ID!
-    name: String!
-    email: String!
-  }
-
-  type Query {
-    version: String!
-    user: User
-  }
-`;
-
-const resolvers = {
-  Query: {
-    version: () => '0.0.1',
-  },
-};
+const typeDefs = importSchema('src/graph/schema/schema.graphql');
 
 const schemaDef = makeExecutableSchema({
   typeDefs,

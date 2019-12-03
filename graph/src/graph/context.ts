@@ -1,7 +1,11 @@
+import { Db } from "mongodb";
 import { IncomingMessage, ServerResponse } from "http";
+import { IUserEntity } from "../db/interfaces";
 
 export interface IContext {
-  token: Partial<string>;
+  db: Db;
+  token: string | null;
+  user: IUserEntity | null;
   res: ServerResponse;
   req: IncomingMessage;
 }

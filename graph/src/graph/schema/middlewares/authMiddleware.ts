@@ -1,9 +1,9 @@
 import { JWT } from '@panva/jose';
 import { GraphQLResolveInfo } from "graphql";
+import { ObjectId } from 'bson';
 import { authRsaKey, ITokenPayload } from '../../../lib/crypto';
 import { IContext } from "../../context";
-import { IUserEntity } from '../user';
-import { ObjectId } from 'bson';
+import { IUser } from '../interfaces';
 
 export const authMiddleware = async (resolve: any, root: any, args: any, context: IContext,
                                      info: GraphQLResolveInfo) => {
@@ -22,7 +22,7 @@ export const authMiddleware = async (resolve: any, root: any, args: any, context
       try {
         const {id} = JWT.verify(token, authRsaKey) as ITokenPayload;
         const entityId = ObjectId.createFromHexString(id);
-        const user = await context.db.collection('User').findOne({_id: entityId}) as IUserEntity;
+        const user = await context.db.collection('User').findOne({_id: entityId}) as IUser;
 
         if (user === null) {
           throw new Error('403: Authorization error');
