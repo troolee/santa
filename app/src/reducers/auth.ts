@@ -1,5 +1,6 @@
-import { IAuthState, IUser } from "./interfaces";
 import { Action } from "redux";
+import { IAuthState } from "./interfaces";
+import { IUser } from "../interfaces";
 
 const initialState: IAuthState = {
   isLoggedIn: false,
@@ -54,7 +55,6 @@ export default function auth(state = initialState, action: AuthActions) {
       return {
         ...state,
         isLoggedIn: false,
-        user: initialState.user,
       }
     case AUTH_BUSY:
       return {

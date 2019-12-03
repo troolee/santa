@@ -1,2 +1,7 @@
 @import '~bulma/css/bulma.css';
-@import "https://fonts.googleapis.com/css?family=Oswald&display=swap";
+@import "https://fonts.googleapis.com/css?family=Cuprum&display=swap";
+
+body {
+  font-family: 'Cuprum', sans-serif;
+  font-size: 1.5rem;
+}

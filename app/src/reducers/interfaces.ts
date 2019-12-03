@@ -1,7 +1,4 @@
-export interface IUser {
-  email: string;
-  name: string;
-}
+import { IUser } from "../interfaces";
 
 export type IApiState = {
   readonly facebookApi: boolean;

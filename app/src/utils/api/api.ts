@@ -6,7 +6,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ToastsContainer } from "../../containers";
 // import * as introspectionQueryResultData from 'src/fragmentTypes.json';
 import { AuthResponse } from "./facebook";
-import { IUser } from '../../reducers/interfaces';
+import { IUser } from '../../interfaces';
 
 interface IApiResponse {
   status: 'ok' | 'error';

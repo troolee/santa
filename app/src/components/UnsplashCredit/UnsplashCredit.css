@@ -1,0 +1,15 @@
+.is-dark-background .unsplash-credit,
+.unsplash-credit.is-dark-background {
+  color: #b4b3b4;
+}
+
+.is-dark-background .unsplash-credit a,
+.unsplash-credit.is-dark-background a {
+  color: #b4b3b4;
+}
+
+.is-dark-background .unsplash-credit a:hover,
+.unsplash-credit.is-dark-background a:hover {
+  color: #b4b3b4;
+  text-decoration: underline;
+}

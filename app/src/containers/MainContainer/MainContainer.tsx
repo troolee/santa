@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { NavBar } from '../../components/NavBar';
 import { userSignOut } from '../../reducers/auth';
 import { IState } from '../../reducers/interfaces';
 import { Api } from '../../utils/api';
 
 import './MainContainer.css';
+import { IndexPage } from '../../pages';
 
 interface IProps {
   onLogout: () => Promise<void>;
@@ -14,9 +14,7 @@ interface IProps {
 class MainContainer extends React.Component<IProps> {
   public render() {
     return (
-      <div className="main-container">
-        <NavBar onLogout={this.props.onLogout} />
-      </div>
+      <IndexPage />
     );
   }
 }

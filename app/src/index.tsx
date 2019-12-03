@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-
+import { Router } from 'react-router-dom';
 // import * as serviceWorker from './serviceWorker';
 import App from './App';
 import store from './store';
@@ -9,6 +9,8 @@ import { facebookApiReady, appApiReady } from './reducers/app';
 import { FacebookApi, Api } from './utils/api';
 import { ToastsContainer } from './containers';
 import { MessageBoxProvider } from './containers/MessageBox';
+
+import history from './utils/history';
 
 import './index.css';
 
@@ -26,7 +28,9 @@ ReactDOM.render(
   (
     <Provider store={store}>
       <MessageBoxProvider>
-        <App />
+        <Router history={history}>
+          <App />
+        </Router>
       </MessageBoxProvider>
       <ToastsContainer />
     </Provider>

@@ -1,0 +1,61 @@
+.welcome-page .hero {
+  background: url('./Welcome.jpg') no-repeat center center;
+  background-size: cover;
+  color: #b4b3b4;
+}
+
+.welcome-page .hero .hero-head .container {
+  margin-top: 30px;
+}
+
+.welcome-page .hero h1 {
+  font-size: 40px;
+  font-family: 'Cuprum', sans-serif;
+  color: white;
+  font-weight: 400;
+  line-height: 1.2em;
+  /* padding-top: 1em; */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-page .hero .hero-body {
+  padding-bottom: 200px;
+}
+
+.welcome-page .hero .hero-body a {
+  color: #e2e1e0;
+  display: block;
+  padding: 0.5em 1em;
+  border: 1px solid transparent;
+  border-radius: 1em;
+}
+
+.welcome-page .hero .hero-body a:hover {
+  color: white;
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.welcome-page .hero .hero-foot {
+  color: #b4b3b4;
+}
+
+.welcome-page .hero .hero-foot a {
+  color: #b4b3b4;
+}
+
+.welcome-page .hero .hero-foot a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.welcome-page .bottom-menu {
+  text-shadow: 0 1px 2px black;
+  margin: 0 -0.5em 0.5em 0;
+}
+
+.welcome-page .bottom-menu span {
+  background: rgba(16, 12, 22, 0.5);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+}
