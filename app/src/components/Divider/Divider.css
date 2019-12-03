@@ -7,3 +7,8 @@
   border-radius: 6px;
   padding: 4px 8px;
 }
+
+.is-dark-background .is-divider-vertical[data-content]::after,
+.is-dark-background .is-divider[data-content]::after {
+  background: #17181d;
+}
