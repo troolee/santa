@@ -10,3 +10,8 @@ body {
   font-family: 'Cuprum', sans-serif;
   font-size: 1.25rem;
 }
+
+.party-box .modal-card .modal-card-head {
+  background: white url('./imgs/flags.png') top right no-repeat;
+  background-size: contain;
+}

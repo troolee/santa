@@ -91,6 +91,7 @@ export default class MessageBoxProvider extends React.Component<IProps, IState> 
         className={`
             ${this.props.position === 'top' ? 'modal-position-top' : ''}
             ${this.props.isLight ? 'modal-background-light' : ''}
+            ${messageBox && messageBox.className || ''}
           `.trim()}
       >
         <AnimatePresence>

@@ -1,4 +1,4 @@
-export const TransitionDuration = 0.2;
+export const TransitionDuration = 0.1;
 
 export const BackgroundVariants = {
   visible: {

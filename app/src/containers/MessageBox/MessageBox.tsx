@@ -29,6 +29,7 @@ export interface IMessageBoxEssencialsProps {
   title?: string;
   width?: number;
   buttons?: Button[] | ((props: IMessageBoxContentProps) => Button[]);
+  className?: string;
 }
 
 export interface IMessageBoxProps extends IMessageBoxEssencialsProps {

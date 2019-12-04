@@ -8,6 +8,7 @@ const messageBoxEssencials = {
     {caption: 'Hah, nevermind'},
     {caption: "Rock'n'Roll!", className: 'is-primary'}
   ],
+  className: 'party-box',
 }
 
 export default class JoinParty extends MessageBoxContent {

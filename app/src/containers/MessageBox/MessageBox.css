@@ -39,3 +39,13 @@
 .modal-card .modal-card-body {
   font-size: 1.25rem;
 }
+
+.modal-card .modal-card-foot {
+  background: white;
+  border-top: none;
+}
+
+.modal-card .modal-card-head {
+  background: white;
+  border-bottom: none;
+}
