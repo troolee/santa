@@ -52,36 +52,36 @@ const WelcomePageComponent: React.SFC<IProps> = ({user, onLogout, onStartParty, 
         <Bulma.Container>
 
           <Bulma.Columns isVCentered={true} isHidden="mobile">
-            <Bulma.Column>&nbsp;</Bulma.Column>
-            <Bulma.Column isSize="1/3" hasTextAlign="right">
+            <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
+            <Bulma.Column hasTextAlign="right">
               <a onClick={onStartParty}>
-                I wanna start playing this weird game with my soulmates!
+                I wanna start playing this weird game with my soulmates... Let's rock'n'roll!
               </a>
             </Bulma.Column>
             <Bulma.Column isSize="narrow" hasTextAlign="centered">
               <Divider isVertical={true} label="OR" />
             </Bulma.Column>
-            <Bulma.Column isSize="1/3">
+            <Bulma.Column>
               <a onClick={onJoinParty}>
-                One of my crazy friend wrote a secret code on my hand...
+                One of my crazy friend wrote a secret code on my hand... I wanna play!
               </a>
             </Bulma.Column>
-            <Bulma.Column>&nbsp;</Bulma.Column>
+            <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
           </Bulma.Columns>
 
           <Bulma.Columns isHidden="tablet" hasTextAlign="centered">
-            So what's you up to today?
+            So, what are you up to today?
           </Bulma.Columns>
 
           <Bulma.Columns isHidden="tablet">
             <Bulma.Column>
             <a onClick={onStartParty}>
-                I wanna start playing this weird game with my soulmates!
+                I wanna start playing this weird game with my soulmates... Let's rock'n'roll!
               </a>
             </Bulma.Column>
             <Bulma.Column>
             <a onClick={onJoinParty}>
-                One of my crazy friend wrote a secret code on my hand...
+                One of my crazy friend wrote a secret code on my hand... I wanna play!
               </a>
             </Bulma.Column>
             <Bulma.Column>&nbsp;</Bulma.Column>
