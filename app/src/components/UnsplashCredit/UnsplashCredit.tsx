@@ -8,7 +8,7 @@ const UnsplashCredit: React.SFC<{
   name?: string,
   isDark?: boolean,
 }> = props => <>
-  <div className={`unsplash-credit ${props.className} ${props.isDark ? 'is-dark-background' : ''}`.trim()}>
+  <div className={`unsplash-credit ${props.className} ${props.isDark ? 'has-dark-background' : ''}`.trim()}>
     <>Photo by </>
     <a href={`https://unsplash.com/@${props.nickname}?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText`} target="_blank" rel="noopener noreferrer">
       {props.name || props.nickname}

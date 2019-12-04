@@ -1,0 +1,23 @@
+.has-dark-background .foot {
+  color: #b4b3b4;
+}
+
+.has-dark-background .foot a {
+  color: #b4b3b4;
+}
+
+.has-dark-background .foot a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.has-dark-background .foot .bottom-menu {
+  text-shadow: 0 1px 2px black;
+  margin: 0 -0.5em 0.5em 0;
+}
+
+.has-dark-background .foot .bottom-menu span {
+  background: rgba(16, 12, 22, 0.5);
+  padding: 0.2em 0.5em;
+  border-radius: 4px;
+}

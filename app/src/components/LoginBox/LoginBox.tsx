@@ -3,6 +3,7 @@ import * as React from 'react';
 import { UnsplashCredit } from '../UnsplashCredit';
 
 import './LoginBox.css';
+import { Footer } from '../Footer';
 
 interface IProps {
   onLoginClick: () => Promise<any>;
@@ -25,7 +26,7 @@ export default class LoginBox extends React.Component<IProps, IState> {
     const onLoginClick = this.onLoginClick.bind(this);
 
     return (
-      <Bulma.Hero isFullHeight={true} className="login-container">
+      <Bulma.Hero isFullHeight={true} className="login-container has-dark-background">
         <Bulma.HeroBody>
           <Bulma.Container hasTextAlign="centered">
             <Bulma.Button
@@ -42,8 +43,10 @@ export default class LoginBox extends React.Component<IProps, IState> {
           </Bulma.Container>
         </Bulma.HeroBody>
 
-        <Bulma.HeroFooter hasTextAlign="right" className="is-size-7" style={{padding: '0.5rem 1rem'}}>
-          <UnsplashCredit nickname="callmefred" name="Frederick Tubiermont" />
+        <Bulma.HeroFooter>
+          <Footer>
+            <UnsplashCredit nickname="callmefred" name="Frederick Tubiermont" />
+          </Footer>
         </Bulma.HeroFooter>
       </Bulma.Hero>
     );
