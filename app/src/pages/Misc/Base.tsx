@@ -22,7 +22,7 @@ export const PageContent: React.SFC<IProps> = props => (
                 {props.img && <img src={props.img} />}
               </div>
 
-              <Link to="/" className="button is-medium is-fullwidth">&#8592; Get me out of here</Link>
+              <Link to="/" className="button is-medium is-fullwidth">&#8592; Jeez, get me out of here</Link>
             </Bulma.Column>
             <Bulma.Column>
               <Bulma.Content>
