@@ -2,7 +2,7 @@
   "name": "auth",
   "version": "0.1.0",
   "private": true,
-  "description": "Anonymous Ded Morozes Auth",
+  "description": "Anonymous Ded Morozes",
   "main": "build/server.js",
   "repository": "https://gitlab.com/uglyunicorn/adm",
   "author": "Pavel Reznikov <pashka.reznikov@gmail.com>",

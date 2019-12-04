@@ -2,7 +2,7 @@
   "name": "graph",
   "version": "0.1.0",
   "private": true,
-  "description": "Anonymous Ded Morozes GraphQL",
+  "description": "Anonymous Ded Morozes",
   "main": "build/server.js",
   "repository": "https://gitlab.com/uglyunicorn/garapheon/graph",
   "author": "Pavel Reznikov <pashka.reznikov@gmail.com>",
