@@ -237,9 +237,6 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
     }
     else if (btn.action) {
       switch(btn.action) {
-        case 'cancel':
-          this.cancel();
-          break;
         case 'dismiss':
           this.dismiss();
           break;
