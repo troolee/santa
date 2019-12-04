@@ -15,11 +15,6 @@
   background-color: rgba(233, 78, 89, 0.9) !important;
 }
 
-.hero.login-container .navbar-brand .navbar-item {
-  font-family: 'Oswald', sans-serif;
-  font-size: 32px;
-}
-
 .hero.login-container .unsplash-credit {
   color: #efefef;
 }
