@@ -11,9 +11,11 @@ export const BackgroundVariants = {
 
 export const CardVariants = {
   visible: {
-    y: 0,
+    scale: 1,
+    opacity: 1,
   },
   hidden: {
-    y: '-100vh',
+    scale: 0.8,
+    opacity: 0,
   },
 }

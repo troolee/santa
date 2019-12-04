@@ -1,8 +1,8 @@
-.modal-background-lignt .modal-background {
-  background-color: rgba(0, 0, 0, 0.5);
+.modal-background-light .modal-background {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal-background-lignt .modal-card {
+.modal-background-light .modal-card {
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
 }
 
@@ -30,4 +30,12 @@
     max-width: none;
     width: auto !important;
   }
+}
+
+.modal-card {
+  box-shadow: 0 0 140px rgba(0, 0, 0, 1);
+}
+
+.modal-card .modal-card-body {
+  font-size: 1.25rem;
 }

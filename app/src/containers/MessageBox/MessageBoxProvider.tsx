@@ -9,6 +9,8 @@ import "./MessageBox.css";
 
 interface IProps {
   className?: string;
+  position?: "top" | "center",
+  isLight?: boolean,
 }
 
 interface IManagedMessageBoxProps extends IMessageBoxProps {
@@ -44,8 +46,15 @@ export default class MessageBoxProvider extends React.Component<IProps, IState> 
     const current = instance.state.messageBoxes[0];
     instance.setState({
       messageBoxes: _.tail(instance.state.messageBoxes),
-    })
+    });
     return current;
+  }
+
+  public static dismissAll() {
+    const instance = MessageBoxProvider.instance;
+    instance.setState({
+      messageBoxes: [],
+    });
   }
 
   private static instance: MessageBoxProvider;
@@ -77,7 +86,13 @@ export default class MessageBoxProvider extends React.Component<IProps, IState> 
     };
 
     const renderMessageBox = () => (
-      <Bulma.Modal isActive={true} className="modal-position-top modal-background-lignt">
+      <Bulma.Modal
+        isActive={true}
+        className={`
+            ${this.props.position === 'top' ? 'modal-position-top' : ''}
+            ${this.props.isLight ? 'modal-background-light' : ''}
+          `.trim()}
+      >
         <AnimatePresence>
           {messageBox && <motion.div
             className="modal-background"
