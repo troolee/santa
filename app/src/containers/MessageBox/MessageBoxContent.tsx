@@ -3,7 +3,7 @@ import { IMessageBox } from './MessageBox';
 
 export interface IMessageBoxContentProps {
   readonly messageBox?: IMessageBox;
-  readonly ref: React.RefObject<any>;
+  readonly ref?: React.RefObject<any>;
 }
 
 export interface IMessageBoxContent {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageBoxContent, MessageBox, buildComponent } from "../MessageBox";
 import { IButtonDescriptor } from '../MessageBox/MessageBox';
+import DocumentMeta from 'react-document-meta';
 
 const messageBoxEssencials = {
   title: "Let's start a new party!",
@@ -21,7 +22,13 @@ export default class StartParty extends MessageBoxContent {
   }
 
   public render() {
-    return <>Hello people of the Earth!</>;
+    return (
+      <DocumentMeta title="Create a party | Anonymous Ded Morozes">
+        <>
+          Hello people of the Earth!
+        </>
+      </DocumentMeta>
+    );
   }
 };
 
