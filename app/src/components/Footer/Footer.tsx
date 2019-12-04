@@ -15,7 +15,7 @@ export const Footer: React.SFC<IProps> = ({children, onLogout}) => (
           <Link to="/">Home</Link>
           <> | </><Link to="/privacy">Privacy Policy</Link>
           <> | </><Link to="/terms">Terms and Conditions</Link>
-          {onLogout && <><> | </> <a onClick={onLogout}>Logout</a></>}
+          {onLogout && <><> | </> <a onClick={onLogout} href="/">Logout</a></>}
         </span>
       </p>
       <p className="is-size-7">

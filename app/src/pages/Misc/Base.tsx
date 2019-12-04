@@ -19,7 +19,7 @@ export const PageContent: React.SFC<IProps> = props => (
           <Bulma.Columns>
             <Bulma.Column isSize="1/3" className="meta-column">
               <div className="picture">
-                {props.img && <img src={props.img} />}
+                {props.img && <img src={props.img} alt="Bad Santa is coming" />}
               </div>
 
               <Link to="/" className="button is-medium is-fullwidth">&#8592; Jeez, get me out of here</Link>
