@@ -44,7 +44,7 @@ const WelcomePageComponent: React.SFC<IProps> = ({user, onLogout, onStartParty, 
         <Bulma.Container>
 
           <Bulma.Content hasTextAlign="centered">
-            So, what are you up to today?
+            &mdash; So, what are you up to today, my friend?
           </Bulma.Content>
 
           <Bulma.Columns isVCentered={true}>
