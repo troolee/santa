@@ -1,6 +1,7 @@
 import { Action } from "redux";
 import { IAuthState } from "./interfaces";
 import { IUser } from "../interfaces";
+import { Api } from "../utils/api";
 
 const initialState: IAuthState = {
   isLoggedIn: false,
@@ -25,6 +26,13 @@ interface IUserSignOutAction extends Action<'USER_SIGNOUT'> {
 export function userSignOut() {
   return {
     type: USER_SIGNOUT,
+  }
+}
+
+export function signout() {
+  return async (dispatch: any) => {
+    await Api.signOut();
+    return dispatch(userSignOut());
   }
 }
 

@@ -4,8 +4,7 @@ import { connect } from 'react-redux';
 import { IState } from '../../reducers/interfaces';
 import { IUser } from '../../interfaces';
 import { UnsplashCredit, Divider, Footer } from '../../components';
-import { userSignOut } from '../../reducers/auth';
-import { Api } from '../../utils/api';
+import { signout } from '../../reducers/auth';
 
 import grinchImg from './grinch.png';
 import './Welcome.css';
@@ -80,13 +79,8 @@ export const WelcomePage = connect(
   (state: IState) => ({
     user: state.auth.user!,
   }),
-  dispatch => ({
-    onLogout: async () => {
-      dispatch(userSignOut());
-      await Api.signOut();
-    },
-    onStartParty: async () => {
-    },
+  (dispatch: (x: any) => void) => ({
+    onLogout: () => dispatch(signout()),
     onJoinParty: async () => {
     },
   })
