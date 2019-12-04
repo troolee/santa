@@ -18,6 +18,11 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.welcome-page .hero .is-hidden-tablet h1 {
+  font-size: 32px;
+  padding: 0 1em;
+}
+
 .welcome-page .hero .hero-body {
   padding-bottom: 200px;
 }
