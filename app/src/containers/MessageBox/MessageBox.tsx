@@ -5,11 +5,12 @@ import { IMessageBoxContentProps } from './MessageBoxContent';
 
 const DEFAULT_WIDTH = 'auto';
 
-interface IButtonDescriptor {
+export interface IButtonDescriptor {
   id?: string;
   caption: string | React.ReactElement;
   className?: string;
   position?: 'left' | 'right';
+  action?: 'dismiss';
   onClick?: (props: IMessageBoxContentProps, id: string) => Promise<void>;
 
   disabled?: boolean;
@@ -30,6 +31,7 @@ export interface IMessageBoxEssencialsProps {
   width?: number;
   buttons?: Button[] | ((props: IMessageBoxContentProps) => Button[]);
   className?: string;
+  onDismiss?: (props: IMessageBoxContentProps) => void;
 }
 
 export interface IMessageBoxProps extends IMessageBoxEssencialsProps {
@@ -169,7 +171,12 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
   }
 
   public async dismiss() {
-    MessageBoxProvider.popMessageBox();
+    if (this.props.onDismiss) {
+      this.props.onDismiss({messageBox: this, ref: this.state.contentRef});
+    }
+    else {
+      MessageBoxProvider.popMessageBox();
+    }
   }
 
   public setButtonsState(state: ButtonsState) {
@@ -208,7 +215,7 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
           if (b === 'continue') {
             buttonDef.className = 'is-primary';
           }
-      }
+        }
         else {
           buttonDef = b as IButtonDescriptor;
         }
@@ -227,6 +234,16 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
     this.setState({busyButton: btn.id!});
     if (btn.onClick) {
       await btn.onClick({messageBox: this, ref: this.state.contentRef}, btn.id!);
+    }
+    else if (btn.action) {
+      switch(btn.action) {
+        case 'cancel':
+          this.cancel();
+          break;
+        case 'dismiss':
+          this.dismiss();
+          break;
+      }
     }
     else if (this.state.contentRef.current !== null) {
       await this.state.contentRef.current.onButtonClick({messageBox: this, ref: this.state.contentRef}, btn.id!);

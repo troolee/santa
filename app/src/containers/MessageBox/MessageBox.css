@@ -25,7 +25,7 @@
 }
 
 @media (max-width: 769px) {
-  .modal-position-top.modal .modal-card {
+  .modal .modal-card {
     min-width: none;
     max-width: none;
     width: auto !important;
