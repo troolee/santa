@@ -1,11 +1,12 @@
 import React from 'react';
 import { MessageBoxContent, MessageBox, buildComponent } from "../MessageBox";
+import { IButtonDescriptor } from '../MessageBox/MessageBox';
 
 const messageBoxEssencials = {
   title: "Let's start a new party!",
   width: 600,
   buttons: [
-    {caption: 'Hah, never mind'},
+    {caption: 'Hah, never mind', action: 'dismiss'} as IButtonDescriptor,
     {caption: <>&#x1F389; Rock'n'Roll!</>, className: 'is-primary'}
   ],
   className: 'party-box',
@@ -24,4 +25,7 @@ export default class StartParty extends MessageBoxContent {
   }
 };
 
-export const StartPartyComponent = buildComponent(messageBoxEssencials)(StartParty);
+export const StartPartyComponent = buildComponent({
+  ...messageBoxEssencials,
+  contextPath: "/",
+})(StartParty);
