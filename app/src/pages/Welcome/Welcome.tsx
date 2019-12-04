@@ -51,14 +51,18 @@ const WelcomePageComponent: React.SFC<IProps> = ({user, onLogout, onStartParty, 
       <Bulma.HeroBody>
         <Bulma.Container>
 
-          <Bulma.Columns isVCentered={true} isHidden="mobile">
+          <Bulma.Content hasTextAlign="centered">
+            So, what are you up to today?
+          </Bulma.Content>
+
+          <Bulma.Columns isVCentered={true}>
             <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
-            <Bulma.Column hasTextAlign="right">
+            <Bulma.Column className="has-text-right-tablet">
               <a onClick={onStartParty}>
                 I wanna start playing this weird game with my soulmates... Let's rock'n'roll!
               </a>
             </Bulma.Column>
-            <Bulma.Column isSize="narrow" hasTextAlign="centered">
+            <Bulma.Column isSize="narrow" hasTextAlign="centered" isHidden="mobile">
               <Divider isVertical={true} label="OR" />
             </Bulma.Column>
             <Bulma.Column>
@@ -68,25 +72,6 @@ const WelcomePageComponent: React.SFC<IProps> = ({user, onLogout, onStartParty, 
             </Bulma.Column>
             <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
           </Bulma.Columns>
-
-          <Bulma.Columns isHidden="tablet" hasTextAlign="centered">
-            So, what are you up to today?
-          </Bulma.Columns>
-
-          <Bulma.Columns isHidden="tablet">
-            <Bulma.Column>
-            <a onClick={onStartParty}>
-                I wanna start playing this weird game with my soulmates... Let's rock'n'roll!
-              </a>
-            </Bulma.Column>
-            <Bulma.Column>
-            <a onClick={onJoinParty}>
-                One of my crazy friend wrote a secret code on my hand... I wanna play!
-              </a>
-            </Bulma.Column>
-            <Bulma.Column>&nbsp;</Bulma.Column>
-          </Bulma.Columns>
-
 
         </Bulma.Container>
       </Bulma.HeroBody>
