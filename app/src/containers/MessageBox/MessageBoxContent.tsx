@@ -11,7 +11,7 @@ export interface IMessageBoxContent {
   onButtonClick: (props: IMessageBoxContentProps, id: string) => Promise<void>;
 }
 
-export default abstract class MessageBoxContent<P extends IMessageBoxContentProps, S>
+export default abstract class MessageBoxContent<P extends IMessageBoxContentProps = IMessageBoxContentProps, S = {}>
       extends React.Component<P, S> implements IMessageBoxContent {
 
   public constructor(props: P) {

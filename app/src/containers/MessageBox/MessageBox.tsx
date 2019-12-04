@@ -3,7 +3,7 @@ import * as React from 'react';
 import { MessageBoxProvider } from '.';
 import { IMessageBoxContentProps } from './MessageBoxContent';
 
-const DEFAULT_WIDTH = 800;
+const DEFAULT_WIDTH = 'auto';
 
 interface IButtonDescriptor {
   id?: string;
@@ -25,11 +25,14 @@ export interface IButtonProps {
   visible?: boolean;
 }
 
-export interface IMessageBoxProps {
+export interface IMessageBoxEssencialsProps {
   title?: string;
   width?: number;
-  content: string | React.ReactNode | ((props: IMessageBoxContentProps) => React.ReactNode);
   buttons?: Button[] | ((props: IMessageBoxContentProps) => Button[]);
+}
+
+export interface IMessageBoxProps extends IMessageBoxEssencialsProps {
+  content: string | React.ReactNode | ((props: IMessageBoxContentProps) => React.ReactNode);
 }
 
 export interface IMessageBoxStateBase {
