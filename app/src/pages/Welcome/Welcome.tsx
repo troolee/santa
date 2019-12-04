@@ -29,7 +29,7 @@ const WelcomePageComponent: React.SFC<IProps> = ({user, onLogout, onStartParty, 
             <Bulma.Column isHidden="mobile">&nbsp;</Bulma.Column>
             <Bulma.Column isSize="1/3" className="has-text-right-tablet has-text-centered-mobile">
               <h1>
-                Welcome to the Anonymous Ded Morozes Club,<br className="is-hidden-mobile" />&nbsp;{user.name}!
+                Welcome to the Anonymous Ded Morozes,<br className="is-hidden-mobile" />&nbsp;{user.name}!
               </h1>
             </Bulma.Column>
             <Bulma.Column isHidden="mobile" isSize="narrow">

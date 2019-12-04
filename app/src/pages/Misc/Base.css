@@ -1,0 +1,38 @@
+.generic-page {
+  font-size: 1rem;
+  background: #d3d4d8 url('./pagebg.jpg') center bottom no-repeat;
+  background-size: 100vw;
+  color: black;
+}
+
+.generic-page .page-content {
+  padding-bottom: 30vw;
+}
+
+.generic-page footer.footer {
+  background: transparent;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.generic-page footer.footer a {
+  color: white;
+}
+
+.generic-page footer.footer a:hover {
+  text-decoration: underline;
+}
+
+.generic-page .meta-column .picture {
+  margin-bottom: 2em;
+}
+
+.generic-page .meta-column .button {
+  background: transparent;
+  border-color: #aaa;
+  color: #000;
+}
+
+.generic-page .meta-column .button:hover {
+  border-color: #000;
+}

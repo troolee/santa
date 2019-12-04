@@ -1,4 +1,5 @@
 import React from 'react';
+import DocumentMeta from 'react-document-meta';
 import { connect } from 'react-redux';
 import { AppLoading, GarageDoor } from './components';
 import { LoginBoxContainer } from './containers';
@@ -17,16 +18,16 @@ class AppComponent extends React.Component<IProps> {
   }
 
   public render() {
-    const renderDoor = () => <LoginBoxContainer />;
-
-    return this.props.app.isLoaded
-      ? (
-        <GarageDoor isLocked={!this.props.auth.isLoggedIn} renderDoor={renderDoor}>
+    const renderLoginContainer = () => <LoginBoxContainer />;
+    const renderMainApp = () => (
+      <DocumentMeta title="Anonymous Ded Morozes">
+        <GarageDoor isLocked={!this.props.auth.isLoggedIn} renderDoor={renderLoginContainer}>
           <MainContainer />
         </GarageDoor>
-      ) : (
-        <AppLoading />
-      );
+      </DocumentMeta>
+    );
+
+    return this.props.app.isLoaded ? renderMainApp() : <AppLoading />;
   }
 }
 

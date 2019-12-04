@@ -6,3 +6,4 @@ export { Toast, Toasts } from './Toast';
 export { Divider } from './Divider';
 export { default as Button } from './Button';
 export { Footer } from './Footer';
+export { ScrollToTop } from './ScrollToTop';

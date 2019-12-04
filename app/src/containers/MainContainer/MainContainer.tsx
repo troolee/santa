@@ -3,21 +3,15 @@ import { connect } from 'react-redux';
 import { userSignOut } from '../../reducers/auth';
 import { IState } from '../../reducers/interfaces';
 import { Api } from '../../utils/api';
+import { IndexPage } from '../../pages';
 
 import './MainContainer.css';
-import { IndexPage } from '../../pages';
 
 interface IProps {
   onLogout: () => Promise<void>;
 }
 
-class MainContainer extends React.Component<IProps> {
-  public render() {
-    return (
-      <IndexPage />
-    );
-  }
-}
+const MainContainer: React.SFC<IProps> = () => <IndexPage />;
 
 export default connect(
   (state: IState) => ({
