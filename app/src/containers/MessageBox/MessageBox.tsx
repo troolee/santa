@@ -7,7 +7,7 @@ const DEFAULT_WIDTH = 'auto';
 
 interface IButtonDescriptor {
   id?: string;
-  caption: string;
+  caption: string | React.ReactElement;
   className?: string;
   position?: 'left' | 'right';
   onClick?: (props: IMessageBoxContentProps, id: string) => Promise<void>;

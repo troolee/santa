@@ -5,8 +5,8 @@ const messageBoxEssencials = {
   title: "Join a party",
   width: 600,
   buttons: [
-    {caption: 'Hah, nevermind'},
-    {caption: "Rock'n'Roll!", className: 'is-primary'}
+    {caption: 'Hah, never mind'},
+    {caption: <>&#x1F389; Rock'n'Roll!</>, className: 'is-primary'}
   ],
   className: 'party-box',
 }
