@@ -15,3 +15,7 @@ body {
   background: white url('./imgs/flags.png') top right no-repeat;
   background-size: contain;
 }
+
+p.help {
+  font-size: 1rem;
+}
