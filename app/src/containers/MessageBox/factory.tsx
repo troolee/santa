@@ -19,7 +19,7 @@ const buildComponent = <P extends IMessageBoxContentProps, T extends MessageBoxC
         setTimeout(() => {
           MessageBox.showMessageBox({
             ...props,
-            content: React.createElement(t, p),
+            content: ({ref}) => React.createElement(t, {...p, ref}),
             onDismiss: () => {
               if (!props.contextPath) {
                 return;
