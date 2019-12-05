@@ -92,26 +92,26 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
       ? this.props.content({messageBox: this, ref: this.state.contentRef})
       : this.props.content;
 
-      const mkButton = (b: IButtonDescriptor) => {
-        const btnState = this.state.buttonsState[b.id!];
-        const visible = btnState.visible !== undefined ? btnState.visible : true;
-        const onClick = () => this.onButtonClick(b);
-        return (
-          <React.Fragment key={b.id}>
-            {visible && <Bulma.Button
-              className={b.className || ''}
-              onClick={onClick}
-              isLoading={b.id === this.state.busyButton}
-              disabled={this.state.busyButton !== null || btnState.disabled}
-            >
-              {b.caption}
-            </Bulma.Button>}
-          </React.Fragment>
-        );
-      };
+    const mkButton = (b: IButtonDescriptor) => {
+      const btnState = this.state.buttonsState[b.id!];
+      const visible = btnState.visible !== undefined ? btnState.visible : true;
+      const onClick = () => this.onButtonClick(b);
+      return (
+        <React.Fragment key={b.id}>
+          {visible && <Bulma.Button
+            className={b.className || ''}
+            onClick={onClick}
+            isLoading={b.id === this.state.busyButton}
+            disabled={this.state.busyButton !== null || btnState.disabled}
+          >
+            {b.caption}
+          </Bulma.Button>}
+        </React.Fragment>
+      );
+    };
 
-      const leftButtons = this.state.buttons.filter(b => b.position === 'left').map(mkButton);
-      const rightButtons = this.state.buttons.filter(b => b.position === 'right').map(mkButton);
+    const leftButtons = this.state.buttons.filter(b => b.position === 'left').map(mkButton);
+    const rightButtons = this.state.buttons.filter(b => b.position === 'right').map(mkButton);
 
     return (<>
       <DocumentMeta title={buildTitle(this.state.title)}>
