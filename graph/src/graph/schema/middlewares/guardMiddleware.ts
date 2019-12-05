@@ -1,3 +1,4 @@
+import { AuthenticationError } from "apollo-server-core";
 import { GraphQLResolveInfo } from "graphql";
 import { IContext } from "../../context";
 import { getPathFromInfo } from "../../../lib/graphql/utils";
@@ -7,9 +8,12 @@ export const guardMiddleware = async (resolve: any, root: any, args: any, contex
 
   const path = getPathFromInfo(info);
 
-  if (context.user === null && !/(^app$)|(^app\.)/.exec(path)) {
-    // return null;
-    console.log(path);
+  if (context.user === null) {
+    if (info.operation.operation === 'mutation') {
+      throw new AuthenticationError('Unauthenticated');
+    } else if (!/(^app$)|(^app\.)/.exec(path)) {
+      return null;
+    }
   }
 
   return await resolve(root, args, context, info);
