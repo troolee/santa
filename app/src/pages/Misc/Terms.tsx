@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageContent } from './Base';
+import config from '../../config';
 
 import imgSrc from './terms.png';
 
@@ -7,7 +8,8 @@ export const Page: React.SFC = () => (
   <PageContent title="Terms and Conditions" img={imgSrc}>
 
     <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the
-      grinch.uglyunicorn.ca website (the "Service") operated by Anonymous Ded Morozes ("us", "we", or "our").</p>
+      grinch.uglyunicorn.ca website (the "Service") operated by <strong> {config.siteTitle}</strong> ("us", "we", or
+      "our").</p>
 
     <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These
       Terms apply to all visitors, users and others who access or use the Service.</p>
@@ -30,13 +32,13 @@ export const Page: React.SFC = () => (
     <h2>Links To Other Web Sites</h2>
 
     <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by
-      Anonymous Ded Morozes.</p>
+      <strong> {config.siteTitle}</strong>.</p>
 
-    <p>Anonymous Ded Morozes has no control over, and assumes no responsibility for, the content, privacy policies, or
-      practices of any third party web sites or services. You further acknowledge and agree that Anonymous Ded Morozes
-      shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused
-      by or in connection with use of or reliance on any such content, goods or services available on or through any
-      such web sites or services.</p>
+    <p><strong> {config.siteTitle}</strong> has no control over, and assumes no responsibility for, the content, privacy
+      policies, or practices of any third party web sites or services. You further acknowledge and agree that
+      <strong> {config.siteTitle}</strong> shall not be responsible or liable, directly or indirectly, for any damage or
+      loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or
+      services available on or through any such web sites or services.</p>
 
     <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or
       services that you visit.</p>

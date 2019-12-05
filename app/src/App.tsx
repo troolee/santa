@@ -7,6 +7,7 @@ import { MainContainer } from './containers/MainContainer';
 import { initializeApp } from './reducers/app';
 import { IState } from './reducers/interfaces';
 import store from './store';
+import config from './config';
 
 import './App.css';
 
@@ -20,7 +21,7 @@ class AppComponent extends React.Component<IProps> {
   public render() {
     const renderLoginContainer = () => <LoginBoxContainer />;
     const renderMainApp = () => (
-      <DocumentMeta title="Anonymous Ded Morozes">
+      <DocumentMeta title={config.siteTitle}>
         <GarageDoor isLocked={!this.props.auth.isLoggedIn} renderDoor={renderLoginContainer}>
           <MainContainer />
         </GarageDoor>

@@ -1,7 +1,9 @@
 import * as Bulma from 'bloomer';
 import * as React from 'react';
+import DocumentMeta from 'react-document-meta';
 import { MessageBoxProvider } from '.';
 import { IMessageBoxContentProps } from './MessageBoxContent';
+import buildTitle from '../../utils/title';
 
 const DEFAULT_WIDTH = 'auto';
 
@@ -112,39 +114,41 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
       const rightButtons = this.state.buttons.filter(b => b.position === 'right').map(mkButton);
 
     return (<>
-      <Bulma.ModalCard style={{width: this.state.width || DEFAULT_WIDTH}}>
-        {this.state.title &&
-          <Bulma.ModalCardHeader>
-            <Bulma.ModalCardTitle>
-              {this.state.title}
-            </Bulma.ModalCardTitle>
-          </Bulma.ModalCardHeader>
-        }
+      <DocumentMeta title={buildTitle(this.state.title)}>
+        <Bulma.ModalCard style={{width: this.state.width || DEFAULT_WIDTH}}>
+          {this.state.title &&
+            <Bulma.ModalCardHeader>
+              <Bulma.ModalCardTitle>
+                {this.state.title}
+              </Bulma.ModalCardTitle>
+            </Bulma.ModalCardHeader>
+          }
 
-        <Bulma.ModalCardBody>
-          <Bulma.Content>
-            {renderedContent}
-          </Bulma.Content>
-        </Bulma.ModalCardBody>
+          <Bulma.ModalCardBody>
+            <Bulma.Content>
+              {renderedContent}
+            </Bulma.Content>
+          </Bulma.ModalCardBody>
 
-        {(leftButtons.length || rightButtons.length) ?
-          <Bulma.ModalCardFooter>
-            <Bulma.Level>
-              <Bulma.LevelLeft>
-                <Bulma.LevelItem>
-                  {leftButtons}
-                </Bulma.LevelItem>
-              </Bulma.LevelLeft>
-              <Bulma.LevelRight>
-                <Bulma.LevelItem>
-                  {rightButtons}
-                </Bulma.LevelItem>
-              </Bulma.LevelRight>
-            </Bulma.Level>
-          </Bulma.ModalCardFooter>
-          : <></>
-        }
-      </Bulma.ModalCard>
+          {(leftButtons.length || rightButtons.length) ?
+            <Bulma.ModalCardFooter>
+              <Bulma.Level>
+                <Bulma.LevelLeft>
+                  <Bulma.LevelItem>
+                    {leftButtons}
+                  </Bulma.LevelItem>
+                </Bulma.LevelLeft>
+                <Bulma.LevelRight>
+                  <Bulma.LevelItem>
+                    {rightButtons}
+                  </Bulma.LevelItem>
+                </Bulma.LevelRight>
+              </Bulma.Level>
+            </Bulma.ModalCardFooter>
+            : <></>
+          }
+        </Bulma.ModalCard>
+      </DocumentMeta>
     </>);
   }
 

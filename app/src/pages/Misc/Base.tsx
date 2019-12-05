@@ -1,10 +1,11 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
-
-import './Base.css';
 import { Footer, UnsplashCredit } from '../../components';
 import { Link } from 'react-router-dom';
+import buildTitle from '../../utils/title';
+
+import './Base.css';
 
 interface IProps {
   title?: string;
@@ -12,7 +13,7 @@ interface IProps {
 }
 
 export const PageContent: React.SFC<IProps> = props => (
-  <DocumentMeta title={`${props.title ? props.title + ' | ' : ''}Anonymous Ded Morozes`.trim()}>
+  <DocumentMeta title={buildTitle(props.title)}>
     <div className="generic-page">
       <Bulma.Section className="page-content">
         <Bulma.Container>

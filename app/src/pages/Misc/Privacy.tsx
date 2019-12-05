@@ -1,13 +1,14 @@
 import React from 'react';
 import { PageContent } from './Base';
+import config from '../../config';
 
 import imgSrc from './privacy.png';
 
 export const Page: React.SFC = () => (
   <PageContent title="Privacy Policy" img={imgSrc}>
 
-    <p>Anonymous Ded Morozes ("us", "we", or "our") operates the grinch.uglyunicorn.ca  website (hereinafter referred
-      to as the "Service").</p>
+    <p><strong> {config.siteTitle}</strong> ("us", "we", or "our") operates the grinch.uglyunicorn.ca  website (
+      hereinafter referred to as the "Service").</p>
 
     <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use
       our Service and the choices you have associated with that data.</p>
@@ -67,7 +68,7 @@ export const Page: React.SFC = () => (
 
     <h2>Use of Data</h2>
 
-    <p>Anonymous Ded Morozes uses the collected data for various purposes:</p>
+    <p><strong> {config.siteTitle}</strong> uses the collected data for various purposes:</p>
 
     <ul>
       <li>To provide and maintain the Service</li>
@@ -91,20 +92,21 @@ export const Page: React.SFC = () => (
     <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to
       that transfer.</p>
 
-    <p>Anonymous Ded Morozes will take all steps reasonably necessary to ensure that your data is treated securely and
-      in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or
-      a country unless there are adequate controls in place including the security of your data and other personal
-      information.</p>
+    <p><strong> {config.siteTitle}</strong> will take all steps reasonably necessary to ensure that your data is treated
+      securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an
+      organization or a country unless there are adequate controls in place including the security of your data and
+      other personal information.</p>
 
     <h2>Disclosure Of Data</h2>
 
     <h3>Legal Requirements</h3>
 
-    <p>Anonymous Ded Morozes may disclose your Personal Data in the good faith belief that such action is necessary
-      to:</p>
+    <p><strong> {config.siteTitle}</strong> may disclose your Personal Data in the good faith belief that such action is
+      necessary to:</p>
+
     <ul>
         <li>To comply with a legal obligation</li>
-        <li>To protect and defend the rights or property of Anonymous Ded Morozes</li>
+        <li>To protect and defend the rights or property of <strong> {config.siteTitle}</strong></li>
         <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
         <li>To protect the personal safety of users of the Service or the public</li>
         <li>To protect against legal liability</li>
