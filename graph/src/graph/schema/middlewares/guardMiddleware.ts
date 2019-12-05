@@ -8,7 +8,8 @@ export const guardMiddleware = async (resolve: any, root: any, args: any, contex
   const path = getPathFromInfo(info);
 
   if (context.user === null && !/(^app$)|(^app\.)/.exec(path)) {
-    return null;
+    // return null;
+    console.log(path);
   }
 
   return await resolve(root, args, context, info);

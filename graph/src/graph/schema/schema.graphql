@@ -26,6 +26,8 @@ type User implements Node {
 
 type Party implements Node {
   id: ID!
+  name: String!
+  password: String
 }
 
 enum MutationStatus {
@@ -33,35 +35,27 @@ enum MutationStatus {
   error
 }
 
+type UserError {
+  fieldName: String
+  messages: [String!]
+}
+
+interface IMutationPayload {
+  status: MutationStatus!
+  userErrors: [UserError!]
+}
+
 type PartiesOpts {
   createParty(input: CreatePartyInput!): CreatePartyPayload!
-  updateParty(input: UpdatePartyInput!): UpdatePartyPayload!
-  deleteParty(input: DeletePartyInput!): DeletePartyPayload
 }
 
 input CreatePartyInput {
-  name: String
+  name: String!
+  password: String
 }
 
-type CreatePartyPayload {
+type CreatePartyPayload implements IMutationPayload {
   status: MutationStatus!
+  userErrors: [UserError!]
   node: Party
-}
-
-input UpdatePartyInput {
-  id: ID!
-  name: String
-}
-
-type UpdatePartyPayload {
-  status: MutationStatus!
-  node: Party
-}
-
-input DeletePartyInput {
-  id: ID!
-}
-
-type DeletePartyPayload {
-  status: MutationStatus!
 }
