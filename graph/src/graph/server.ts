@@ -32,6 +32,7 @@ const createServer = (db?: Db, overrideContext: any = {}) => {
       }`);
       return error;
     },
+    debug: !isProduction,
   });
 };
 
