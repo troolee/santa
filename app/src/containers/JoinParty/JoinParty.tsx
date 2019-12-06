@@ -24,7 +24,7 @@ export default class JoinParty extends FormMessageBoxContent<IValues> {
       <FormikHelpers.InputField
         name="code"
         label="Secret code"
-        help="Your friend probably told you a secret code. This is a right place to put it..."
+        help="Your friend probably told you a secret code. This is the right place to put it..."
       />
     </Bulma.Content>
   );
