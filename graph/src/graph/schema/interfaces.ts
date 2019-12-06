@@ -14,6 +14,7 @@ export interface IUser extends INode {
 }
 
 export interface IParty extends INode {
+  code: string;
   name: string;
   password: string | null;
 }

@@ -28,6 +28,7 @@ type Party implements Node {
   id: ID!
   name: String!
   password: String
+  code: String!
 }
 
 enum MutationStatus {
