@@ -27,7 +27,7 @@ export default class StartPartyDone extends MessageBoxContent<IProps> {
     return (<>
       <Bulma.Content>
         <p>
-          We have successfully created you a party "{this.props.party.name}"!
+          We have successfully created your party "{this.props.party.name}"!
         </p>
         <p>Here's your party's secret code:</p>
         <h1>{this.props.party.code}</h1>

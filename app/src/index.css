@@ -31,7 +31,7 @@ body {
 }
 
 .congratz-box .modal-card .modal-card-body p {
-  padding: 0 70px;
+  padding: 0 80px;
   color: #000;
 }
 
@@ -43,11 +43,11 @@ body {
 
 .congratz-box .modal-card .button {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   margin-left: -100px;
   width: 200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
   border: 2px solid white;
 }
 
