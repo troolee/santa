@@ -6,7 +6,7 @@ import { FormContext } from '.';
 interface IProps<P> {
   initialValues?: P;
   validationSchema: ObjectSchema;
-  onSubmit?: (v: P) => Boolean | Promise<Boolean>;
+  onSubmit?: (v: P) => void | Promise<void>;
 
   isHorizontal?: boolean;
   labelWidth?: any;
@@ -16,8 +16,6 @@ export default class Form<P = {}> extends React.Component<IProps<P>> {
   private formik: any | null = null;
 
   public render() {
-    const initialValues = this.props.initialValues || {};
-
     const onSubmit = async (v: any) => {
       if (this.props.onSubmit) {
         const data = this.props.validationSchema.cast(v);
@@ -32,7 +30,11 @@ export default class Form<P = {}> extends React.Component<IProps<P>> {
     };
 
     return (
-      <Formik initialValues={initialValues} validationSchema={this.props.validationSchema} onSubmit={onSubmit}>
+      <Formik
+        initialValues={this.props.initialValues || {}}
+        validationSchema={this.props.validationSchema}
+        onSubmit={onSubmit}
+      >
         {
           fp => (
             <FormContext.Provider

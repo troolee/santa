@@ -12,7 +12,7 @@ export interface IButtonDescriptor {
   caption: string | React.ReactElement;
   className?: string;
   position?: 'left' | 'right';
-  action?: 'dismiss';
+  action?: 'dismiss' | 'submit';
   onClick?: (props: IMessageBoxContentProps, id: string) => Promise<void>;
 
   disabled?: boolean;
@@ -225,7 +225,12 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
         }
 
         if (!buttonDef.id) {
-          buttonDef.id = `mb-${i}`;
+          if (buttonDef.action === 'submit') {
+            buttonDef.id = 'submit';
+            buttonDef.action = undefined;
+          } else {
+            buttonDef.id = `mb-${i}`;
+          }
         }
         buttonDef.position = buttonDef.position || 'right';
         res.push(buttonDef);
