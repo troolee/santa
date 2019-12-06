@@ -2,10 +2,12 @@ import { ObjectSchema } from "yup";
 import { INode, INodeMutationPayload, IMutationInput } from "../graph/schema/interfaces";
 import { IContext } from "../graph/context";
 
+type Promisable<T> = T | Promise<T>;
+
 export default function resolvable(schema: ObjectSchema) {
-  return function resolve<I, T extends INode>(
-    cb: (input: I, context: IContext) => Partial<INodeMutationPayload<T>> | Promise<Partial<INodeMutationPayload<T>>>,
-  ) {
+  return <I, T extends INode>(
+    ƒ: (input: I, context: IContext) => Promisable<Partial<INodeMutationPayload<T>>>,
+  ) => {
     return async ({input}: IMutationInput<I>, context: IContext) => {
       try {
         await schema.validate(input);
@@ -22,7 +24,7 @@ export default function resolvable(schema: ObjectSchema) {
       return {
         status: 'ok',
         userErrors: null,
-        ...await Promise.resolve(cb(data, context)),
+        ...await Promise.resolve(ƒ(data, context)),
       };
     };
   };

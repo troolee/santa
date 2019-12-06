@@ -1,6 +1,6 @@
 import _ from '../../../utils/resolvable';
 import { createPartyInputSchema } from "../../../validationSchemas/parties";
-import { ICreatePartyInput } from "../interfaces";
+import { ICreatePartyInput, IParty } from "../interfaces";
 
 export default {
   parties: () => ({
@@ -11,7 +11,7 @@ export default {
           id: "1",
           name: input.name,
           password: input.password,
-        },
+        } as IParty,
       };
     }),
 
