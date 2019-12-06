@@ -113,43 +113,45 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
     const leftButtons = this.state.buttons.filter(b => b.position === 'left').map(mkButton);
     const rightButtons = this.state.buttons.filter(b => b.position === 'right').map(mkButton);
 
-    return (<>
-      <DocumentMeta title={buildTitle(this.state.title)}>
-        <Bulma.ModalCard style={{width: this.state.width || DEFAULT_WIDTH}}>
-          {this.state.title &&
-            <Bulma.ModalCardHeader>
-              <Bulma.ModalCardTitle>
-                {this.state.title}
-              </Bulma.ModalCardTitle>
-            </Bulma.ModalCardHeader>
-          }
+    return (
+      <>
+        <DocumentMeta title={buildTitle(this.state.title)}>
+          <Bulma.ModalCard style={{width: this.state.width || DEFAULT_WIDTH}}>
+            {this.state.title &&
+              <Bulma.ModalCardHeader>
+                <Bulma.ModalCardTitle>
+                  {this.state.title}
+                </Bulma.ModalCardTitle>
+              </Bulma.ModalCardHeader>
+            }
 
-          <Bulma.ModalCardBody>
-            <Bulma.Content>
-              {renderedContent}
-            </Bulma.Content>
-          </Bulma.ModalCardBody>
+            <Bulma.ModalCardBody>
+              <Bulma.Content>
+                {renderedContent}
+              </Bulma.Content>
+            </Bulma.ModalCardBody>
 
-          {(leftButtons.length || rightButtons.length) ?
-            <Bulma.ModalCardFooter>
-              <Bulma.Level>
-                <Bulma.LevelLeft>
-                  <Bulma.LevelItem>
-                    {leftButtons}
-                  </Bulma.LevelItem>
-                </Bulma.LevelLeft>
-                <Bulma.LevelRight>
-                  <Bulma.LevelItem>
-                    {rightButtons}
-                  </Bulma.LevelItem>
-                </Bulma.LevelRight>
-              </Bulma.Level>
-            </Bulma.ModalCardFooter>
-            : <></>
-          }
-        </Bulma.ModalCard>
-      </DocumentMeta>
-    </>);
+            {(leftButtons.length || rightButtons.length) ?
+              <Bulma.ModalCardFooter>
+                <Bulma.Level>
+                  <Bulma.LevelLeft>
+                    <Bulma.LevelItem>
+                      {leftButtons}
+                    </Bulma.LevelItem>
+                  </Bulma.LevelLeft>
+                  <Bulma.LevelRight>
+                    <Bulma.LevelItem>
+                      {rightButtons}
+                    </Bulma.LevelItem>
+                  </Bulma.LevelRight>
+                </Bulma.Level>
+              </Bulma.ModalCardFooter>
+              : <></>
+            }
+          </Bulma.ModalCard>
+        </DocumentMeta>
+      </>
+    );
   }
 
   public async canClose() {
