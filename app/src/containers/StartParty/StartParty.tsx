@@ -15,7 +15,7 @@ export default class StartParty extends FormMessageBoxContent<IValues> {
   public validationSchema = createPartyInputSchema;
 
   public initialValues = {
-    name: "",
+    name: "Very funny secret party!",
     password: "",
   };
 
