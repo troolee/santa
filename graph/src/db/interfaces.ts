@@ -8,3 +8,11 @@ export interface IUserEntity extends IEntity {
   name: string;
   picture: string;
 }
+
+export interface IPartyEntity extends IEntity {
+  host: ObjectId;
+  name: string;
+  password: string | null;
+  slug: string;
+  participantCount: number;
+}

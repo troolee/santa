@@ -17,6 +17,8 @@ export interface IParty extends INode {
   code: string;
   name: string;
   password: string | null;
+  isJoined: boolean;
+  isHost: boolean;
 }
 
 export interface IUserError {

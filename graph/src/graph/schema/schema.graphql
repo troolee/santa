@@ -6,6 +6,7 @@ type Query {
   app: App!
   user: User
   node(id: ID!): Node
+  party(code: String!): Party
 }
 
 type Mutation {
@@ -29,6 +30,8 @@ type Party implements Node {
   name: String!
   password: String
   code: String!
+  isJoined: Boolean!
+  isHost: Boolean!
 }
 
 enum MutationStatus {
@@ -41,7 +44,7 @@ type UserError {
   messages: [String!]
 }
 
-interface IMutationPayload {
+interface MutationPayload {
   status: MutationStatus!
   userErrors: [UserError!]
 }
@@ -55,7 +58,7 @@ input CreatePartyInput {
   password: String
 }
 
-type CreatePartyPayload implements IMutationPayload {
+type CreatePartyPayload implements MutationPayload {
   status: MutationStatus!
   userErrors: [UserError!]
   node: Party

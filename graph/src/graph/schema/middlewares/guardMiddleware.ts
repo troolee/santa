@@ -11,7 +11,7 @@ export const guardMiddleware = async (resolve: any, root: any, args: any, contex
   if (context.user === null) {
     if (info.operation.operation === 'mutation') {
       throw new AuthenticationError('Unauthenticated');
-    } else if (!/(^app$)|(^app\.)/.exec(path)) {
+    } else if (!/(^app$)|(^app\.)|(^party$)|(^party\.)/.exec(path)) {
       return null;
     }
   }

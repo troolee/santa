@@ -2,13 +2,13 @@ import { ObjectId } from 'bson';
 import { Db } from "mongodb";
 import _ from '../../../utils/resolvable';
 import { createPartyInputSchema } from "../../../validationSchemas/parties";
-import { ICreatePartyInput, IParty } from "../interfaces";
-import { nodeIdToStr } from '../../../lib/utils/strings/nodeId';
+import { ICreatePartyInput } from "../interfaces";
 import { randomString } from '../../../lib/utils/strings/random';
+import { partyEntityToNode } from './party';
 
 const generatePartySlug = async (db: Db) => {
   const PartyCollection = db.collection('Party');
-  while(true) {
+  while (true) {
     const slug = randomString(5, 'QWERTYUIPASDFGHJKLZXCVBNMO');
     if (await PartyCollection.findOne({slug})) {
       continue;
@@ -20,7 +20,7 @@ const generatePartySlug = async (db: Db) => {
 export default {
   parties: () => ({
 
-    createParty: _(createPartyInputSchema)(async(input: ICreatePartyInput, {db, user}) => {
+    createParty: _(createPartyInputSchema)(async (input: ICreatePartyInput, {db, user}) => {
       const entity = {
         _id: new ObjectId(),
         host: user!._id,
@@ -29,14 +29,13 @@ export default {
         slug: await generatePartySlug(db),
         participantCount: 1,
       };
-      // await db.collection('Party').insertOne(entity);
+      await db.collection('Party').insertOne(entity);
+      await db.collection('PartyMembership').insertOne({
+        party: entity._id,
+        member: user!._id,
+      });
       return {
-        node: {
-          id: nodeIdToStr({kind: 'Party', id: entity._id}),
-          name: entity.name,
-          password: entity.password,
-          code: entity.slug,
-        } as IParty,
+        node: await partyEntityToNode(db, entity, user),
       };
     }),
 
