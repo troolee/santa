@@ -1,12 +1,12 @@
 import { gql } from 'apollo-boost';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
-import { ApolloClient, OperationVariables, QueryOptions } from "apollo-client";
+import { ApolloClient, OperationVariables, QueryOptions, MutationOptions } from "apollo-client";
 import { setContext } from 'apollo-link-context';
 import { createHttpLink } from "apollo-link-http";
 import { ToastsContainer } from "../../containers";
 // import * as introspectionQueryResultData from 'src/fragmentTypes.json';
 import { AuthResponse } from "./facebook";
-import { IUser } from '../../interfaces';
+import { IUser, ICreatePartyInput, ICreatePartyPayload } from '../../interfaces';
 
 interface IApiResponse {
   status: 'ok' | 'error';
@@ -87,6 +87,22 @@ export default class Api {
     }
   }
 
+  public async mutate<T, TVariables = OperationVariables>(options: MutationOptions<TVariables>): Promise<any | null> {
+    try {
+      const {data, errors} = await this.client.mutate({
+        ...options,
+        fetchPolicy: 'no-cache',
+      });
+      if (errors) {
+        console.error(errors);
+      }
+      return data;
+    } catch(error) {
+      ToastsContainer.displaySystemError();
+      throw error;
+    }
+  }
+
   public static async init({token}: {
     token?: string | null,
   }): Promise<void> {
@@ -118,6 +134,27 @@ export default class Api {
       query: gql`{ user { id name } }`,
     });
     return data;
+  }
+
+  public static async createParty(input: ICreatePartyInput): Promise<ICreatePartyPayload> {
+    const data: any = await Api.instance.mutate({
+      mutation: gql`
+        mutation Mutate($input: CreatePartyInput!) {
+          parties {
+            createParty(input: $input) {
+              status
+              userErrors { fieldName messages }
+              node {
+                id
+                name
+              }
+            }
+          }
+        }
+      `,
+      variables: { input }
+    });
+    return data.parties.createParty;
   }
 
   private async storeToken(token: string | null) {
