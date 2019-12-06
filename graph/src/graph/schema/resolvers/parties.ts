@@ -1,15 +1,19 @@
-import { ICreatePartyInput, IMutationInput, ICreatePartyPayload } from "../interfaces";
-import { IContext } from "../../../graph/context";
+import _ from '../../../utils/resolvable';
+import { createPartyInputSchema } from "../../../validationSchemas/parties";
+import { ICreatePartyInput } from "../interfaces";
 
 export default {
   parties: () => ({
-    createParty: ({input}: IMutationInput<ICreatePartyInput>, {db, user}: IContext): ICreatePartyPayload => {
-      // do stuff
+
+    createParty: _(createPartyInputSchema)((input: ICreatePartyInput, {db, user}) => {
       return {
-        node: null,
-        userErrors: null,
-        status: 'error',
+        node: {
+          id: "1",
+          name: input.name,
+          password: input.password,
+        },
       };
-    },
+    }),
+
   }),
 };
