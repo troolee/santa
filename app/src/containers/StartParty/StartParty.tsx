@@ -1,11 +1,10 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
-import * as yup from 'yup';
-import * as YupHelpers from '../../utils/yup';
 import { buildComponent, FormMessageBoxContent } from "../MessageBox";
 import { IButtonDescriptor } from '../MessageBox/MessageBox';
 import * as FormikHelpers from '../../components/FormikHelpers';
-// import { Api } from '../../utils/api';
+import { createPartyInputSchema } from '../../validationSchemas/parties';
+import { Api } from '../../utils/api';
 
 interface IValues {
   name: string;
@@ -13,10 +12,7 @@ interface IValues {
 }
 
 export default class StartParty extends FormMessageBoxContent<IValues> {
-  public validationSchema = yup.object().shape({
-    name: YupHelpers.string('Party name').required(),
-    password: YupHelpers.password('Secret phrase'),
-  });
+  public validationSchema = createPartyInputSchema;
 
   public initialValues = {
     name: "",
@@ -38,11 +34,9 @@ export default class StartParty extends FormMessageBoxContent<IValues> {
     </Bulma.Content>
   );
 
-  public onSubmit(values: IValues) {
-    console.log(values);
-    return new Promise(done => {
-      setTimeout(done, 3000);
-    });
+  public async onSubmit(values: IValues) {
+    const data = await Api.createParty(values);
+    console.log(data);
   }
 };
 

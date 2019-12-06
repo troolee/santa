@@ -1,19 +1,16 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
-import * as yup from 'yup';
-import * as YupHelpers from '../../utils/yup';
 import { buildComponent, FormMessageBoxContent } from "../MessageBox";
 import { IButtonDescriptor } from '../MessageBox/MessageBox';
 import * as FormikHelpers from '../../components/FormikHelpers';
+import { joinPartyInputSchema } from '../../validationSchemas/parties';
 
 interface IValues {
   code: string;
 }
 
 export default class JoinParty extends FormMessageBoxContent<IValues> {
-  public validationSchema = yup.object().shape({
-    code: YupHelpers.string('Secret code').required(),
-  });
+  public validationSchema = joinPartyInputSchema;
 
   public initialValues = {
     code: "",
