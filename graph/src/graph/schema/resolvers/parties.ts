@@ -9,7 +9,7 @@ import { randomString } from '../../../lib/utils/strings/random';
 const generatePartySlug = async (db: Db) => {
   const PartyCollection = db.collection('Party');
   while(true) {
-    const slug = randomString(5, 'QWERTYUIPASDFGHJKLZXCVBNM');
+    const slug = randomString(5, 'QWERTYUIPASDFGHJKLZXCVBNMO');
     if (await PartyCollection.findOne({slug})) {
       continue;
     }
@@ -27,6 +27,7 @@ export default {
         name: input.name,
         password: input.password,
         slug: await generatePartySlug(db),
+        participantCount: 1,
       };
       // await db.collection('Party').insertOne(entity);
       return {

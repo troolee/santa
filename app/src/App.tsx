@@ -1,8 +1,7 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 import { connect } from 'react-redux';
-import { AppLoading, GarageDoor } from './components';
-import { LoginBoxContainer } from './containers';
+import { AppLoading } from './components';
 import { MainContainer } from './containers/MainContainer';
 import { initializeApp } from './reducers/app';
 import { IState } from './reducers/interfaces';
@@ -11,7 +10,9 @@ import config from './config';
 
 import './App.css';
 
-interface IProps extends IState {}
+interface IProps {
+  state: IState;
+}
 
 class AppComponent extends React.Component<IProps> {
   public componentDidMount() {
@@ -19,19 +20,16 @@ class AppComponent extends React.Component<IProps> {
   }
 
   public render() {
-    const renderLoginContainer = () => <LoginBoxContainer />;
-    const renderMainApp = () => (
+    const isLoaded = this.props.state && this.props.state.app.isLoaded;
+
+    return (
       <DocumentMeta title={config.siteTitle}>
-        <GarageDoor isLocked={!this.props.auth.isLoggedIn} renderDoor={renderLoginContainer}>
-          <MainContainer />
-        </GarageDoor>
+        {isLoaded ? <MainContainer state={this.props.state} /> : <AppLoading />}
       </DocumentMeta>
     );
-
-    return this.props.app.isLoaded ? renderMainApp() : <AppLoading />;
   }
 }
 
 export default connect(
-  (state: IState) => state,
+  (state: IState) => ({state}),
 )(AppComponent);
