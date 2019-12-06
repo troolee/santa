@@ -14,6 +14,41 @@ body {
 .party-box .modal-card .modal-card-head {
   background: white url('./imgs/flags.png') top right no-repeat;
   background-size: contain;
+  text-align: center;
+  color: #000;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.congratz-box .modal-card .modal-card-body {
+  background: white url('./imgs/congratz.png') bottom center no-repeat;
+  background-size: 100%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 500px;
+  text-shadow: 0 -1px 0 white, -1px 0px 0 white, 0 1px 0 white, 0 0 3px white;
+  position: relative;
+}
+
+.congratz-box .modal-card .modal-card-body p {
+  padding: 0 70px;
+  color: #000;
+}
+
+.congratz-box .modal-card .modal-card-body h1 {
+  color: #000;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.congratz-box .modal-card .button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  margin-left: -100px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 2px solid white;
 }
 
 p.help {

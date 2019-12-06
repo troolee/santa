@@ -145,8 +145,8 @@ export default class Api {
               status
               userErrors { fieldName messages }
               node {
-                id
                 name
+                code
               }
             }
           }

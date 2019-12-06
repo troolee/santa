@@ -5,6 +5,7 @@ import { IButtonDescriptor } from '../MessageBox/MessageBox';
 import * as FormikHelpers from '../../components/FormikHelpers';
 import { createPartyInputSchema } from '../../validationSchemas/parties';
 import { Api } from '../../utils/api';
+import StartPartyDone from './StartPartyDone';
 
 interface IValues {
   name: string;
@@ -36,7 +37,9 @@ export default class StartParty extends FormMessageBoxContent<IValues> {
 
   public async onSubmit(values: IValues) {
     const data = await Api.createParty(values);
-    console.log(data);
+    if (data.node) {
+      StartPartyDone.showMessage(data.node);
+    }
   }
 };
 
