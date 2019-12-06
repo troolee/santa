@@ -32,7 +32,7 @@ export default class StartParty extends FormMessageBoxContent<IValues> {
       <FormikHelpers.InputField
         name="password"
         label="Secret phrase"
-        help="Everybody has to know this phrase to enter. Leave it blank to let everybody with a link in."
+        help="Everybody has to know this phrase to enter. Leave it blank to let anyone with a link in."
         placeholder="Optional"
       />
     </Bulma.Content>
