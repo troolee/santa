@@ -27,7 +27,7 @@ export default class MessageBoxProvider extends React.Component<IProps, IState> 
   public static pushMessageBox(options: IMessageBoxProps, replace: boolean) {
     const mb = {
       ...options,
-      key: `mb-${(Math.random() * 1000000).toFixed}`,
+      key: `mb-${(Math.random() * 1000000).toFixed()}`,
       messageBoxRef: React.createRef<MessageBox>(),
     };
 
