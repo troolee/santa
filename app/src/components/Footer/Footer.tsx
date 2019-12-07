@@ -18,7 +18,7 @@ export const Footer: React.SFC<IProps> = ({children, onLogout}) => {
   return (
     <>
       <div className="has-text-right foot" style={{padding: '0.5rem 1rem'}}>
-        <div className="is-size-6 bottom-menu">
+        <div className="is-size-6">
           <span>
             <Link to="/">Home</Link>
             <> | </><Link to="/privacy">Privacy Policy</Link>

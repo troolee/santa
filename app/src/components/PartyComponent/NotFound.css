@@ -1,0 +1,20 @@
+.party-not-found.hero {
+  background: black center center url('./not-found.jpg') no-repeat;
+  background-size: cover;
+}
+
+.party-not-found.hero .hero-foot {
+  color: white;
+}
+
+.party-not-found.hero .hero-foot a {
+  color: white;
+}
+
+.party-not-found.hero h1 {
+  font-weight: 400;
+  font-size: 2rem;
+  color: white;
+  margin: 0 auto 1em;
+  text-shadow: 0 2px 4px black;
+}

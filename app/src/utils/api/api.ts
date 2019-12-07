@@ -6,7 +6,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ToastsContainer } from "../../containers";
 // import * as introspectionQueryResultData from 'src/fragmentTypes.json';
 import { AuthResponse } from "./facebook";
-import { IUser, ICreatePartyInput, ICreatePartyPayload } from '../../interfaces';
+import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty } from '../../interfaces';
 
 interface IApiResponse {
   status: 'ok' | 'error';
@@ -155,6 +155,19 @@ export default class Api {
       variables: { input }
     });
     return data.parties.createParty;
+  }
+
+  public static async fetchParty(code: string): Promise<IParty | null> {
+    const data: any = await Api.instance.query({
+      query: gql`query ($code: String!) {
+        party(code: $code) {
+          id
+          name
+        }
+      }`,
+      variables: {code}
+    });
+    return data.party;
   }
 
   private async storeToken(token: string | null) {

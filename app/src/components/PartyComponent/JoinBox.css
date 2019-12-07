@@ -1,0 +1,36 @@
+.hero.join-container {
+  background-color: #ffffff;
+  background-image: url("./garage-door.jpg");
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero.join-container .login-button {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+}
+
+.hero.join-container .login-button:hover {
+  border: 2px solid white;
+}
+
+.hero.join-container .hero-foot {
+  color: #efefef;
+}
+
+.hero.join-container .hero-foot a {
+  color: #efefef;
+}
+
+.hero.join-container .hero-foot a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.hero.join-container h2 {
+  color: white;
+  margin-bottom: 1em;
+  font-size: 2rem;
+  text-shadow: 0 2px 4px black;
+}

@@ -1,4 +1,4 @@
-import { IUser } from "../interfaces";
+import { IUser, IParty } from "../interfaces";
 
 export type IApiState = {
   readonly facebookApi: boolean;
@@ -16,7 +16,13 @@ export interface IAuthState {
   readonly user: IUser | null;
 }
 
+export interface IPartyState {
+  readonly isLoading: boolean;
+  readonly current: IParty | null;
+}
+
 export interface IState {
   readonly app: IAppState;
   readonly auth: IAuthState;
+  readonly party: IPartyState;
 }
