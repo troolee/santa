@@ -32,6 +32,7 @@ type Party implements Node {
   code: String!
   isJoined: Boolean!
   isHost: Boolean!
+  isProtected: Boolean!
 }
 
 enum MutationStatus {

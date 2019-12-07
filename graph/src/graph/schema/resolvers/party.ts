@@ -23,6 +23,7 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
     isJoined: membership !== null,
     isHost,
     password: isHost ? party.password : null,
+    isProtected: Boolean(party.password),
   } as IParty;
 }
 
