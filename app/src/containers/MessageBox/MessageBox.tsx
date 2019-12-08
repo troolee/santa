@@ -273,7 +273,9 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
     else if (this.state.contentRef.current !== null) {
       await this.state.contentRef.current.onButtonClick({messageBox: this, ref: this.state.contentRef}, btn.id!);
     }
-    this.setState({busyButton: null});
+    if (this.state.contentRef.current) {
+      this.setState({busyButton: null});
+    }
   }
 
   public done(result?: any) {
