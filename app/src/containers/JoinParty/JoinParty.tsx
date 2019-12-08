@@ -4,6 +4,9 @@ import { buildComponent, FormMessageBoxContent } from "../MessageBox";
 import { IButtonDescriptor } from '../MessageBox/MessageBox';
 import * as FormikHelpers from '../../components/FormikHelpers';
 import { lookupPartyInputSchema } from '../../validationSchemas/parties';
+import { Api } from '../../utils/api';
+import { ToastsContainer } from '..';
+import history from '../../utils/history';
 
 interface IValues {
   code: string;
@@ -26,11 +29,16 @@ export default class JoinParty extends FormMessageBoxContent<IValues> {
     </Bulma.Content>
   );
 
-  public onSubmit(values: IValues) {
-    console.log(values);
-    return new Promise(done => {
-      setTimeout(done, 3000);
-    });
+  public async onSubmit({code}: IValues) {
+    const party = await Api.fetchParty(code);
+    if (party === null) {
+      ToastsContainer.displayToast({
+        kind: 'danger',
+        message: 'Hm... we cannot find any party for the code. Please check the code and try again...',
+      });
+      return;
+    }
+    history.replace(`/p/${code.toUpperCase()}`);
   }
 };
 
