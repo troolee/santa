@@ -1,3 +1,7 @@
+.modal.is-active {
+  z-index: 10000;
+}
+
 .modal-background-light .modal-background {
   background-color: rgba(0, 0, 0, 0.6);
 }

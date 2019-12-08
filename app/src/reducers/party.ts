@@ -33,7 +33,21 @@ export function fetchParty(code: string) {
     dispatch(partyRequest());
     const party = await Api.fetchParty(code);
     dispatch(partyReceive(party));
-  }
+  };
+}
+
+export function joinParty(party: IParty, password: string | null) {
+  return async (dispatch: any) => {
+    // dispatch(partyRequest());
+    const res = await Api.joinParty({party: party.id, password});
+    console.log(res);
+    if (res.userErrors) {
+      ////
+    }
+    else {
+      // dispatch(partyReceive(res.node));
+    }
+  };
 }
 
 type AuthActions = (

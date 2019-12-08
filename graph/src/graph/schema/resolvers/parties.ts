@@ -1,8 +1,8 @@
 import { ObjectId } from 'bson';
 import { Db } from "mongodb";
 import _ from '../../../utils/resolvable';
-import { createPartyInputSchema } from "../../../validationSchemas/parties";
-import { ICreatePartyInput } from "../interfaces";
+import { createPartyInputSchema, joinPartyInputSchema } from "../../../validationSchemas/parties";
+import { ICreatePartyInput, IJoinPartyInput } from "../interfaces";
 import { randomString } from '../../../lib/utils/strings/random';
 import { partyEntityToNode } from './party';
 
@@ -36,6 +36,12 @@ export default {
       });
       return {
         node: await partyEntityToNode(db, entity, user),
+      };
+    }),
+
+    joinParty: _(joinPartyInputSchema)(async (input: IJoinPartyInput, {db, user}) => {
+      return {
+        node: null,
       };
     }),
 

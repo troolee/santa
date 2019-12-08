@@ -10,13 +10,15 @@ interface IProps {
   party: IParty | null;
   user: IUser | null;
   onLogout?: () => void;
-  onJoinClick: () => Promise<any>;
+  onJoinClick: (user: IUser | null, party: IParty) => Promise<any>;
 }
 
 const PartyComponent: React.SFC<IProps> = ({party, user, onJoinClick, onLogout}) => {
   if (!party) {
     return <NotFound />;
   }
+
+  const onJoinClickEvent = async () => await onJoinClick(user, party);
 
   const isLocked = user === null || !party.isJoined;
 
@@ -25,7 +27,7 @@ const PartyComponent: React.SFC<IProps> = ({party, user, onJoinClick, onLogout})
       user={user}
       party={party}
       onLogout={user !== null ? onLogout : undefined}
-      onJoinClick={onJoinClick}
+      onJoinClick={onJoinClickEvent}
     />
   );
 

@@ -1,3 +1,8 @@
+import { Api } from ".";
+import { AuthApiRequest } from "./api";
+import store from "../../store";
+import { initializeApp } from "../../reducers/app";
+
 type FacebookParams = {
   appId: string;
   autoLogAppEvents?: boolean;
@@ -106,6 +111,35 @@ export default class FacebookApi {
       }
       else {
         complete();
+      }
+    });
+  }
+
+  public static authorize() {
+    return new Promise<{token: string | null}>(complete => {
+      const proceedSignIn = async (authRequest: AuthApiRequest) => {
+        const {status, token} = await Api.signIn(authRequest);
+        if (status === 'ok') {
+          await Api.init({token});
+          store.dispatch(initializeApp());
+          complete({token});
+        } else {
+          complete({token: null});
+        }
+      };
+
+      const cancelSignIn = () => complete({token: null});
+
+      if (FacebookApi.authResponse) {
+        proceedSignIn(FacebookApi.authResponse);
+      } else {
+        FacebookApi.login(({status, authResponse}) => {
+          if (status === 'connected') {
+            proceedSignIn(authResponse!);
+          } else {
+            cancelSignIn();
+          }
+        }, {scope: 'public_profile,email'});
       }
     });
   }

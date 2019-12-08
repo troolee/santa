@@ -3,14 +3,14 @@ import React from 'react';
 import { buildComponent, FormMessageBoxContent } from "../MessageBox";
 import { IButtonDescriptor } from '../MessageBox/MessageBox';
 import * as FormikHelpers from '../../components/FormikHelpers';
-import { joinPartyInputSchema } from '../../validationSchemas/parties';
+import { lookupPartyInputSchema } from '../../validationSchemas/parties';
 
 interface IValues {
   code: string;
 }
 
 export default class JoinParty extends FormMessageBoxContent<IValues> {
-  public validationSchema = joinPartyInputSchema;
+  public validationSchema = lookupPartyInputSchema;
 
   public initialValues = {
     code: "",

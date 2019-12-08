@@ -52,6 +52,7 @@ interface MutationPayload {
 
 type PartiesOpts {
   createParty(input: CreatePartyInput!): CreatePartyPayload!
+  joinParty(input: JoinPartyInput!): JoinPartyPayload!
 }
 
 input CreatePartyInput {
@@ -60,6 +61,17 @@ input CreatePartyInput {
 }
 
 type CreatePartyPayload implements MutationPayload {
+  status: MutationStatus!
+  userErrors: [UserError!]
+  node: Party
+}
+
+input JoinPartyInput {
+  party: ID!
+  password: String
+}
+
+type JoinPartyPayload implements MutationPayload {
   status: MutationStatus!
   userErrors: [UserError!]
   node: Party

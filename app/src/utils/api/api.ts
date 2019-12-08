@@ -4,9 +4,9 @@ import { ApolloClient, OperationVariables, QueryOptions, MutationOptions } from 
 import { setContext } from 'apollo-link-context';
 import { createHttpLink } from "apollo-link-http";
 import { ToastsContainer } from "../../containers";
-// import * as introspectionQueryResultData from 'src/fragmentTypes.json';
+import introspectionQueryResultData from '../../fragmentTypes.json';
 import { AuthResponse } from "./facebook";
-import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty } from '../../interfaces';
+import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload } from '../../interfaces';
 
 interface IApiResponse {
   status: 'ok' | 'error';
@@ -17,6 +17,26 @@ interface IAuthApiResponse extends IApiResponse {
 }
 
 export type AuthApiRequest = AuthResponse;
+
+const Fragmets = {
+  party: gql`
+    fragment PartyFields on Party {
+      id
+      name
+      password
+      code
+      isJoined
+      isHost
+      isProtected
+    }
+  `,
+}
+
+const fragmentMatcher = new IntrospectionFragmentMatcher({
+  introspectionQueryResultData
+});
+
+const cache = new InMemoryCache({fragmentMatcher});
 
 export default class Api {
   private static instance: Api;
@@ -31,9 +51,7 @@ export default class Api {
   }
 
   private client = new ApolloClient({
-    cache: new InMemoryCache({fragmentMatcher: new IntrospectionFragmentMatcher({
-      // introspectionQueryResultData
-    })}),
+    cache,
     link: setContext((_, {headers}) => {
       const token = localStorage.getItem('Auth-Token');
       return {
@@ -145,6 +163,7 @@ export default class Api {
               status
               userErrors { fieldName messages }
               node {
+                id
                 name
                 code
               }
@@ -161,13 +180,35 @@ export default class Api {
     const data: any = await Api.instance.query({
       query: gql`query ($code: String!) {
         party(code: $code) {
-          id
-          name
+          ...PartyFields
         }
-      }`,
+      }
+      ${Fragmets.party}
+      `,
       variables: {code}
     });
     return data.party;
+  }
+
+  public static async joinParty(input: IJoinPartyInput): Promise<IJoinPartyPayload> {
+    const data: any = await Api.instance.mutate({
+      mutation: gql`
+        mutation Mutate($input: JoinPartyInput!) {
+          parties {
+            joinParty(input: $input) {
+              status
+              userErrors { fieldName messages }
+              node {
+                ...PartyFields
+              }
+            }
+          }
+        }
+        ${Fragmets.party}
+      `,
+      variables: { input }
+    });
+    return data.parties.joinParty;
   }
 
   private async storeToken(token: string | null) {

@@ -43,6 +43,13 @@ export interface ICreatePartyInput {
   password: string | null;
 }
 
+export interface IJoinPartyInput {
+  party: string;
+  password: string | null;
+}
+
+export type IJoinPartyPayload = INodeMutationPayload<IParty>;
+
 export interface IMutationInput<T> {
   input: T;
 }

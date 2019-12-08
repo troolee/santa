@@ -38,6 +38,7 @@ export interface IMessageBoxEssencialsProps {
 
 export interface IMessageBoxProps extends IMessageBoxEssencialsProps {
   content: string | React.ReactNode | ((props: IMessageBoxContentProps) => React.ReactNode);
+  onComplete?: (result?: any | null) => void;
 }
 
 export interface IMessageBoxStateBase {
@@ -60,12 +61,23 @@ export interface IMessageBox {
   setMessageBoxState: (state: IMessageBoxStateBase) => void;
   cancel: () => Promise<void>;
   dismiss: () => Promise<void>;
+  done: (result?: any) => any;
   setButtonsState: (state: ButtonsState) => void;
 }
 
 export default class MessageBox extends React.Component<IMessageBoxProps, IMessageBoxState> implements IMessageBox {
   public static showMessageBox(options: IMessageBoxProps, replace = false) {
-    MessageBoxProvider.pushMessageBox(options, replace);
+    return new Promise<any>(done => {
+      MessageBoxProvider.pushMessageBox({
+        ...options,
+        onComplete: (res?: any | null) => {
+          if (options.onComplete) {
+            options.onComplete(res);
+          }
+          done(res);
+        },
+      },replace);
+    });
   }
 
   public constructor(props: IMessageBoxProps) {
@@ -177,6 +189,11 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
   }
 
   public async dismiss() {
+    this.done();
+    await this.dismissMessageBox();
+  }
+
+  protected async dismissMessageBox() {
     if (this.props.onDismiss) {
       this.props.onDismiss({messageBox: this, ref: this.state.contentRef});
     }
@@ -257,5 +274,12 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
       await this.state.contentRef.current.onButtonClick({messageBox: this, ref: this.state.contentRef}, btn.id!);
     }
     this.setState({busyButton: null});
+  }
+
+  public done(result?: any) {
+    if (this.props.onComplete) {
+      this.props.onComplete(result);
+      this.dismissMessageBox();
+    }
   }
 }

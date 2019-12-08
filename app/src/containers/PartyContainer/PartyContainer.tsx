@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { IState } from '../../reducers/interfaces';
 import { PartyComponent, AppLoading } from '../../components';
-import { fetchParty } from '../../reducers/party';
+import { fetchParty, joinParty } from '../../reducers/party';
 import { IParty, IUser } from '../../interfaces';
 import { signout } from '../../reducers/auth';
+import { AuthApi } from '../../utils/api';
+import AskPassword from './AskPassword';
 
 interface IProps {
   party: IParty | null;
@@ -12,7 +14,7 @@ interface IProps {
   isLoading: boolean;
   match: any;
   onRequestParty: (code: string) => void;
-  onJoinClick: () => Promise<any>;
+  onJoinClick: (user: IUser | null, party: IParty) => Promise<any>;
   onLogout: () => void;
 }
 
@@ -42,10 +44,21 @@ export default connect(
       await dispatch(signout());
       window.location.reload();
     },
-    onJoinClick: () => {
-      return new Promise(done => {
-        setTimeout(done, 3000);
-      });
+    onJoinClick: async (user: IUser | null, party: IParty) => {
+      if (user === null) {
+        if (!await AuthApi.authorize()) {
+          return;
+        }
+      }
+      let password = null;
+      if (party.isProtected) {
+        const passwordInput = await AskPassword.showMessageBox() as {password: string} | null | undefined;
+        if (!passwordInput) {
+          return;
+        }
+        password = passwordInput.password;
+      }
+      await dispatch(joinParty(party, password));
     },
   })
 )(PartyContainer);

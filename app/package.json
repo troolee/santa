@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "repository": "https://gitlab.com/uglyunicorn/garapheon/app",
+  "repository": "https://gitlab.com/uglyunicorn/ho-ho-ho",
   "author": "Pavel Reznikov <pashka.reznikov@gmail.com>",
   "dependencies": {
     "apollo-boost": "^0.4.4",
@@ -28,6 +28,7 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "@graphql-codegen/fragment-matcher": "^1.9.1",
     "@types/bson": "^4.0.0",
     "@types/jest": "^24.0.20",
     "@types/lodash": "^4.14.144",
