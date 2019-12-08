@@ -11,7 +11,6 @@ export const lookupPartyInputSchema = yup.object().shape({
 });
 
 export const joinPartyInputSchema = yup.object().shape({
-  user: YupHelpers.string('User ID').required(),
   party: YupHelpers.string('Party ID').required(),
   password: YupHelpers.string('Password'),
 });
