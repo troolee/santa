@@ -151,7 +151,7 @@ export default class Api {
     user: IUser | null,
   }> {
     const data: any = await Api.instance.query({
-      query: gql`{ user { id name } }`,
+      query: gql`{ user { id name picture } }`,
     });
     return data;
   }

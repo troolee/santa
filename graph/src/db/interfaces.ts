@@ -4,9 +4,19 @@ export interface IEntity {
   _id: ObjectId;
 }
 
+export interface IFacebookProfile {
+  id: number;
+  name: string;
+}
+
+export interface IUserProfiles {
+  facebook: IFacebookProfile;
+}
+
 export interface IUserEntity extends IEntity {
   name: string;
   picture: string;
+  profiles: IUserProfiles;
 }
 
 export interface IPartyEntity extends IEntity {
