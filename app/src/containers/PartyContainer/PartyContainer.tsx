@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { IState } from '../../reducers/interfaces';
 import { PartyComponent, AppLoading } from '../../components';
-import { fetchParty, joinParty } from '../../reducers/party';
+import { fetchParty, joinParty, leaveParty } from '../../reducers/party';
 import { IParty, IUser } from '../../interfaces';
 import { signout } from '../../reducers/auth';
 import { AuthApi, Api } from '../../utils/api';
 import AskPassword from './AskPassword';
+import ConfirmLeaving from './ConfirmLeaving';
 
 interface IProps {
   party: IParty | null;
@@ -16,6 +17,7 @@ interface IProps {
   onRequestParty: (code: string) => void;
   onJoinClick: (user: IUser | null, party: IParty) => Promise<any>;
   onLogout: () => void;
+  onLeave: (party: IParty) => Promise<any>;
 }
 
 class PartyContainer extends React.Component<IProps> {
@@ -28,7 +30,13 @@ class PartyContainer extends React.Component<IProps> {
   public render () {
     return this.props.isLoading
       ? <AppLoading />
-      : <PartyComponent party={this.props.party} user={this.props.user} onLogout={this.props.onLogout} onJoinClick={this.props.onJoinClick} />;
+      : <PartyComponent
+          party={this.props.party}
+          user={this.props.user}
+          onLogout={this.props.onLogout}
+          onJoinClick={this.props.onJoinClick}
+          onLeave={this.props.onLeave}
+      />;
   }
 }
 
@@ -59,7 +67,12 @@ export default connect(
         }
         password = passwordInput.password;
       }
-      await dispatch(joinParty(party, password));
+      dispatch(joinParty(party, password));
     },
+    onLeave: async (party: IParty) => {
+      if (await ConfirmLeaving.showMessageBox()) {
+        dispatch(leaveParty(party));
+      }
+    }
   })
 )(PartyContainer);

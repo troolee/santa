@@ -4,7 +4,7 @@ import { SyncLoader } from 'react-spinners';
 import { IParty, IUser } from '../../interfaces';
 import { GnomeSays } from '../GnomeSays';
 import { UnsplashCredit } from '../UnsplashCredit';
-import { Footer } from '..';
+import { Footer, Button } from '..';
 
 import './PartyDetails.css';
 
@@ -12,9 +12,10 @@ interface IProps {
   party: IParty;
   user: IUser;
   onLogout: () => void;
+  onLeave: (party: IParty) => Promise<any>;
 }
 
-const PartyDetails: React.SFC<IProps> = ({party, user, onLogout}) => {
+const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave}) => {
   React.useEffect(() => {
     const className = 'party-details-page';
 
@@ -34,6 +35,8 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout}) => {
     }
   }
 
+  const leaveParty = async () => await onLeave(party);
+
   return (
     <>
       <Bulma.Hero isFullHeight={true}>
@@ -50,7 +53,7 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout}) => {
                   <p>Don't worry, it shouldn't take long. Last year we had whole two days to find and buy the gifts.
                     Everything's under control, he knows what he's doing!</p>
                   <p style={{margin: '2em 0'}} className="has-text-centered-touch">
-                    <Bulma.Button isColor="black" isOutlined={true}>I changed my mind and wanna quit...</Bulma.Button>
+                    <Button isColor="black" isOutlined={true} onClick={leaveParty}>I changed my mind and wanna quit...</Button>
                   </p>
                 </Bulma.Content>
               </Bulma.Column>

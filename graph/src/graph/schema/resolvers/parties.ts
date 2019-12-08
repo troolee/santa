@@ -1,8 +1,8 @@
 import { ObjectId } from 'bson';
 import { Db } from "mongodb";
 import _ from '../../../utils/resolvable';
-import { createPartyInputSchema, joinPartyInputSchema } from "../../../validationSchemas/parties";
-import { ICreatePartyInput, IJoinPartyInput, IMutationPayload } from "../interfaces";
+import { createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema } from "../../../validationSchemas/parties";
+import { ICreatePartyInput, IJoinPartyInput, IMutationPayload, ILeavePartyInput } from "../interfaces";
 import { randomString } from '../../../lib/utils/strings/random';
 import { partyEntityToNode } from './party';
 import NodeId from '../../../lib/utils/nodeId';
@@ -98,5 +98,49 @@ export default {
       };
     }),
 
+    leaveParty: _(leavePartyInputSchema)(async ({party}: ILeavePartyInput, {db, user}) => {
+      if (user === null) {
+        return {
+          status: 'error',
+          userErrors: [{
+            fieldName: null,
+            messages: ['You must be logged in before leaving the party.'],
+          }],
+        } as IMutationPayload;
+      }
+
+      const partyNodeId = NodeId.fromString(party);
+      if (partyNodeId.kind !== 'Party') {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['Unknown input type. Must be Party.'],
+          }],
+        };
+      }
+      const partyEntity = await db.collection('Party').findOne({_id: partyNodeId.id}) as (IPartyEntity | null);
+      if (partyEntity === null) {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['Party does not exist.'],
+          }],
+        };
+      }
+
+      const membership = await db.collection('PartyMembership').findOne({party: partyEntity._id, member: user._id});
+      if (membership === null) {
+        return {
+          node: await partyEntityToNode(db, partyEntity, user),
+        };
+      }
+
+      await db.collection('Party').updateOne({_id: partyEntity._id}, {$inc: {participantCount: -1}});
+      await db.collection('PartyMembership').deleteMany({party: partyEntity._id, member: user._id});
+
+      return {
+        node: await partyEntityToNode(db, partyEntity, user),
+      };
+    }),
   }),
 };

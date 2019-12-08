@@ -12,7 +12,7 @@ export interface IButtonDescriptor {
   caption: string | React.ReactElement;
   className?: string;
   position?: 'left' | 'right';
-  action?: 'dismiss' | 'submit';
+  action?: 'dismiss' | 'submit' | 'confirm';
   onClick?: (props: IMessageBoxContentProps, id: string) => Promise<void>;
 
   disabled?: boolean;
@@ -188,8 +188,8 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
     }
   }
 
-  public async dismiss() {
-    this.done();
+  public async dismiss(res?: any) {
+    this.done(res);
     await this.dismissMessageBox();
   }
 
@@ -245,7 +245,7 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
 
         if (!buttonDef.id) {
           if (buttonDef.action === 'submit') {
-            buttonDef.id = 'submit';
+            buttonDef.id = buttonDef.action;
             buttonDef.action = undefined;
           } else {
             buttonDef.id = `mb-${i}`;
@@ -267,6 +267,9 @@ export default class MessageBox extends React.Component<IMessageBoxProps, IMessa
       switch(btn.action) {
         case 'dismiss':
           this.dismiss();
+          break;
+        case 'confirm':
+          this.dismiss(true);
           break;
       }
     }

@@ -6,7 +6,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ToastsContainer } from "../../containers";
 import introspectionQueryResultData from '../../fragmentTypes.json';
 import { AuthResponse } from "./facebook";
-import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload } from '../../interfaces';
+import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload, ILeavePartyInput, ILeavePartyPayload } from '../../interfaces';
 
 interface IApiResponse {
   status: 'ok' | 'error';
@@ -211,6 +211,27 @@ export default class Api {
       variables: { input }
     });
     return data.parties.joinParty;
+  }
+
+  public static async leaveParty(input: ILeavePartyInput): Promise<ILeavePartyPayload> {
+    const data: any = await Api.instance.mutate({
+      mutation: gql`
+        mutation Mutate($input: LeavePartyInput!) {
+          parties {
+            leaveParty(input: $input) {
+              status
+              userErrors { fieldName messages }
+              node {
+                ...PartyFields
+              }
+            }
+          }
+        }
+        ${Fragmets.party}
+      `,
+      variables: { input }
+    });
+    return data.parties.leaveParty;
   }
 
   private async storeToken(token: string | null) {

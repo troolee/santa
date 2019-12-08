@@ -1,0 +1,5 @@
+.confirm-leaving-box .modal-card-body > .content {
+  padding-left: 220px;
+  background: left bottom url('./santa.png') no-repeat;
+  background-size: contain;
+}

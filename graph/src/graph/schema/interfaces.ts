@@ -50,7 +50,13 @@ export interface IJoinPartyInput {
   password: string | null;
 }
 
+export interface ILeavePartyInput {
+  party: string;
+}
+
 export type IJoinPartyPayload = INodeMutationPayload<IParty>;
+
+export type ILeavePartyPayload = INodeMutationPayload<IParty>;
 
 export interface IMutationInput<T> {
   input: T;

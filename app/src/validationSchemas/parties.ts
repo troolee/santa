@@ -18,3 +18,7 @@ export const joinPartyInputSchema = yup.object().shape({
 export const askPasswordInputSchema = yup.object().shape({
   password: YupHelpers.string('Password').required(),
 });
+
+export const leavePartyInputSchema = yup.object().shape({
+  party: YupHelpers.string('Party ID').required(),
+});

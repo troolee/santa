@@ -29,6 +29,7 @@
   animation-duration: 150ms;
   margin: .5em 0;
   text-align: center;
+  text-shadow: none;
   box-shadow: 0 4px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04);
   border-radius: 0.75em;
   padding: .75em 1.5em;
