@@ -1,0 +1,69 @@
+.gnome-says.message {
+  background: transparent 1em center url('./gnome.png') no-repeat !important;
+  background-size: contain !important;
+  min-height: 500px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.gnome-says .message-body {
+  background-color: #f7f7c6;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  font-size: 0.9em;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  /* min-width: 8em; */
+  margin-top: -30ch;
+  margin-left: 160px;
+  margin-right: 20px;
+  font-size: 1.2rem;
+}
+
+.gnome-says .message-body::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 30px;
+	width: 0;
+	height: 0;
+	border: 1em solid transparent;
+	border-top-color: #f7f7c6;
+	border-bottom: 0;
+	border-left: 0;
+	margin-bottom: -1em;
+}
+
+.gnome-says.is-info .message-body {
+  background: #eef6fc;
+}
+
+.gnome-says.is-info .message-body::after {
+  border-top-color: #eef6fc;
+}
+
+.gnome-says.is-warning .message-body {
+  background: #fffbeb;
+}
+
+.gnome-says.is-warning .message-body::after {
+  border-top-color: #fffbeb;
+}
+
+.gnome-says.is-primary .message-body {
+  background: #ebfffc;
+}
+
+.gnome-says.is-primary .message-body::after {
+  border-top-color: #ebfffc;
+}
+
+.gnome-says.is-danger .message-body {
+  background: #feecf0;
+}
+
+.gnome-says.is-danger .message-body::after {
+  border-top-color: #feecf0;
+}

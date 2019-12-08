@@ -16,3 +16,10 @@ export interface IPartyEntity extends IEntity {
   slug: string;
   participantCount: number;
 }
+
+export interface IPartyMembershipEntity extends IEntity {
+  party: ObjectId;
+  member: ObjectId;
+  name: string;
+  target: ObjectId | null;
+}

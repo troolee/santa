@@ -5,6 +5,7 @@ import NotFound from './NotFound';
 import { GarageDoor } from '..';
 import JoinBox from './JoinBox';
 import buildTitle from '../../utils/title';
+import PartyDetails from './PartyDetails';
 
 interface IProps {
   party: IParty | null;
@@ -34,7 +35,7 @@ const PartyComponent: React.SFC<IProps> = ({party, user, onJoinClick, onLogout})
   return (
     <DocumentMeta title={buildTitle(party.name)}>
       <GarageDoor isLocked={isLocked} renderDoor={renderLoginContainer}>
-        Party hard!
+        <PartyDetails party={party} user={user!} onLogout={onLogout!} />
       </GarageDoor>
     </DocumentMeta>
   );

@@ -20,6 +20,8 @@ export interface IParty extends INode {
   isJoined: boolean;
   isHost: boolean;
   isProtected: boolean;
+  participantCount: number | null;
+  participants: string[] | null;
 }
 
 export interface IUserError {

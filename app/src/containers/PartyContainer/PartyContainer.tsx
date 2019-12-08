@@ -5,7 +5,7 @@ import { PartyComponent, AppLoading } from '../../components';
 import { fetchParty, joinParty } from '../../reducers/party';
 import { IParty, IUser } from '../../interfaces';
 import { signout } from '../../reducers/auth';
-import { AuthApi } from '../../utils/api';
+import { AuthApi, Api } from '../../utils/api';
 import AskPassword from './AskPassword';
 
 interface IProps {
@@ -49,9 +49,10 @@ export default connect(
         if (!await AuthApi.authorize()) {
           return;
         }
+        party = (await Api.fetchParty(party.code))!;
       }
       let password = null;
-      if (party.isProtected) {
+      if (party.isProtected && !party.isJoined) {
         const passwordInput = await AskPassword.showMessageBox() as {password: string} | null | undefined;
         if (!passwordInput) {
           return;

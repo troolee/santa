@@ -8,3 +8,4 @@ export { default as Button } from './Button';
 export { Footer } from './Footer';
 export { ScrollToTop } from './ScrollToTop';
 export { PartyComponent } from './PartyComponent';
+export { GnomeSays } from './GnomeSays';

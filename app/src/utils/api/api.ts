@@ -28,6 +28,8 @@ const Fragmets = {
       isJoined
       isHost
       isProtected
+      participantCount
+      participants
     }
   `,
 }

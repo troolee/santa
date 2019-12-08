@@ -1,0 +1,15 @@
+body.party-details-page {
+  min-height: 100vh;
+  background: #e2e6e7 url('./background.jpg') right top no-repeat;
+  background-size: cover;
+  color: black;
+  text-shadow: 0 2px 4px white;
+}
+
+body.party-details-page .hero-foot a {
+  color: #000;
+}
+
+body.party-details-page .hero-foot a:hover {
+  text-decoration: underline;
+}
