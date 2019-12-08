@@ -21,7 +21,7 @@ export default class StartPartyDone extends MessageBoxContent<IProps> {
 
   public render() {
     const onClick = () => {
-      history.push(`/p/${this.props.party.code}`);
+      history.replace(`/p/${this.props.party.code}`);
     };
 
     return (<>
