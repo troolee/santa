@@ -2,6 +2,7 @@ import { Action } from "redux";
 import { IPartyState } from "./interfaces";
 import { IParty } from "../interfaces";
 import { Api } from "../utils/api";
+import { ToastsContainer } from "../containers";
 
 const initialState: IPartyState = {
   isLoading: true,
@@ -38,14 +39,14 @@ export function fetchParty(code: string) {
 
 export function joinParty(party: IParty, password: string | null) {
   return async (dispatch: any) => {
-    // dispatch(partyRequest());
     const res = await Api.joinParty({party: party.id, password});
-    console.log(res);
-    if (res.userErrors) {
-      ////
-    }
-    else {
-      // dispatch(partyReceive(res.node));
+    if (res.userErrors && res.userErrors.length) {
+      ToastsContainer.displayToast({
+        kind: "danger",
+        message: () => res.userErrors!.map(e => e.messages.join('; ')).join('\n'),
+      });
+    } else if (res.node) {
+      dispatch(partyReceive(res.node));
     }
   };
 }
