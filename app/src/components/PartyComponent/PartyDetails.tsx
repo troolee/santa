@@ -40,14 +40,18 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout}) => {
         <Bulma.HeroBody>
           <Bulma.Container>
             <Bulma.Columns isVCentered={true}>
+              <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
               <Bulma.Column>
-                <Bulma.Content className="has-text-justified">
+                <Bulma.Content className="has-text-justified has-text-left-touch">
                   <p>Hey, {user.name}! Welcome to the {party.name}!<br /></p>
                   {participants.length > 1 ? <p>Good news! {participants.join(' ')} are participating in this.</p> : ""}
                   <p>We're currently waiting for everybody else to join the party and then our special elf will do
-                    some complex math and decide who should give a gift to whom.</p>
+                    some complex math to decide who should give a gift to whom.</p>
                   <p>Don't worry, it shouldn't take long. Last year we had whole two days to find and buy gifts.
                     Everything's under control, he knows what to do!</p>
+                  <p style={{margin: '2em 0'}} className="has-text-centered-touch">
+                    <Bulma.Button isColor="black" isOutlined={true}>I changed my mind and wanna quit...</Bulma.Button>
+                  </p>
                 </Bulma.Content>
               </Bulma.Column>
               <Bulma.Column isSize="1/3" hasTextAlign="centered">
