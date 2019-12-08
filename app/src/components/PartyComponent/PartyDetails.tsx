@@ -47,14 +47,14 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout}) => {
                   {participants.length > 1 ? <p>Good news! {participants.join(' ')} are participating in this.</p> : ""}
                   <p>We're currently waiting for everybody else to join the party and then our special elf will do
                     some complex math to decide who should give a gift to whom.</p>
-                  <p>Don't worry, it shouldn't take long. Last year we had whole two days to find and buy gifts.
+                  <p>Don't worry, it shouldn't take long. Last year we had whole two days to find and buy the gifts.
                     Everything's under control, he knows what to do!</p>
                   <p style={{margin: '2em 0'}} className="has-text-centered-touch">
                     <Bulma.Button isColor="black" isOutlined={true}>I changed my mind and wanna quit...</Bulma.Button>
                   </p>
                 </Bulma.Content>
               </Bulma.Column>
-              <Bulma.Column isSize="1/3" hasTextAlign="centered">
+              <Bulma.Column isSize={5} hasTextAlign="centered">
                 <GnomeSays>
                   <SyncLoader color="#4a4a4a" size={10} />
                   {/* You're a Secret Ded Moroz for <strong>Pavel Reznikov</strong> */}
