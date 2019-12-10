@@ -30,5 +30,3 @@ jest*
 types/
 coverage/
 .vscode/
-builds/
-

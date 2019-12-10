@@ -24,14 +24,20 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave}) => {
   });
 
   const participants = ['You'];
-  if (party.participantCount && party.participantCount > 1) {
-    participants.push(`and ${party.participantCount - 1} more nice ${party.participantCount - 1 === 1 ? 'person' : 'people'}`);
-    if (party.participants && party.participants.length) {
-      participants.push(participants.pop() + ',');
-      const pp = party.participants.slice(0, party.participants.length);
-      const onePerson = pp.pop();
-      const persons = [pp.join(', '), onePerson].join(' and ');
-      participants.push(`including ${persons}`);
+  if (party.participantCount) {
+    if (party.participantCount > 2) {
+      participants.push(`and ${party.participantCount - 1} more nice ${party.participantCount - 1 === 1 ? 'person' : 'people'}`);
+      if (party.participants) {
+        participants.push(participants.pop() + ',');
+        const pp = party.participants.slice(0, party.participants.length);
+        const onePerson = pp.pop();
+        if (pp.length > 0) {
+          const persons = [pp.join(', '), onePerson].join(' and ');
+          participants.push(`including ${persons}`);
+        }
+      }
+    } else if (party.participants) {
+      participants.push(`and ${party.participants[0]}`);
     }
   }
 

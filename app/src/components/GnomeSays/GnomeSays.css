@@ -33,7 +33,7 @@
 	border-top-color: #f7f7c6;
 	border-bottom: 0;
 	border-left: 0;
-	margin-bottom: -1em;
+	margin-bottom: calc(-1em + 1px);
 }
 
 .gnome-says.is-info .message-body {

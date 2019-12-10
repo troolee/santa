@@ -93,6 +93,7 @@ export default {
       await db.collection('PartyMembership').insertOne({
         party: partyEntity._id,
         member: user!._id,
+        name: user!.name,
       });
 
       return {

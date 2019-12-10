@@ -1,4 +1,4 @@
-schema: ./schema.graphql
+schema: ../graph/schema.graphql
 overwrite: true
 generates:
   ./src/fragmentTypes.json:

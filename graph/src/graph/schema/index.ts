@@ -4,7 +4,10 @@ import { applyMiddleware } from 'graphql-middleware';
 import { authMiddleware, guardMiddleware } from "./middlewares";
 import resolvers from './resolvers';
 
-const typeDefs = importSchema('src/graph/schema/schema.graphql');
+const typeDefs = importSchema(
+  process.env.NODE_ENV === 'production'
+  ? process.cwd() + '/schema.graphql'
+  : 'schema.graphql');
 
 const schemaDef = makeExecutableSchema({
   typeDefs,

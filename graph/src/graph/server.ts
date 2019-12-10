@@ -14,8 +14,8 @@ export const getEngineSettings = (prod: boolean) => prod ? {
 const createServer = (db?: Db, overrideContext: any = {}) => {
   return new ApolloServer({
     schema,
-    playground: true,
-    introspection: true,
+    playground: !isProduction,
+    introspection: !isProduction,
     context: context => ({
       ...context,
       ...overrideContext,
@@ -23,7 +23,7 @@ const createServer = (db?: Db, overrideContext: any = {}) => {
       token: null,
       user: null,
     } as IContext),
-    engine: getEngineSettings(isProduction),
+    engine: false, // getEngineSettings(isProduction),
     formatError: error => {
       logger.error(`${error.message}${
         error.extensions && error.extensions.exception && error.extensions.exception

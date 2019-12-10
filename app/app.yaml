@@ -1,7 +1,23 @@
-runtime: python37
+runtime: nodejs10
 
 handlers:
 - url: /
+  static_files: build/index.html
+  upload: build/index.html
+  secure: always
+- url: /p/.*$
+  static_files: build/index.html
+  upload: build/index.html
+  secure: always
+- url: /me
+  static_files: build/index.html
+  upload: build/index.html
+  secure: always
+- url: /privacy
+  static_files: build/index.html
+  upload: build/index.html
+  secure: always
+- url: /terms
   static_files: build/index.html
   upload: build/index.html
   secure: always
