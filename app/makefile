@@ -4,15 +4,14 @@ build: prepare
 	yarn build
 
 deploy: build
-	# gcloud app deploy --quiet --project=garatheon
-	# open https://my.garatheon.com/
+	gcloud app deploy --quiet --project=anonymous-ded-morozes
+	open https://santa.uglyunicorn.ca/
 
-prepare:
-	# yarn graphql-gen
+prepare: init
+	# yarn gql-gen
 
 init:
-	# gcloud config configurations activate garatheon
-	# $(gcloud beta emulators datastore env-init)
+	gcloud config configurations activate anonymous-ded-morozes
 
 develop: init
 	yarn develop

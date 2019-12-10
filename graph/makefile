@@ -4,7 +4,7 @@ build: prepare
 	yarn build
 
 deploy: test_all build
-	# gcloud app deploy --quiet --project=garatheon
+	gcloud app deploy --quiet --project=anonymous-ded-morozes
 
 prepare:
 	yarn lint
@@ -13,8 +13,7 @@ prepare_soft:
 	yarn lint --force
 
 init:
-	# gcloud config configurations activate garatheon
-	# $(gcloud beta emulators datastore env-init)
+	gcloud config configurations activate anonymous-ded-morozes
 
 develop: init
 	yarn develop

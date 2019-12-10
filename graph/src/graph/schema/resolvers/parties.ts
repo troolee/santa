@@ -1,7 +1,9 @@
 import { ObjectId } from 'bson';
 import { Db } from "mongodb";
 import _ from '../../../utils/resolvable';
-import { createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema } from "../../../validationSchemas/parties";
+import {
+  createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema,
+} from "../../../validationSchemas/parties";
 import { ICreatePartyInput, IJoinPartyInput, IMutationPayload, ILeavePartyInput } from "../interfaces";
 import { randomString } from '../../../lib/utils/strings/random';
 import { partyEntityToNode } from './party';

@@ -1,12 +1,12 @@
 dispatch:
 
-  - url: "adm.uglyunicorn.ca/api/graph"
+  - url: "santa.uglyunicorn.ca/api/graph"
     service: graph
 
-  - url: "adm.uglyunicorn.ca/api/auth"
+  - url: "santa.uglyunicorn.ca/api/auth"
     service: auth
-  - url: "adm.uglyunicorn.ca/api/auth/*"
+  - url: "santa.uglyunicorn.ca/api/auth/*"
     service: auth
 
-  - url: "adm.uglyunicorn.ca/*"
+  - url: "santa.uglyunicorn.ca/*"
     service: default

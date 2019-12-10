@@ -13,7 +13,7 @@ const DATE_FORMATS = [
   'DD/MM/YYYY',
 ];
 
-export default function date(label: string, parseFormats=DATE_FORMATS): yup.DateSchema {
+export default function date(label: string, parseFormats = DATE_FORMATS): yup.DateSchema {
   class MomentDateSchemaType extends yup.date {
     private validFormats: string[];
 
@@ -45,5 +45,5 @@ export default function date(label: string, parseFormats=DATE_FORMATS): yup.Date
   }
 
   return new MomentDateSchemaType(parseFormats)
-    .label(label)
+    .label(label);
 }

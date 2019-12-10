@@ -5,5 +5,5 @@ export default function password(label: string): yup.StringSchema {
     .string()
     .label(label)
     .ensure()
-    .trim()
+    .trim();
 }
