@@ -8,8 +8,8 @@ export const Page: React.SFC = () => (
   <PageContent title="Terms and Conditions" img={imgSrc}>
 
     <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the
-      grinch.uglyunicorn.ca website (the "Service") operated by <strong> {config.siteTitle}</strong> ("us", "we", or
-      "our").</p>
+      <a href="https://santa.uglyunicorn.ca">santa.uglyunicorn.ca</a> website (the "Service") operated by
+      <strong> {config.siteTitle}</strong> ("us", "we", or "our").</p>
 
     <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These
       Terms apply to all visitors, users and others who access or use the Service.</p>
