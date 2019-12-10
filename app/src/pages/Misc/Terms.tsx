@@ -8,7 +8,7 @@ export const Page: React.SFC = () => (
   <PageContent title="Terms and Conditions" img={imgSrc}>
 
     <p>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using the
-      santa.uglyunicorn.ca website (the "Service") operated by
+    {config.siteDomain} website (the "Service") operated by
       <strong> {config.siteTitle}</strong> ("us", "we", or "our").</p>
 
     <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These

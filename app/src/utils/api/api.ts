@@ -7,6 +7,7 @@ import { ToastsContainer } from "../../containers";
 import introspectionQueryResultData from '../../fragmentTypes.json';
 import { AuthResponse } from "./facebook";
 import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload, ILeavePartyInput, ILeavePartyPayload } from '../../interfaces';
+import config from '../../config';
 
 interface IApiResponse {
   status: 'ok' | 'error';
@@ -62,7 +63,7 @@ export default class Api {
           Authorization: token ? `Bearer ${token}` : '',
         }
       }
-    }).concat(createHttpLink({uri: '/api/graph'})),
+    }).concat(createHttpLink({uri: `https://${config.siteDomain}/api/graph`})),
   });
 
   public post(path: string, data?: any): Promise<IApiResponse> {
