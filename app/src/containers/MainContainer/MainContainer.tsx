@@ -5,9 +5,10 @@ import { WelcomePage } from '../../pages/Welcome';
 import { GarageDoor } from '../../components';
 import { LoginBoxContainer } from '..';
 import { IState } from '../../reducers/interfaces';
+import { PartyContainer } from '../PartyContainer';
+import { ProfileContainer } from '../ProfileContainer';
 
 import './MainContainer.css';
-import { PartyContainer } from '../PartyContainer';
 
 interface IProps {
   state: IState;
@@ -17,7 +18,12 @@ const MainContainer: React.SFC<IProps> = props => {
   const renderLoginContainer = () => <LoginBoxContainer />;
   const renderWelcomePage = () => (
     <GarageDoor isLocked={!props.state.auth.isLoggedIn} renderDoor={renderLoginContainer}>
-      <WelcomePage />
+      <Switch>
+        <Route path="/me" component={ProfileContainer} />
+        <Route>
+          <WelcomePage />
+        </Route>
+      </Switch>
     </GarageDoor>
   );
 

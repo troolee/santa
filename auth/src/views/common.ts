@@ -31,6 +31,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
         _id: new ObjectId(),
         name,
         email,
+        joined: new Date(),
         profiles: {
           facebook: {id, name, email},
         },

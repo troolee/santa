@@ -1,0 +1,15 @@
+.profile-page .hero {
+  background: url('./hohoho.jpg') no-repeat right bottom;
+  background-size: 75vmin;
+}
+
+.profile-page .navbar-brand .navbar-item img {
+  max-height: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.profile-page .navbar-brand .navbar-item figure {
+  margin-right: 0.5em;
+}
