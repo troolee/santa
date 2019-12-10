@@ -8,7 +8,7 @@ export const Page: React.SFC = () => (
   <PageContent title="Privacy Policy" img={imgSrc}>
 
     <p><strong> {config.siteTitle}</strong> ("us", "we", or "our") operates the
-      <a href="https://santa.uglyunicorn.ca">santa.uglyunicorn.ca</a> website (hereinafter referred to as the
+      santa.uglyunicorn.ca website (hereinafter referred to as the
       "Service").</p>
 
     <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use
@@ -16,8 +16,8 @@ export const Page: React.SFC = () => (
 
     <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of
       information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in
-      this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from
-      <a href="https://santa.uglyunicorn.ca">santa.uglyunicorn.ca</a>
+      this Privacy Policy have the same meanings as in our Terms and Conditions, <>accessible from </>
+      santa.uglyunicorn.ca
     </p>
 
     <h2>Information Collection And Use</h2>
