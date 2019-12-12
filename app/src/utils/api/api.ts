@@ -63,14 +63,14 @@ export default class Api {
           Authorization: token ? `Bearer ${token}` : '',
         }
       }
-    }).concat(createHttpLink({uri: config.apiEndpoint})),
+    }).concat(createHttpLink({uri: `${config.apiEndpoint}/graph`})),
   });
 
   public post(path: string, data?: any): Promise<IApiResponse> {
     return new Promise((resolve, reject) => {
       const token = localStorage.getItem('Auth-Token');
 
-      fetch('/api/' + path, {
+      fetch(`${config.apiEndpoint}/${path}`, {
         method: 'POST',
         body: data ? JSON.stringify(data) : null,
         credentials: 'include',
