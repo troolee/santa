@@ -8,8 +8,6 @@ import { IState } from '../../reducers/interfaces';
 import { PartyContainer } from '../PartyContainer';
 import { ProfileContainer } from '../ProfileContainer';
 
-import './MainContainer.css';
-
 interface IProps {
   state: IState;
 }

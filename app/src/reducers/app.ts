@@ -5,6 +5,7 @@ import { Api } from "../utils/api";
 
 const initialState: IAppState = {
   isLoaded: false,
+  isImagesPreloaded: false,
   apiState: {
     facebookApi: false,
     appApi: false,
@@ -44,6 +45,14 @@ export const appApiReady = (isReady: boolean): IAppApiReadyAction => {
   }
 }
 
+const APP_IMAGES_PRELOADED = 'APP_IMAGES_PRELOADED';
+interface IAppImagesPreloadedAction extends Action<'APP_IMAGES_PRELOADED'> {}
+export const appImagesPreloaded = (): IAppImagesPreloadedAction => {
+  return {
+    type: APP_IMAGES_PRELOADED,
+  }
+}
+
 export const initializeApp = () => {
   return async (dispatch: any) => {
     const {user} = await Api.fetchInitialAppData();
@@ -56,9 +65,9 @@ export const initializeApp = () => {
   }
 }
 
-type AppActions = (IInitalizeAppAction | IFacebookApiReadyAction | IAppApiReadyAction);
+type Actions = (IInitalizeAppAction | IFacebookApiReadyAction | IAppApiReadyAction | IAppImagesPreloadedAction);
 
-export default function auth(state = initialState, action: AppActions) {
+export default function auth(state = initialState, action: Actions) {
   switch(action.type) {
     case APP_LOADED:
       return {
@@ -81,7 +90,12 @@ export default function auth(state = initialState, action: AppActions) {
               appApi: action.isReady,
             }
           }
+        case APP_IMAGES_PRELOADED:
+          return {
+            ...state,
+            isImagesPreloaded: true,
+          }
       default:
-      return state;
+        return state;
   }
 }

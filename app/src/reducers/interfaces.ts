@@ -7,6 +7,7 @@ export type IApiState = {
 
 export interface IAppState {
   readonly isLoaded: boolean;
+  readonly isImagesPreloaded: boolean;
   readonly apiState: IApiState;
 }
 

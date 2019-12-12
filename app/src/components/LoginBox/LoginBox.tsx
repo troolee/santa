@@ -1,9 +1,9 @@
 import * as Bulma from 'bloomer';
 import * as React from 'react';
 import { UnsplashCredit } from '../UnsplashCredit';
+import { Footer } from '../Footer';
 
 import './LoginBox.css';
-import { Footer } from '../Footer';
 
 interface IProps {
   onLoginClick: () => Promise<any>;
