@@ -1,0 +1,9 @@
+dispatch:
+
+  - url: "api.santa.uglyunicorn.ca/api/graph"
+    service: default
+
+  - url: "api.santa.uglyunicorn.ca/api/auth"
+    service: auth
+  - url: "api.santa.uglyunicorn.ca/api/auth/*"
+    service: auth

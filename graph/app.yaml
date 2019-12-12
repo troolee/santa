@@ -1,5 +1,5 @@
 runtime: nodejs10
-service: graph
+service: default
 
 handlers:
 - url: /.*

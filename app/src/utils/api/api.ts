@@ -63,7 +63,7 @@ export default class Api {
           Authorization: token ? `Bearer ${token}` : '',
         }
       }
-    }).concat(createHttpLink({uri: `https://${config.siteDomain}/api/graph`})),
+    }).concat(createHttpLink({uri: config.apiEndpoint})),
   });
 
   public post(path: string, data?: any): Promise<IApiResponse> {
