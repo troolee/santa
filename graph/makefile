@@ -5,6 +5,7 @@ build: prepare
 
 deploy: test_all build
 	gcloud app deploy --quiet --project=anonymous-ded-morozes
+	gcloud app deploy --quiet dispatch.yaml --project=anonymous-ded-morozes
 
 prepare:
 	yarn lint
