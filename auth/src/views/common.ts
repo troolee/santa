@@ -16,7 +16,7 @@ router.post('/', async (req: express.Request, res: express.Response) => {
   }
 
   try {
-    const response = await axios.get(`https://graph.facebook.com/v4.0/${encodeURIComponent(userID)}`, {
+    const response = await axios.get(`https://graph.facebook.com/v5.0/${encodeURIComponent(userID)}`, {
       params: {
         access_token: accessToken,
         fields: 'id,name,email',

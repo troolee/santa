@@ -64,7 +64,7 @@ describe('Test /api/auth', () => {
 
   test('POST /api/auth with wrong `accessToken` (mocked error) parameter should return 400', async () => {
     nock('https://graph.facebook.com')
-      .get(/\/v4\.0\/1234567890/)
+      .get(/\/v5\.0\/1234567890/)
       .reply(400, {
         error: {
           message: 'Invalid OAuth access token.',
@@ -88,7 +88,7 @@ describe('Test /api/auth', () => {
 
   test('POST /api/auth with wrong `accessToken` (mocked, no error reason) parameter should return 400', async () => {
     nock('https://graph.facebook.com')
-      .get(/\/v4\.0\/1234567890/)
+      .get(/\/v5\.0\/1234567890/)
       .reply(400, {
       });
 
@@ -112,7 +112,7 @@ describe('Test /api/auth', () => {
     const accessToken = 'VALID_ACCESS_TOKEN';
 
     nock('https://graph.facebook.com')
-      .get(/\/v4\.0\/123456778/)
+      .get(/\/v5\.0\/123456778/)
       .reply(200, {
         id: userID,
         name: 'Bruce Willis',
@@ -140,13 +140,13 @@ describe('Test /api/auth', () => {
       email: 'jane.doe@example.com',
     };
 
-    nock('https://graph.facebook.com').get(/\/v4\.0\/123456778333/).reply(200, user);
+    nock('https://graph.facebook.com').get(/\/v5\.0\/123456778333/).reply(200, user);
     await request(app)
       .post('/api/auth')
       .send({accessToken, userID})
       .expect(200);
 
-    nock('https://graph.facebook.com').get(/\/v4\.0\/123456778333/).reply(200, user);
+    nock('https://graph.facebook.com').get(/\/v5\.0\/123456778333/).reply(200, user);
     await request(app)
       .post('/api/auth')
       .send({accessToken, userID})

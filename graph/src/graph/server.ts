@@ -5,6 +5,7 @@ import { schema } from './schema';
 import { IContext } from './context';
 
 const isProduction = process.env.NODE_ENV === 'production';
+const playground = true;
 
 export const getEngineSettings = (prod: boolean) => prod ? {
   apiKey: process.env.ENGINE_API_KEY,
@@ -14,8 +15,8 @@ export const getEngineSettings = (prod: boolean) => prod ? {
 const createServer = (db?: Db, overrideContext: any = {}) => {
   return new ApolloServer({
     schema,
-    playground: !isProduction,
-    introspection: !isProduction,
+    playground,
+    introspection: playground,
     context: context => ({
       ...context,
       ...overrideContext,
