@@ -44,7 +44,7 @@ export default {
     return await partyEntityToNode(db, party, user);
   },
 
-  parties: async (root: any, _: any, {user, db}: IContext, info: any, extra: any) => {
+  parties: async (root: any, _: any, {user, db}: IContext, info: any) => {
     const memberships = await db.collection('PartyMembership').find({member: user!._id}).toArray();
     const partyIds: ObjectID[] = memberships.map(({party}) => party);
     const parties = await db.collection('Party').find({_id: {$in: partyIds}}).toArray();
