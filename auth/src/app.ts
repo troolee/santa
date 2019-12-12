@@ -2,6 +2,7 @@ import { RewriteFrames } from '@sentry/integrations';
 import express from 'express';
 import compression from 'compression';
 import * as Sentry from '@sentry/node';
+import cors from 'cors';
 
 import { commonHelpers, commonHeaders } from './lib/common/views';
 import * as views from './views';
@@ -28,6 +29,10 @@ export function createApp(db: Db, setupCallback?: SetupCallback) {
 
   app.use(commonHelpers(db));
   app.use(commonHeaders);
+  app.use(cors({
+    origin: 'https://santa.uglyunicorn.ca',
+    credentials: true,
+  }));
 
   app.use(express.json());
   app.use(compression());
