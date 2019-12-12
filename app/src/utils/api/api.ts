@@ -193,6 +193,20 @@ export default class Api {
     return data.party;
   }
 
+  public static async fetchParties(): Promise<IParty[] | null> {
+    const data: any = await Api.instance.query({
+      query: gql`
+      {
+        parties {
+          code
+          name
+        }
+      }
+      `,
+    });
+    return data.parties;
+  }
+
   public static async joinParty(input: IJoinPartyInput): Promise<IJoinPartyPayload> {
     const data: any = await Api.instance.mutate({
       mutation: gql`

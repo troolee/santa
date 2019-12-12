@@ -1,17 +1,31 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
+import { Loader } from 'react-feather';
+import { Link } from 'react-router-dom';
 import { IUser } from '../../interfaces';
 import { Footer, UnsplashCredit } from '../../components';
+import { IProfileState } from '../../reducers/interfaces';
 
 import './Profile.css';
-import { Link } from 'react-router-dom';
 
 interface IProps {
   user: IUser;
+  profile: IProfileState;
   onLogout: () => void;
 }
 
-const ProfilePage: React.SFC<IProps> = ({user, onLogout}) => {
+const ProfilePage: React.SFC<IProps> = ({user, profile, onLogout}) => {
+  const renderParties = () => {
+    if (profile.parties!.length === 0) {
+      return <p>No parties found... It's kinda sad :(</p>;
+    }
+    return (
+      <ul style={{listStyle: 'none'}}>
+        {profile.parties!.map((party, index) => <li key={index}><Link to={`/p/${party.code}`}>{party.name}</Link></li>)}
+      </ul>
+    );
+  }
+
   return (
     <div className="profile-page">
       <Bulma.Hero isFullHeight={true} className="profile-page">
@@ -36,8 +50,13 @@ const ProfilePage: React.SFC<IProps> = ({user, onLogout}) => {
             </Bulma.Container>
           </Bulma.Navbar>
         </Bulma.HeroHeader>
-        <Bulma.HeroBody>
-          &nbsp;
+        <Bulma.HeroBody style={{alignItems: "start"}}>
+          <Bulma.Container>
+            <Bulma.Content hasTextAlign="centered">
+              <p>&mdash; Looking for a list of your parties? Here it is:</p>
+              {profile.parties !== null ? renderParties() : <Loader className="is-spin has-text-grey-lighter" />}
+            </Bulma.Content>
+          </Bulma.Container>
         </Bulma.HeroBody>
         <Bulma.HeroFooter>
           <Footer>

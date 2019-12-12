@@ -1,4 +1,4 @@
-import { Db } from "mongodb";
+import { Db, ObjectID } from "mongodb";
 import { IContext } from "../../../graph/context";
 import { nodeIdToStr } from "../../../lib/utils/strings/nodeId";
 import { IParty } from "../interfaces";
@@ -42,5 +42,12 @@ export default {
     const theCode = code.toUpperCase();
     const party = await db.collection('Party').findOne({slug: theCode});
     return await partyEntityToNode(db, party, user);
+  },
+
+  parties: async (root: any, _: any, {user, db}: IContext, info: any, extra: any) => {
+    const memberships = await db.collection('PartyMembership').find({member: user!._id}).toArray();
+    const partyIds: ObjectID[] = memberships.map(({party}) => party);
+    const parties = await db.collection('Party').find({_id: {$in: partyIds}}).toArray();
+    return parties.map(async partyEntity => await partyEntityToNode(db, partyEntity, user));
   },
 };

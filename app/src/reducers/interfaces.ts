@@ -21,8 +21,13 @@ export interface IPartyState {
   readonly current: IParty | null;
 }
 
+export interface IProfileState {
+  readonly parties: IParty[] | null;
+}
+
 export interface IState {
   readonly app: IAppState;
   readonly auth: IAuthState;
   readonly party: IPartyState;
+  readonly profile: IProfileState;
 }

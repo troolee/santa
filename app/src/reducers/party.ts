@@ -13,7 +13,7 @@ const PARTY_RECEIVE = 'PARTY_RECEIVE';
 interface IPartyReceiveAction extends Action<'PARTY_RECEIVE'> {
   party: IParty | null,
 }
-export const partyReceive = (party: IParty | null) => {
+const partyReceive = (party: IParty | null) => {
   return {
     type: PARTY_RECEIVE,
     party,
@@ -23,7 +23,7 @@ export const partyReceive = (party: IParty | null) => {
 const PARTY_REQUEST = 'PARTY_REQUEST';
 interface IPartyRequestAction extends Action<'PARTY_REQUEST'> {
 }
-export const partyRequest = () => {
+const partyRequest = () => {
   return {
     type: PARTY_REQUEST,
   }
@@ -65,11 +65,11 @@ export function leaveParty(party: IParty) {
   };
 }
 
-type AuthActions = (
+type Actions = (
   IPartyReceiveAction | IPartyRequestAction
 )
 
-export default function auth(state = initialState, action: AuthActions) {
+export default function(state = initialState, action: Actions) {
   switch(action.type) {
     case PARTY_RECEIVE:
       return {
