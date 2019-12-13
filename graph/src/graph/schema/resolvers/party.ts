@@ -17,6 +17,7 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
     return null;
   }
   const isHost = Boolean(user && `${user._id}` === `${party.host}`);
+  const isClosed = Boolean(party.isClosed);
   const membership = user !== null
     ? await db.collection('PartyMembership').findOne({party: party._id, member: user._id})
     : null;
@@ -46,6 +47,7 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
     isProtected: Boolean(party.password),
     participantCount: isJoined ? party.participantCount : null,
     participants,
+    isClosed,
   } as IParty;
 }
 

@@ -34,8 +34,10 @@ type Party implements Node {
   isJoined: Boolean!
   isHost: Boolean!
   isProtected: Boolean!
+  isClosed: Boolean!
   participantCount: Int
   participants: [String!]
+  target: User
 }
 
 enum MutationStatus {

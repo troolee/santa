@@ -25,11 +25,12 @@ export interface IPartyEntity extends IEntity {
   password: string | null;
   slug: string;
   participantCount: number;
+  isClosed?: boolean;
 }
 
 export interface IPartyMembershipEntity extends IEntity {
   party: ObjectId;
   member: ObjectId;
   name: string;
-  target: ObjectId | null;
+  target?: ObjectId;
 }
