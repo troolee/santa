@@ -7,7 +7,7 @@ type Query {
   user: User
   node(id: ID!): Node
   party(code: String!): Party
-  parties: [Party!]
+  parties(first: Int = 25): [Party!]
 }
 
 type Mutation {

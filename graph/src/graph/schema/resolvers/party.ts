@@ -8,6 +8,10 @@ interface IPartyArgs {
   code: string;
 }
 
+interface IPartiesArgs {
+  first: number;
+}
+
 export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUserEntity | null): Promise<IParty | null> {
   if (party === null) {
     return null;
@@ -19,10 +23,18 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
   const isJoined = membership !== null;
   let participants: string[] | null = null;
   if (user && membership) {
-    participants = (await db.collection('PartyMembership').find({
-      party: party._id,
-      member: {$ne: user._id},
-    }).limit(3).toArray()).map((doc: IPartyMembershipEntity) => doc.name);
+    let qs: any = db.collection('PartyMembership');
+    if (!isHost) {
+      qs = qs.find({
+        party: party._id,
+        member: {$ne: user._id},
+      }).limit(3);
+    } else {
+      qs = qs.find({
+        party: party._id,
+      }).sort({name: 1});
+    }
+    participants = (await qs.toArray()).map((doc: IPartyMembershipEntity) => doc.name);
   }
   return {
     id: nodeIdToStr({kind: 'Party', id: party._id}),
@@ -44,8 +56,9 @@ export default {
     return await partyEntityToNode(db, party, user);
   },
 
-  parties: async (root: any, _: any, {user, db}: IContext, info: any) => {
-    const memberships = await db.collection('PartyMembership').find({member: user!._id}).toArray();
+  parties: async (root: any, {first}: IPartiesArgs, {user, db}: IContext, info: any) => {
+    console.log(first);
+    const memberships = await db.collection('PartyMembership').find({member: user!._id}).limit(first).toArray();
     const partyIds: ObjectID[] = memberships.map(({party}) => party);
     const parties = await db.collection('Party').find({_id: {$in: partyIds}}).toArray();
     return parties.map(async partyEntity => await partyEntityToNode(db, partyEntity, user));

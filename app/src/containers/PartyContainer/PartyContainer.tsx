@@ -18,6 +18,7 @@ interface IProps {
   onJoinClick: (user: IUser | null, party: IParty) => Promise<any>;
   onLogout: () => void;
   onLeave: (party: IParty) => Promise<any>;
+  onFinish: (party: IParty) => Promise<any>;
 }
 
 class PartyContainer extends React.Component<IProps> {
@@ -36,6 +37,7 @@ class PartyContainer extends React.Component<IProps> {
           onLogout={this.props.onLogout}
           onJoinClick={this.props.onJoinClick}
           onLeave={this.props.onLeave}
+          onFinish={this.props.onFinish}
       />;
   }
 }
@@ -73,6 +75,9 @@ export default connect(
       if (await ConfirmLeaving.showMessageBox()) {
         dispatch(leaveParty(party));
       }
-    }
+    },
+    onFinish: async (party: IParty) => {
+
+    },
   })
 )(PartyContainer);

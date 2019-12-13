@@ -4,7 +4,9 @@ import { SyncLoader } from 'react-spinners';
 import { IParty, IUser } from '../../interfaces';
 import { GnomeSays } from '../GnomeSays';
 import { UnsplashCredit } from '../UnsplashCredit';
-import { Footer, Button } from '..';
+import { Footer } from '..';
+import GuestContent from './GuestContent';
+import HostContent from './HostContent';
 
 import './PartyDetails.css';
 
@@ -13,35 +15,16 @@ interface IProps {
   user: IUser;
   onLogout: () => void;
   onLeave: (party: IParty) => Promise<any>;
+  onFinish: (party: IParty) => Promise<any>;
 }
 
-const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave}) => {
+const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave, onFinish}) => {
   React.useEffect(() => {
     const className = 'party-details-page';
 
     document.body.classList.add(className);
     return () => document.body.classList.remove(className);
   });
-
-  const participants = ['You'];
-  if (party.participantCount) {
-    if (party.participantCount > 2) {
-      participants.push(`and ${party.participantCount - 1} more nice ${party.participantCount - 1 === 1 ? 'person' : 'people'}`);
-      if (party.participants) {
-        participants.push(participants.pop() + ',');
-        const pp = party.participants.slice(0, party.participants.length);
-        const onePerson = pp.pop();
-        if (pp.length > 0) {
-          const persons = [pp.join(', '), onePerson].join(' and ');
-          participants.push(`including ${persons}`);
-        }
-      }
-    } else if (party.participants) {
-      participants.push(`and ${party.participants[0]}`);
-    }
-  }
-
-  const leaveParty = async () => await onLeave(party);
 
   return (
     <>
@@ -52,15 +35,7 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave}) => {
               <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
               <Bulma.Column>
                 <Bulma.Content className="has-text-justified has-text-left-touch">
-                  <p>Hey, {user.name}! Welcome to the {party.name}!<br /></p>
-                  {participants.length > 1 ? <p>Good news! {participants.join(' ')} are participating in this.</p> : ""}
-                  <p>We're currently waiting for everybody else to join the party and then our special elf will do
-                    some complex math to decide who should give a gift to whom.</p>
-                  <p>Don't worry, it shouldn't take long. Last year we had whole two days to find and buy the gifts.
-                    Everything's under control, he knows what he's doing!</p>
-                  <p style={{margin: '2em 0'}} className="has-text-centered-touch">
-                    <Button isColor="black" isOutlined={true} onClick={leaveParty}>I changed my mind and wanna quit...</Button>
-                  </p>
+                  {party.isHost ? <HostContent {...{party, user, onFinish}} /> : <GuestContent {...{party, user, onLeave}} />}
                 </Bulma.Content>
               </Bulma.Column>
               <Bulma.Column isSize={5} hasTextAlign="centered">

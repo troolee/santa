@@ -13,9 +13,10 @@ interface IProps {
   onLogout?: () => void;
   onJoinClick: (user: IUser | null, party: IParty) => Promise<any>;
   onLeave: (party: IParty) => Promise<any>;
+  onFinish: (party: IParty) => Promise<any>;
 }
 
-const PartyComponent: React.SFC<IProps> = ({party, user, onJoinClick, onLogout, onLeave}) => {
+const PartyComponent: React.SFC<IProps> = ({party, user, onJoinClick, onLogout, onLeave, onFinish}) => {
   if (!party) {
     return <NotFound />;
   }
@@ -36,7 +37,7 @@ const PartyComponent: React.SFC<IProps> = ({party, user, onJoinClick, onLogout, 
   return (
     <DocumentMeta title={buildTitle(party.name)}>
       <GarageDoor isLocked={isLocked} renderDoor={renderLoginContainer}>
-        <PartyDetails party={party} user={user!} onLogout={onLogout!} onLeave={onLeave} />
+        <PartyDetails user={user!} onLogout={onLogout!} {...{party, onLeave, onFinish}} />
       </GarageDoor>
     </DocumentMeta>
   );
