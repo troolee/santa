@@ -36,9 +36,9 @@ const GuestContent: React.SFC<IProps> = ({party, user, onLeave}) => {
         some complex math to decide who should give a gift to whom.</p>
       <p>Don't worry, it shouldn't take long. Last year we had whole two days to find and buy the gifts.
         Everything's under control, he knows what he's doing!</p>
-      <p style={{margin: '2em 0'}} className="has-text-centered-touch">
+      {!party.isClosed && <p style={{margin: '2em 0'}} className="has-text-centered-touch">
         <Button isColor="black" isOutlined={true} onClick={leaveParty}>I changed my mind and wanna quit...</Button>
-      </p>
+      </p>}
     </>
   );
 }

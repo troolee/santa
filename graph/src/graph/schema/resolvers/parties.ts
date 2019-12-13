@@ -2,9 +2,11 @@ import { ObjectId } from 'bson';
 import { Db } from "mongodb";
 import _ from '../../../utils/resolvable';
 import {
-  createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema,
+  createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema, closePartyInputSchema,
 } from "../../../validationSchemas/parties";
-import { ICreatePartyInput, IJoinPartyInput, IMutationPayload, ILeavePartyInput } from "../interfaces";
+import {
+  ICreatePartyInput, IJoinPartyInput, IMutationPayload, ILeavePartyInput, IClosePartyInput,
+} from "../interfaces";
 import { randomString } from '../../../lib/utils/strings/random';
 import { partyEntityToNode } from './party';
 import NodeId from '../../../lib/utils/nodeId';
@@ -141,6 +143,63 @@ export default {
       await db.collection('Party').updateOne({_id: partyEntity._id}, {$inc: {participantCount: -1}});
       await db.collection('PartyMembership').deleteMany({party: partyEntity._id, member: user._id});
 
+      return {
+        node: await partyEntityToNode(db, partyEntity, user),
+      };
+    }),
+
+    closeParty: _(closePartyInputSchema)(async ({party}: IClosePartyInput, {db, user}) => {
+      if (user === null) {
+        return {
+          status: 'error',
+          userErrors: [{
+            fieldName: null,
+            messages: ['You must be logged in before leaving the party.'],
+          }],
+        } as IMutationPayload;
+      }
+
+      const partyNodeId = NodeId.fromString(party);
+      if (partyNodeId.kind !== 'Party') {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['Unknown input type. Must be Party.'],
+          }],
+        };
+      }
+      let partyEntity = await db.collection('Party').findOne({_id: partyNodeId.id}) as (IPartyEntity | null);
+      if (partyEntity === null) {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['Party does not exist.'],
+          }],
+        };
+      }
+      if (!partyEntity.host.equals(user._id)) {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['You must be the host to close the party.'],
+          }],
+        };
+      }
+      if (partyEntity.isClosed) {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['Party is already closed.'],
+          }],
+        };
+      }
+
+      const members = await db.collection('PartyMembership').find({party: partyEntity._id}).toArray();
+      console.log(members);
+
+      // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
+
+      partyEntity = await db.collection('Party').findOne({_id: partyNodeId.id}) as IPartyEntity;
       return {
         node: await partyEntityToNode(db, partyEntity, user),
       };

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { IState } from '../../reducers/interfaces';
 import { PartyComponent, AppLoading } from '../../components';
-import { fetchParty, joinParty, leaveParty } from '../../reducers/party';
+import { fetchParty, joinParty, leaveParty, closeParty } from '../../reducers/party';
 import { IParty, IUser } from '../../interfaces';
 import { signout } from '../../reducers/auth';
 import { AuthApi, Api } from '../../utils/api';
@@ -79,7 +79,7 @@ export default connect(
     },
     onFinish: async (party: IParty) => {
       if (await ConfirmClosing.showMessageBox()) {
-        alert(1);
+        dispatch(closeParty(party));
       }
     },
   })

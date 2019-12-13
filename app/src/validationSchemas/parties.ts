@@ -22,3 +22,7 @@ export const askPasswordInputSchema = yup.object().shape({
 export const leavePartyInputSchema = yup.object().shape({
   party: YupHelpers.string('Party ID').required(),
 });
+
+export const closePartyInputSchema = yup.object().shape({
+  party: YupHelpers.string('Party ID').required(),
+});

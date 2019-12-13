@@ -20,6 +20,7 @@ export interface IParty extends INode {
   isJoined: boolean;
   isHost: boolean;
   isProtected: boolean;
+  isClosed: boolean;
   participantCount: number | null;
   participants: string[] | null;
 }
@@ -54,9 +55,15 @@ export interface ILeavePartyInput {
   party: string;
 }
 
+export interface IClosePartyInput {
+  party: string;
+}
+
 export type IJoinPartyPayload = INodeMutationPayload<IParty>;
 
 export type ILeavePartyPayload = INodeMutationPayload<IParty>;
+
+export type IClosePartyPayload = INodeMutationPayload<IParty>;
 
 export interface IMutationInput<T> {
   input: T;

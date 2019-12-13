@@ -6,7 +6,7 @@ import { createHttpLink } from "apollo-link-http";
 import { ToastsContainer } from "../../containers";
 import introspectionQueryResultData from '../../fragmentTypes.json';
 import { AuthResponse } from "./facebook";
-import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload, ILeavePartyInput, ILeavePartyPayload } from '../../interfaces';
+import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload, ILeavePartyInput, ILeavePartyPayload, IClosePartyInput, IClosePartyPayload } from '../../interfaces';
 import config from '../../config';
 
 interface IApiResponse {
@@ -31,6 +31,10 @@ const Fragmets = {
       isProtected
       participantCount
       participants
+      isClosed
+      target {
+        name
+      }
     }
   `,
 }
@@ -247,6 +251,27 @@ export default class Api {
       variables: { input }
     });
     return data.parties.leaveParty;
+  }
+
+  public static async closeParty(input: IClosePartyInput): Promise<IClosePartyPayload> {
+    const data: any = await Api.instance.mutate({
+      mutation: gql`
+        mutation Mutate($input: ClosePartyInput!) {
+          parties {
+            closeParty(input: $input) {
+              status
+              userErrors { fieldName messages }
+              node {
+                ...PartyFields
+              }
+            }
+          }
+        }
+        ${Fragmets.party}
+      `,
+      variables: { input }
+    });
+    return data.parties.closeParty;
   }
 
   private async storeToken(token: string | null) {

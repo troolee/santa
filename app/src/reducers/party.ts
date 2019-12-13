@@ -65,6 +65,20 @@ export function leaveParty(party: IParty) {
   };
 }
 
+export function closeParty(party: IParty) {
+  return async (dispatch: any) => {
+    const res = await Api.closeParty({party: party.id});
+    if (res.userErrors && res.userErrors.length) {
+      ToastsContainer.displayToast({
+        kind: "danger",
+        message: () => res.userErrors!.map(e => e.messages.join('; ')).join('\n'),
+      });
+    } else if (res.node) {
+      dispatch(partyReceive(res.node));
+    }
+  };
+}
+
 type Actions = (
   IPartyReceiveAction | IPartyRequestAction
 )

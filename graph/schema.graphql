@@ -59,6 +59,7 @@ type PartiesOpts {
   createParty(input: CreatePartyInput!): CreatePartyPayload!
   joinParty(input: JoinPartyInput!): JoinPartyPayload!
   leaveParty(input: LeavePartyInput!): LeavePartyPayload!
+  closeParty(input: ClosePartyInput!): ClosePartyPayload!
 }
 
 input CreatePartyInput {
@@ -88,6 +89,16 @@ input LeavePartyInput {
 }
 
 type LeavePartyPayload implements MutationPayload {
+  status: MutationStatus!
+  userErrors: [UserError!]
+  node: Party
+}
+
+input ClosePartyInput {
+  party: ID!
+}
+
+type ClosePartyPayload implements MutationPayload {
   status: MutationStatus!
   userErrors: [UserError!]
   node: Party
