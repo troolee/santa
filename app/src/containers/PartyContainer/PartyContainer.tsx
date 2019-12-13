@@ -8,6 +8,7 @@ import { signout } from '../../reducers/auth';
 import { AuthApi, Api } from '../../utils/api';
 import AskPassword from './AskPassword';
 import ConfirmLeaving from './ConfirmLeaving';
+import ConfirmClosing from './ConfirmClosing';
 
 interface IProps {
   party: IParty | null;
@@ -77,7 +78,9 @@ export default connect(
       }
     },
     onFinish: async (party: IParty) => {
-
+      if (await ConfirmClosing.showMessageBox()) {
+        alert(1);
+      }
     },
   })
 )(PartyContainer);

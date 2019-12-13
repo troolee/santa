@@ -1,0 +1,14 @@
+.confirm-closing-box .modal-card-head {
+  text-align: center;
+}
+
+.confirm-closing-box .modal-card-body {
+  background: white right bottom url('./rockenroll.png') no-repeat;
+  background-size: contain;
+  border-radius: 0 0 10px 10px;
+}
+
+.confirm-closing-box .modal-card-body .confirm-closing-box-content {
+  padding: 20px 75px 50px;
+  text-shadow: 0 1px 2px white;
+}
