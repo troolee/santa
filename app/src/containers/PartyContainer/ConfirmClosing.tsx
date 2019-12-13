@@ -23,11 +23,11 @@ export default class ConfirmClosing extends MessageBoxContent {
         <Bulma.Content className="confirm-closing-box-content">
           <p>Are you ready to rock'n'roll? Before you continue please note:</p>
           <ul>
-            <li>Everybody will receive a random friend to prepare a gift to</li>
+            <li>Everybody will receive a random friend's name to give a gift away to</li>
             <li>No new people can join the party after this</li>
             <li>This cannot be undone</li>
           </ul>
-          <p>Let's the show begin!</p>
+          <p>But less talks, let the show begin!</p>
         </Bulma.Content>
         <div className="buttons is-pulled-right">
           <Bulma.Button onClick={onCancel}>Not ready yet...</Bulma.Button>
