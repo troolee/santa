@@ -12,11 +12,11 @@ const ImagesPreloader: React.SFC<IProps> = ({images, onLoad}) => {
     if (onLoad && counter === 0) {
       onLoad();
     }
-  }, [counter]);
+  }, [counter, onLoad]);
 
   return (
     <div style={{position: "absolute", left: -100, top: 100, width: 1, height: 1, overflow: "hidden", visibility: "hidden"}}>
-      {images.map((imageSrc, index) => <img key={index} src={imageSrc} onLoad={onImageLoad} />)}
+      {images.map((imageSrc, index) => <img key={index} src={imageSrc} onLoad={onImageLoad} alt={`Preloading ${imageSrc}...`} />)}
     </div>
   );
 };
