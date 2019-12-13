@@ -1,5 +1,6 @@
 import { ObjectId } from 'bson';
 import { Db } from "mongodb";
+import { shuffle } from 'lodash';
 import _ from '../../../utils/resolvable';
 import {
   createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema, closePartyInputSchema,
@@ -194,7 +195,7 @@ export default {
         };
       }
 
-      const members = await db.collection('PartyMembership').find({party: partyEntity._id}).toArray();
+      const members = shuffle(await db.collection('PartyMembership').find({party: partyEntity._id}).toArray());
       console.log(members);
 
       // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
