@@ -1,5 +1,5 @@
 .welcome-page .hero {
-  background: url('./Welcome.jpg') no-repeat center center;
+  background: #111217 url('./Welcome.jpg') no-repeat center center;
   background-size: cover;
   color: #b4b3b4;
 }
