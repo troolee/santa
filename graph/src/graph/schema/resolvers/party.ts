@@ -59,7 +59,6 @@ export default {
   },
 
   parties: async (root: any, {first}: IPartiesArgs, {user, db}: IContext, info: any) => {
-    console.log(first);
     const memberships = await db.collection('PartyMembership').find({member: user!._id}).limit(first).toArray();
     const partyIds: ObjectID[] = memberships.map(({party}) => party);
     const parties = await db.collection('Party').find({_id: {$in: partyIds}}).toArray();
