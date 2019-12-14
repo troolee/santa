@@ -1,6 +1,6 @@
 import { ObjectId } from 'bson';
 import { Db } from "mongodb";
-import { shuffle } from 'lodash';
+import lodash from 'lodash';
 import _ from '../../../utils/resolvable';
 import {
   createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema, closePartyInputSchema,
@@ -11,7 +11,7 @@ import {
 import { randomString } from '../../../lib/utils/strings/random';
 import { partyEntityToNode } from './party';
 import NodeId from '../../../lib/utils/nodeId';
-import { IPartyEntity } from 'src/db/interfaces';
+import { IPartyEntity, IPartyMembershipEntity } from 'src/db/interfaces';
 
 const generatePartySlug = async (db: Db) => {
   const PartyCollection = db.collection('Party');
@@ -195,10 +195,32 @@ export default {
         };
       }
 
-      const members = shuffle(await db.collection('PartyMembership').find({party: partyEntity._id}).toArray());
-      console.log(members);
+      const members: IPartyMembershipEntity[] = lodash.shuffle(await db.collection('PartyMembership').find(
+        {party: partyEntity._id},
+      ).toArray());
 
-      // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
+      let targets = lodash.clone(members);
+      while (members.length) {
+        const member = members.pop()!;
+        let target: IPartyMembershipEntity;
+        while (true) {
+          targets = lodash.shuffle(targets);
+          target = targets.pop()!;
+          if (!member.member.equals(target.member)) {
+            break;
+          }
+          targets.push(target);
+        }
+        await db.collection('PartyMembership').updateOne({_id: member._id}, {
+          $set: {
+            target: {
+              member: target.member,
+              name: target.name,
+            },
+          },
+        });
+      }
+    // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
 
       partyEntity = await db.collection('Party').findOne({_id: partyNodeId.id}) as IPartyEntity;
       return {

@@ -1,4 +1,4 @@
-import { ObjectId } from "bson";
+import { ObjectId, ObjectID } from "bson";
 
 export interface IEntity {
   _id: ObjectId;
@@ -32,5 +32,8 @@ export interface IPartyMembershipEntity extends IEntity {
   party: ObjectId;
   member: ObjectId;
   name: string;
-  target?: ObjectId;
+  target?: {
+    user: ObjectID;
+    name: string;
+  };
 }
