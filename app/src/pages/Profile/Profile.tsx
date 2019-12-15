@@ -34,7 +34,7 @@ const ProfilePage: React.SFC<IProps> = ({user, profile, onLogout}) => {
             <Bulma.Container>
               <Bulma.NavbarBrand>
                 <Link to="/" className="navbar-item">
-                  <Bulma.Image isSize="48x48" src={user.picture} />
+                  {user.picture && <Bulma.Image isSize="48x48" src={user.picture} />}
                   Howdy, Anonymous Ded Moroz!
                 </Link>
               </Bulma.NavbarBrand>

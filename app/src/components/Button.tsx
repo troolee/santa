@@ -7,7 +7,7 @@ interface IProps {
   onClick?: React.MouseEventHandler | Promise<void>;
 }
 
-type ButtonProps = IBulmaButton<HTMLButtonElement | HTMLAnchorElement>
+export type ButtonProps = IBulmaButton<HTMLButtonElement | HTMLAnchorElement>
   & React.HTMLProps<HTMLElement> & BulmaNamespace.Helpers & IProps;
 
 interface IState {

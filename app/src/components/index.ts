@@ -9,3 +9,4 @@ export { Footer } from './Footer';
 export { ScrollToTop } from './ScrollToTop';
 export { PartyComponent } from './PartyComponent';
 export { GnomeSays } from './GnomeSays';
+export { default as ConfettiButton } from './ConfettiButton';

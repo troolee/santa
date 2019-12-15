@@ -1,12 +1,15 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
+import Confetti from 'react-confetti';
 import { SyncLoader } from 'react-spinners';
 import { IParty, IUser } from '../../interfaces';
 import { GnomeSays } from '../GnomeSays';
 import { UnsplashCredit } from '../UnsplashCredit';
 import { Footer } from '..';
+import SecretText from '../SecretText';
 import GuestContent from './GuestContent';
 import HostContent from './HostContent';
+import PartyIsClosedContent from './PartyIsClosedContent';
 
 import './PartyDetails.css';
 
@@ -35,13 +38,41 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave, onFini
               <Bulma.Column isSize={1} isHidden="touch">&nbsp;</Bulma.Column>
               <Bulma.Column>
                 <Bulma.Content className="has-text-justified has-text-left-touch">
-                  {party.isHost ? <HostContent {...{party, user, onFinish}} /> : <GuestContent {...{party, user, onLeave}} />}
+                  {
+                    party.isClosed
+                    ? <PartyIsClosedContent {...{party, user}} />
+                    : party.isHost
+                    ? <HostContent {...{party, user, onFinish}} />
+                    : <GuestContent {...{party, user, onLeave}} />
+                  }
                 </Bulma.Content>
               </Bulma.Column>
               <Bulma.Column isSize={5} hasTextAlign="centered">
                 <GnomeSays>
-                  <SyncLoader color="#4a4a4a" size={10} />
-                  {/* You're a Secret Ded Moroz for <strong>Pavel Reznikov</strong> */}
+                  {party.target ? (
+                    <>
+                      <p className="has-text-left" style={{marginBottom: '0.5em'}}>
+                        &mdash; Pssss, kid... Are you alone?.. Wanna hear whom you should get a gift?
+                      </p>
+                      <p className="has-text-right">
+                        <SecretText label="&mdash; Yes, please!">
+                          <Confetti
+                            recycle={false}
+                            numberOfPieces={750}
+                            style={{position: 'fixed'}}
+                          />
+
+                          <p className="has-text-right" style={{marginBottom: '0.5em'}}>
+                            &mdash; Yes, please!
+                          </p>
+                          <p className="has-text-left">
+                            &mdash; This is <strong>{party.target.name}</strong>, but it's a secret...
+                            Good luck with your ideas! Happy Holidays!
+                          </p>
+                        </SecretText>
+                      </p>
+                    </>
+                   ) : <SyncLoader color="#4a4a4a" size={10} />}
                 </GnomeSays>
               </Bulma.Column>
             </Bulma.Columns>
