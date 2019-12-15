@@ -24,9 +24,7 @@ interface IProps {
 
 class PartyContainer extends React.Component<IProps> {
   public componentDidMount() {
-    if (this.props.party === null) {
-      this.props.onRequestParty(this.props.match.params.party);
-    }
+    this.props.onRequestParty(this.props.match.params.party);
   }
 
   public render () {
