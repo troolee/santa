@@ -23,7 +23,7 @@ type App {
 type User implements Node {
   id: ID!
   name: String!
-  picture: String!
+  picture: String
 }
 
 type Party implements Node {

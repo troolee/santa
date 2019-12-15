@@ -1,7 +1,7 @@
 import { Db, ObjectID } from "mongodb";
 import { IContext } from "../../../graph/context";
 import { nodeIdToStr } from "../../../lib/utils/strings/nodeId";
-import { IParty } from "../interfaces";
+import { IParty, IUser } from "../interfaces";
 import { IPartyEntity, IUserEntity, IPartyMembershipEntity } from "../../../db/interfaces";
 
 interface IPartyArgs {
@@ -18,7 +18,7 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
   }
   const isHost = Boolean(user && `${user._id}` === `${party.host}`);
   const isClosed = Boolean(party.isClosed);
-  const membership = user !== null
+  const membership: IPartyMembershipEntity | null = user !== null
     ? await db.collection('PartyMembership').findOne({party: party._id, member: user._id})
     : null;
   const isJoined = membership !== null;
@@ -37,6 +37,14 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
     }
     participants = (await qs.toArray()).map((doc: IPartyMembershipEntity) => doc.name);
   }
+  let target: IUser | null = null;
+  if (isClosed && membership && membership.target) {
+    target = {
+      id: nodeIdToStr({kind: 'User', id: membership.target.user}),
+      name: membership.target.name,
+      picture: null,
+    };
+  }
   return {
     id: nodeIdToStr({kind: 'Party', id: party._id}),
     name: party.name,
@@ -48,6 +56,7 @@ export async function partyEntityToNode(db: Db, party: IPartyEntity, user: IUser
     participantCount: isJoined ? party.participantCount : null,
     participants,
     isClosed,
+    target,
   } as IParty;
 }
 

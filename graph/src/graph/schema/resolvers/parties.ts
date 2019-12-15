@@ -84,6 +84,15 @@ export default {
         };
       }
 
+      if (partyEntity.isClosed) {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: ['Party is already packed. Sorry, we cannot accept a new participant...'],
+          }],
+        };
+      }
+
       if ((partyEntity.password || '').toUpperCase() !== (password || '').toUpperCase()) {
         return {
           userErrors: [{
@@ -139,6 +148,17 @@ export default {
       if (membership === null) {
         return {
           node: await partyEntityToNode(db, partyEntity, user),
+        };
+      }
+
+      if (partyEntity.isClosed) {
+        return {
+          userErrors: [{
+            fieldName: 'party',
+            messages: [
+              'Party is already at that stage when you cannot really run away... Sorry but you have to get the gift',
+            ],
+          }],
         };
       }
 
@@ -212,7 +232,7 @@ export default {
         });
       });
 
-      // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
+      await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
 
       partyEntity = await db.collection('Party').findOne({_id: partyNodeId.id}) as IPartyEntity;
       return {

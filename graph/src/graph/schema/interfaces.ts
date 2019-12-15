@@ -10,7 +10,7 @@ export interface IApp {
 
 export interface IUser extends INode {
   name: string;
-  picture: string;
+  picture: string | null;
 }
 
 export interface IParty extends INode {
@@ -23,6 +23,7 @@ export interface IParty extends INode {
   isClosed: boolean;
   participantCount: number | null;
   participants: string[] | null;
+  target: IUser | null;
 }
 
 export interface IUserError {
