@@ -12,6 +12,7 @@ import { randomString } from '../../../lib/utils/strings/random';
 import { partyEntityToNode } from './party';
 import NodeId from '../../../lib/utils/nodeId';
 import { IPartyEntity, IPartyMembershipEntity } from 'src/db/interfaces';
+import { santaShuffle } from '../../../utils/santaShuffle';
 
 const generatePartySlug = async (db: Db) => {
   const PartyCollection = db.collection('Party');
@@ -199,28 +200,19 @@ export default {
         {party: partyEntity._id},
       ).toArray());
 
-      let targets = lodash.clone(members);
-      while (members.length) {
-        const member = members.pop()!;
-        let target: IPartyMembershipEntity;
-        while (true) {
-          targets = lodash.shuffle(targets);
-          target = targets.pop()!;
-          if (!member.member.equals(target.member)) {
-            break;
-          }
-          targets.push(target);
-        }
-        await db.collection('PartyMembership').updateOne({_id: member._id}, {
+      const results = santaShuffle(members, (a, b) => a.member.equals(b.member));
+      results.forEach(async draw => {
+        await db.collection('PartyMembership').updateOne({_id: draw.src._id}, {
           $set: {
             target: {
-              member: target.member,
-              name: target.name,
+              member: draw.target.member,
+              name: draw.target.name,
             },
           },
         });
-      }
-    // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
+      });
+
+      // await db.collection('Party').updateOne({_id: partyEntity._id}, {$set: {isClosed: true}});
 
       partyEntity = await db.collection('Party').findOne({_id: partyNodeId.id}) as IPartyEntity;
       return {
