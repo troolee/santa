@@ -59,7 +59,7 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave, onFini
                           <Confetti
                             recycle={false}
                             numberOfPieces={750}
-                            style={{position: 'fixed'}}
+                            style={{position: 'fixed', top: 0, right: 0, bottom: 0, left: 0}}
                           />
 
                           <p className="has-text-right" style={{marginBottom: '0.5em'}}>

@@ -19,7 +19,7 @@ const ConfettiButton: React.SFC<ButtonProps> = props => {
         run={isRollling}
         numberOfPieces={750}
         onConfettiComplete={onConfettiComplete}
-        style={{position: 'fixed'}}
+        style={{position: 'fixed', top: 0, right: 0, bottom: 0, left: 0}}
       />
       <Bulma.Button {...props} isLoading={isRollling} onClick={onClick}>{props.children}</Bulma.Button>
     </>
