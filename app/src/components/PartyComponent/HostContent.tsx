@@ -18,7 +18,7 @@ const HostContent: React.SFC<IProps> = ({party, user, onFinish}) => {
       <p>Hey, {user.name}! That's so awesome you're gathering the {party.name}!<br /></p>
       <p>{participantCount}</p>
       {party.participantCount! > 1 && <p>Here's a full list: {party.participants!.join(', ')}.</p>}
-      <p>If you feel you're ready to Go than Go! Go ahead and press a button bellow. Have fun!</p>
+      <p>If you feel you're ready to Go then Go! Go ahead and press a button bellow. Have fun!</p>
 
       {!party.isClosed && <p style={{margin: '2em 0'}} className="has-text-centered-touch">
         <Button isColor="primary" onClick={finishParty}>&#x1F643; OK, Let's roll the dice!</Button>
