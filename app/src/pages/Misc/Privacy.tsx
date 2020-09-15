@@ -8,7 +8,7 @@ export const Page: React.SFC = () => (
   <PageContent title="Privacy Policy" img={imgSrc}>
 
     <p><strong> {config.siteTitle}</strong> ("us", "we", or "our") operates the
-      {config.siteDomain} website (hereinafter referred to as the
+      <> {config.siteDomain}</> website (hereinafter referred to as the
       "Service").</p>
 
     <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use
