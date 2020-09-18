@@ -37,6 +37,19 @@ router.post('/', async (req: express.Request, res: express.Response) => {
         },
       };
       await User.insertOne(user);
+    } else {
+      await User.updateOne(
+        {_id: user._id},
+        {
+          $set: {
+            name,
+            email,
+            profiles: {
+              facebook: {id, name, email},
+            },
+          },
+        },
+      );
     }
 
     const token = JWT.sign({
