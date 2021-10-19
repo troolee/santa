@@ -46,7 +46,7 @@ export const JoinPartyComponent = buildComponent({
   title: "Join a party!",
   width: 500,
   buttons: [
-    {caption: 'Hah, never mind', action: 'dismiss'} as IButtonDescriptor,
+    {caption: 'Nah, never mind', action: 'dismiss'} as IButtonDescriptor,
     {caption: <>&#x1F973; Here I come!</>, action: 'submit', className: 'is-primary'},
   ],
   className: 'party-box',

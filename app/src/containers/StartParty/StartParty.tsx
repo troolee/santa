@@ -47,7 +47,7 @@ export const StartPartyComponent = buildComponent({
   title: "Let's start a new party!",
   width: 600,
   buttons: [
-    {caption: 'Hah, never mind', action: 'dismiss'} as IButtonDescriptor,
+    {caption: 'Nah, never mind', action: 'dismiss'} as IButtonDescriptor,
     {caption: <>&#x1F389; Rock'n'Roll!</>, action: 'submit', className: 'is-primary'}
   ],
   className: 'party-box',
