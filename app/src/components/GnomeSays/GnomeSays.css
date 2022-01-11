@@ -6,6 +6,10 @@
   align-items: center;
 }
 
+.gnome-says.cupid.message {
+  background-image: url('./cupid.png') !important;
+}
+
 .gnome-says .message-body {
   background-color: #f7f7c6;
   border: none;

@@ -6,6 +6,11 @@ body.party-details-page {
   text-shadow: 0 2px 4px white;
 }
 
+body.party-details-page.cupid {
+  background: #ededea url('./background-cupid.jpg') right top no-repeat;
+  background-size: cover;
+}
+
 body.party-details-page .hero-foot a {
   color: #000;
 }
