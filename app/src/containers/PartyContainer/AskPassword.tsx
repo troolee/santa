@@ -2,7 +2,7 @@ import * as Bulma from 'bloomer';
 import React from 'react';
 import { MessageBox, FormMessageBoxContent } from '../MessageBox';
 import { IButtonDescriptor } from '../MessageBox/MessageBox';
-import * as FormikHelpers from '../../components/FormikHelpers';
+import * as FormikHelpers from 'src/components/FormikHelpers';
 import { askPasswordInputSchema } from '../../validationSchemas/parties';
 
 interface IValues {

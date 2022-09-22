@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { MessageBoxContent } from '.';
-import * as FormikHelpers from '../../components/FormikHelpers';
-import { IMessageBoxContentProps } from './MessageBoxContent';
+import { MessageBoxContent } from 'src/containers/MessageBox';
+import * as FormikHelpers from 'src/components/FormikHelpers';
+import { IMessageBoxContentProps } from 'src/containers/MessageBox/MessageBoxContent';
 import { ObjectSchema } from 'yup';
 
 export default abstract class FormMessageBoxContent<T> extends MessageBoxContent {

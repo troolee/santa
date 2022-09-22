@@ -1,10 +1,10 @@
 import { ObjectId } from 'bson';
 import { GraphQLResolveInfo } from 'graphql';
 import { IncomingMessage } from 'http';
-import { IContext } from '../../../../graph/context';
-import { createAuthToken } from '../../../../lib/crypto';
-import { TestDbClient } from "../../../../lib/test/db";
-import { authMiddleware } from '../authMiddleware';
+import { IContext } from 'src/graph/context';
+import { createAuthToken } from 'src/lib/crypto';
+import { TestDbClient } from "src/lib/test/db";
+import { authMiddleware } from 'src/graph/schema/middlewares/authMiddleware';
 
 describe('Test authMiddleware', () => {
   let dbClient: TestDbClient;

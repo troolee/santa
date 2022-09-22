@@ -1,9 +1,9 @@
 import { JWT } from '@panva/jose';
 import { GraphQLResolveInfo } from "graphql";
 import { ObjectId } from 'bson';
-import { authRsaKey, ITokenPayload } from '../../../lib/crypto';
-import { IContext } from "../../context";
-import { IUserEntity } from '../../../db/interfaces';
+import { authRsaKey, ITokenPayload } from 'src/lib/crypto';
+import { IContext } from "src/graph/context";
+import { IUserEntity } from 'src/db/interfaces';
 
 export const authMiddleware = async (resolve: any, root: any, args: any, context: IContext,
                                      info: GraphQLResolveInfo) => {

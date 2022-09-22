@@ -1,8 +1,8 @@
 import * as Bulma from 'bloomer';
 import * as React from 'react';
-import { IProps as IToastsProps } from '../components/Toast/Toasts';
-import { Kind } from '../components/Toast/Toast';
-import { Toasts, Toast } from '../components';
+import { IProps as IToastsProps } from 'src/components/Toast/Toasts';
+import { Kind } from 'src/components/Toast/Toast';
+import { Toasts, Toast } from 'src/components';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 export const DEFAULT_TIMEOUT = 5000;

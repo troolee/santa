@@ -1,6 +1,6 @@
 import { Db } from "mongodb";
 import { IncomingMessage, ServerResponse } from "http";
-import { IUserEntity } from "../db/interfaces";
+import { IUserEntity } from "src/db/interfaces";
 
 export interface IContext {
   db: Db;

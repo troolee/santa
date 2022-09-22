@@ -4,9 +4,9 @@ import compression from 'compression';
 import * as Sentry from '@sentry/node';
 import cors from 'cors';
 
-import { commonHelpers, commonHeaders } from './lib/common/views';
-import * as views from './views';
-import { logDefaultError } from './logging';
+import { commonHelpers, commonHeaders } from 'src/lib/common/views';
+import * as views from 'src/views';
+import { logDefaultError } from 'src/logging';
 import { Db } from 'mongodb';
 
 /* istanbul ignore next */

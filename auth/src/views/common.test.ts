@@ -1,7 +1,7 @@
 import request from 'supertest';
 import nock from 'nock';
-import { createApp } from '../lib/test/app';
-import { TestDbClient } from '../lib/test/db';
+import { createApp } from 'src/lib/test/app';
+import { TestDbClient } from 'src/lib/test/db';
 import { JWT } from '@panva/jose';
 
 describe('Test /api/auth', () => {

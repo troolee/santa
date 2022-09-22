@@ -1,5 +1,5 @@
 import { GraphQLResolveInfo } from 'graphql';
-import { getPathFromInfo } from '../utils';
+import { getPathFromInfo } from 'src/lib/graphql/utils';
 
 describe('Test getPathFromInfo', () => {
   test('root value', () => {

@@ -1,1 +1,1 @@
-export { default as AppLoading } from './AppLoading';
+export { default as AppLoading } from 'src/components/AppLoading/AppLoading';

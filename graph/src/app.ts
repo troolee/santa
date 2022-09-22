@@ -3,9 +3,9 @@ import * as Sentry from '@sentry/node';
 import compression from 'compression';
 import express from 'express';
 import { Db } from 'mongodb';
-import { default as createApolloServer } from './graph/server';
-import { commonHeaders, commonHelpers } from './lib/common/views';
-import { logDefaultError } from './logging';
+import { default as createApolloServer } from 'src/graph/server';
+import { commonHeaders, commonHelpers } from 'src/lib/common/views';
+import { logDefaultError } from 'src/logging';
 
 /* istanbul ignore next */
 const USE_SENTRY = process.env.NODE_ENV === 'production' && process.env.SENTRY_DSN;

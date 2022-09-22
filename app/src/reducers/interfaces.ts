@@ -1,4 +1,4 @@
-import { IUser, IParty } from "../interfaces";
+import { IUser, IParty } from "src/interfaces";
 
 export type IApiState = {
   readonly facebookApi: boolean;

@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import auth from './auth';
-import app from './app';
-import party from './party';
-import profile from './profile';
+import auth from 'src/reducers/auth';
+import app from 'src/reducers/app';
+import party from 'src/reducers/party';
+import profile from 'src/reducers/profile';
 
 export default combineReducers({
   app,

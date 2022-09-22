@@ -1,5 +1,5 @@
-import { MongoClient, Db } from "mongodb";
-import { initDb } from "../db";
+import { MongoClient } from "mongodb";
+import { initDb } from "src/db";
 
 /* istanbul ignore next */
 const MONGODB_URI: string = process.env.MONGODB_URI || 'mongodb://localhost:27017/test';

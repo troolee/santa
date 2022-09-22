@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import * as YupHelpers from '../utils/yup';
+import * as YupHelpers from 'src/utils/yup';
 
 export const createPartyInputSchema = yup.object().shape({
   name: YupHelpers.string('Party name').required(),

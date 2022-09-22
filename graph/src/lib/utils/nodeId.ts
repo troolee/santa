@@ -1,5 +1,5 @@
 import { ObjectId } from "bson";
-import { strToNodeId, nodeIdToStr } from "./strings/nodeId";
+import { strToNodeId, nodeIdToStr } from "src/lib/utils/strings/nodeId";
 
 export interface INodeId {
   kind: string;

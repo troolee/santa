@@ -1,7 +1,7 @@
-import { logger } from './logging';
-import { createApp } from './app';
-import { requestLogger, errorLogger } from './logging';
-import { initDb } from './db';
+import { logger } from 'src/logging';
+import { createApp } from 'src/app';
+import { requestLogger, errorLogger } from 'src/logging';
+import { initDb } from 'src/db';
 
 const port = process.env.PORT || 8081;
 

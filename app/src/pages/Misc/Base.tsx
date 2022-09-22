@@ -1,7 +1,7 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
-import { Footer, UnsplashCredit } from '../../components';
+import { Footer, UnsplashCredit } from 'src/components';
 import { Link } from 'react-router-dom';
 import buildTitle from '../../utils/title';
 

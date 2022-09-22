@@ -1,12 +1,12 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
-import { buildComponent, FormMessageBoxContent } from "../MessageBox";
-import { IButtonDescriptor } from '../MessageBox/MessageBox';
-import * as FormikHelpers from '../../components/FormikHelpers';
-import { lookupPartyInputSchema } from '../../validationSchemas/parties';
-import { Api } from '../../utils/api';
-import { ToastsContainer } from '..';
-import history from '../../utils/history';
+import { buildComponent, FormMessageBoxContent } from "src/containers/MessageBox";
+import { IButtonDescriptor } from 'src/containers/MessageBox/MessageBox';
+import * as FormikHelpers from 'src/components/FormikHelpers';
+import { lookupPartyInputSchema } from 'src/validationSchemas/parties';
+import { Api } from 'src/utils/api';
+import { ToastsContainer } from 'src/containers';
+import history from 'src/utils/history';
 
 interface IValues {
   code: string;

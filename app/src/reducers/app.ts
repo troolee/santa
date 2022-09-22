@@ -1,7 +1,7 @@
 import { Action } from "redux";
-import { IAppState } from "./interfaces";
-import { userSignIn } from "./auth";
-import { Api } from "../utils/api";
+import { IAppState } from "src/reducers/interfaces";
+import { userSignIn } from "src/reducers/auth";
+import { Api } from "src/utils/api";
 
 const initialState: IAppState = {
   isLoaded: false,

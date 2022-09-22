@@ -1,1 +1,1 @@
-export { default as GarageDoor } from './GarageDoor';
+export { default as GarageDoor } from 'src/components/GarageDoor/GarageDoor';

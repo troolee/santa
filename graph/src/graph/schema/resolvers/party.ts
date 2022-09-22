@@ -1,8 +1,8 @@
 import { Db, ObjectID } from "mongodb";
-import { IContext } from "../../../graph/context";
-import { nodeIdToStr } from "../../../lib/utils/strings/nodeId";
-import { IParty, IUser } from "../interfaces";
-import { IPartyEntity, IUserEntity, IPartyMembershipEntity } from "../../../db/interfaces";
+import { IContext } from "src/graph/context";
+import { nodeIdToStr } from "src/lib/utils/strings/nodeId";
+import { IParty, IUser } from "src/graph/schema/interfaces";
+import { IPartyEntity, IUserEntity, IPartyMembershipEntity } from "src/db/interfaces";
 
 interface IPartyArgs {
   code: string;

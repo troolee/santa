@@ -1,1 +1,1 @@
-export { default as GnomeSays } from './GnomeSays';
+export { default as GnomeSays } from 'src/components/GnomeSays/GnomeSays';

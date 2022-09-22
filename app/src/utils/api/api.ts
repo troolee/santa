@@ -3,11 +3,11 @@ import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemo
 import { ApolloClient, OperationVariables, QueryOptions, MutationOptions } from "apollo-client";
 import { setContext } from 'apollo-link-context';
 import { createHttpLink } from "apollo-link-http";
-import { ToastsContainer } from "../../containers";
-import introspectionQueryResultData from '../../fragmentTypes.json';
-import { AuthResponse } from "./facebook";
-import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload, ILeavePartyInput, ILeavePartyPayload, IClosePartyInput, IClosePartyPayload } from '../../interfaces';
-import config from '../../config';
+import { ToastsContainer } from "src/containers";
+import introspectionQueryResultData from 'src/fragmentTypes.json';
+import { AuthResponse } from "src/utils/api/facebook";
+import { IUser, ICreatePartyInput, ICreatePartyPayload, IParty, IJoinPartyInput, IJoinPartyPayload, ILeavePartyInput, ILeavePartyPayload, IClosePartyInput, IClosePartyPayload } from 'src/interfaces';
+import config from 'src/config';
 
 interface IApiResponse {
   status: 'ok' | 'error';

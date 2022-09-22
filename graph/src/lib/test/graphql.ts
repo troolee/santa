@@ -1,6 +1,6 @@
 import { createTestClient as createApolloTestClient } from 'apollo-server-testing';
 import { Db } from 'mongodb';
-import { default as createApolloServer } from '../../graph/server';
+import { default as createApolloServer } from 'src/graph/server';
 
 const createTestClient = (db?: Db, token?: string) => {
   const server = createApolloServer(db, {

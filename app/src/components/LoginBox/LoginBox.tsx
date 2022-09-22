@@ -1,7 +1,7 @@
 import * as Bulma from 'bloomer';
 import * as React from 'react';
-import { UnsplashCredit } from '../UnsplashCredit';
-import { Footer } from '../Footer';
+import { UnsplashCredit } from 'src/components/UnsplashCredit';
+import { Footer } from 'src/components/Footer';
 
 import './LoginBox.css';
 

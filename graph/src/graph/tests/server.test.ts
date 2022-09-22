@@ -1,6 +1,6 @@
 import request from 'supertest';
-import { getEngineSettings } from '../server';
-import { createApp } from '../../lib/test/app';
+import { getEngineSettings } from 'src/graph/server';
+import { createApp } from 'src/lib/test/app';
 
 describe('Test Apollo Engine', () => {
   test('getEngineSettings in production should be a dict', () => {

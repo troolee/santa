@@ -1,4 +1,4 @@
-import { TestDbClient } from './lib/test/db';
+import { TestDbClient } from 'src/lib/test/db';
 
 describe('Test db connection', () => {
   let dbClient: TestDbClient;

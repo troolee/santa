@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { IState } from '../../reducers/interfaces';
-import { PartyComponent, AppLoading } from '../../components';
-import { fetchParty, joinParty, leaveParty, closeParty } from '../../reducers/party';
+import { IState } from 'src/reducers/interfaces';
+import { PartyComponent, AppLoading } from 'src/components';
+import { fetchParty, joinParty, leaveParty, closeParty } from 'src/reducers/party';
 import { IParty, IUser } from '../../interfaces';
-import { signout } from '../../reducers/auth';
+import { signout } from 'src/reducers/auth';
 import { AuthApi, Api } from '../../utils/api';
 import AskPassword from './AskPassword';
 import ConfirmLeaving from './ConfirmLeaving';

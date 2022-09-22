@@ -1,8 +1,8 @@
 import { Action } from "redux";
-import { IPartyState } from "./interfaces";
-import { IParty } from "../interfaces";
-import { Api } from "../utils/api";
-import { ToastsContainer } from "../containers";
+import { IPartyState } from "src/reducers/interfaces";
+import { IParty } from "src/interfaces";
+import { Api } from "src/utils/api";
+import { ToastsContainer } from "src/containers";
 
 const initialState: IPartyState = {
   isLoading: true,

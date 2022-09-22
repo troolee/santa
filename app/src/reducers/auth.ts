@@ -1,7 +1,7 @@
 import { Action } from "redux";
-import { IAuthState } from "./interfaces";
-import { IUser } from "../interfaces";
-import { Api } from "../utils/api";
+import { IAuthState } from "src/reducers/interfaces";
+import { IUser } from "src/interfaces";
+import { Api } from "src/utils/api";
 
 const initialState: IAuthState = {
   isLoggedIn: false,

@@ -1,7 +1,7 @@
 import { Action } from "redux";
-import { IProfileState } from "./interfaces";
-import { Api } from "../utils/api";
-import { IParty } from "../interfaces";
+import { IProfileState } from "src/reducers/interfaces";
+import { Api } from "src/utils/api";
+import { IParty } from "src/interfaces";
 
 const initialState: IProfileState = {
   parties: null,

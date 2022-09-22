@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { createApp } from '../../test/app';
+import { createApp } from 'src/lib/test/app';
 
 describe('Test commonHelpers', () => {
   test('ok() should return 200 and {status: "ok"}', async () => {

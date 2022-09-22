@@ -1,4 +1,4 @@
-import { btoa } from '../btoa';
+import { btoa } from 'src/lib/utils/strings/btoa';
 
 describe('Testing btoa', () => {
   test.each([

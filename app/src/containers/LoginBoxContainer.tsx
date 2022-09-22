@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from "react-redux";
-import { LoginBox } from '../components';
-import { IState } from "../reducers/interfaces";
-import { AuthApi } from '../utils/api';
+import { LoginBox } from 'src/components';
+import { IState } from "src/reducers/interfaces";
+import { AuthApi } from 'src/utils/api';
 
 const LoginBoxContainer: React.FC<{
   isFacebookApiReady: boolean,

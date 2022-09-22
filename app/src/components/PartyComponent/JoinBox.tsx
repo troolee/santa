@@ -1,9 +1,9 @@
 import * as Bulma from 'bloomer';
 import * as React from 'react';
-import { UnsplashCredit } from '../UnsplashCredit';
-import { Footer } from '../Footer';
-import { IUser, IParty } from '../../interfaces';
-import { Button } from '..';
+import { UnsplashCredit } from 'src/components/UnsplashCredit';
+import { Footer } from 'src/components/Footer';
+import { IUser, IParty } from 'src/interfaces';
+import { Button } from 'src/components';
 
 import './JoinBox.css';
 

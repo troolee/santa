@@ -1,8 +1,8 @@
 import { ApolloServer } from 'apollo-server-express';
 import { Db } from 'mongodb';
-import { logger } from '../logging';
-import { schema } from './schema';
-import { IContext } from './context';
+import { logger } from 'src/logging';
+import { schema } from 'src/graph/schema';
+import { IContext } from 'src/graph/context';
 
 const isProduction = process.env.NODE_ENV === 'production';
 const playground = true;

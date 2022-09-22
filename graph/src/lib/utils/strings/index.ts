@@ -1,2 +1,2 @@
-export { atob } from './atob';
-export { btoa } from './btoa';
+export { atob } from 'src/lib/utils/strings/atob';
+export { btoa } from 'src/lib/utils/strings/btoa';

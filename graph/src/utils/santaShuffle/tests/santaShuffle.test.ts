@@ -1,4 +1,4 @@
-import santaShuffle from '../santaShuffle';
+import santaShuffle from 'src/utils/santaShuffle/santaShuffle';
 
 describe('Test santa shuffle', () => {
   test('empty array remains empty', () => {

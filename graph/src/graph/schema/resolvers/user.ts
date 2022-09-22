@@ -1,5 +1,5 @@
-import { IContext } from "../../../graph/context";
-import { nodeIdToStr } from "../../../lib/utils/strings/nodeId";
+import { IContext } from "src/graph/context";
+import { nodeIdToStr } from "src/lib/utils/strings/nodeId";
 
 export default {
   user: (root: any, args: any, {user}: IContext) => user && {

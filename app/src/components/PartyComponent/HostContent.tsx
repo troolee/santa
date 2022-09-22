@@ -1,6 +1,6 @@
 import React from 'react';
-import { IParty, IUser } from '../../interfaces';
-import { Button } from '..';
+import { IParty, IUser } from 'src/interfaces';
+import { Button } from 'src/components';
 
 interface IProps {
   party: IParty;

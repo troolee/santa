@@ -1,1 +1,1 @@
-export { default as santaShuffle } from './santaShuffle';
+export { default as santaShuffle } from 'src/utils/santaShuffle/santaShuffle';

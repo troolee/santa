@@ -1,4 +1,4 @@
-import { atob } from '../atob';
+import { atob } from 'src/lib/utils/strings/atob';
 
 describe('Testing atob', () => {
   test.each([

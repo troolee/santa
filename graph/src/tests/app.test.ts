@@ -1,5 +1,5 @@
 import request from 'supertest';
-import { createApp } from '../lib/test/app';
+import { createApp } from 'src/lib/test/app';
 
 describe('Test app', () => {
   test('in case of unhandler exception 500 should be retured', async () => {

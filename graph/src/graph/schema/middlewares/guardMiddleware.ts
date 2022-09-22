@@ -1,7 +1,7 @@
 import { AuthenticationError } from "apollo-server-core";
 import { GraphQLResolveInfo } from "graphql";
-import { IContext } from "../../context";
-import { getPathFromInfo } from "../../../lib/graphql/utils";
+import { IContext } from "src/graph/context";
+import { getPathFromInfo } from "src/lib/graphql/utils";
 
 export const guardMiddleware = async (resolve: any, root: any, args: any, context: IContext,
                                       info: GraphQLResolveInfo) => {

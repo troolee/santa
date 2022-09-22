@@ -1,4 +1,4 @@
-import { IApp } from "../interfaces";
+import { IApp } from "src/graph/schema/interfaces";
 
 export default {
   app: (): IApp => ({

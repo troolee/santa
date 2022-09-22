@@ -1,7 +1,7 @@
 import * as Bulma from 'bloomer';
 import React from 'react';
 import { MessageBox, MessageBoxContent } from '../MessageBox';
-import { Button } from '../../components';
+import { Button } from 'src/components';
 
 import './ConfirmClosing.css';
 

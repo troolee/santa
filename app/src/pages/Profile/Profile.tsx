@@ -3,8 +3,8 @@ import React from 'react';
 import { Loader } from 'react-feather';
 import { Link } from 'react-router-dom';
 import { IUser } from '../../interfaces';
-import { Footer, UnsplashCredit } from '../../components';
-import { IProfileState } from '../../reducers/interfaces';
+import { Footer, UnsplashCredit } from 'src/components';
+import { IProfileState } from 'src/reducers/interfaces';
 
 import './Profile.css';
 

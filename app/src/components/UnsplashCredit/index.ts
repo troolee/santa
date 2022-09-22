@@ -1,1 +1,1 @@
-export { default as UnsplashCredit } from './UnsplashCredit';
+export { default as UnsplashCredit } from 'src/components/UnsplashCredit/UnsplashCredit';

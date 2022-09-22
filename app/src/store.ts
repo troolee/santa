@@ -2,8 +2,8 @@ import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk, { ThunkMiddleware } from 'redux-thunk';
 
-import app from "./reducers";
-import { IState } from "./reducers/interfaces";
+import app from "src/reducers";
+import { IState } from "src/reducers/interfaces";
 
 const store = createStore(
   app,

@@ -1,11 +1,11 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
-import { IParty, IUser } from '../../interfaces';
-import NotFound from './NotFound';
-import { GarageDoor } from '..';
-import JoinBox from './JoinBox';
-import buildTitle from '../../utils/title';
-import PartyDetails from './PartyDetails';
+import { IParty, IUser } from 'src/interfaces';
+import NotFound from 'src/components/PartyComponent/NotFound';
+import { GarageDoor } from 'src/components';
+import JoinBox from 'src/components/PartyComponent/JoinBox';
+import buildTitle from 'src/utils/title';
+import PartyDetails from 'src/components/PartyComponent/PartyDetails';
 
 interface IProps {
   party: IParty | null;

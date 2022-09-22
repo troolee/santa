@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router, Switch, Route } from 'react-router-dom';
-import App from './App';
-import store from './store';
-import { facebookApiReady, appApiReady } from './reducers/app';
-import { FacebookApi, Api } from './utils/api';
-import { ToastsContainer } from './containers';
-import { MessageBoxProvider } from './containers/MessageBox';
-import * as MiscPages from './pages/Misc';
-import { ScrollToTop } from './components';
-import history from './utils/history';
+import App from 'src/App';
+import store from 'src/store';
+import { facebookApiReady, appApiReady } from 'src/reducers/app';
+import { FacebookApi, Api } from 'src/utils/api';
+import { ToastsContainer } from 'src/containers';
+import { MessageBoxProvider } from 'src/containers/MessageBox';
+import * as MiscPages from 'src/pages/Misc';
+import { ScrollToTop } from 'src/components';
+import history from 'src/utils/history';
 
-import './index.css';
+import 'src/index.css';
 
 FacebookApi.init({
   appId: process.env.REACT_APP_FACEBOOK_APP_ID!,

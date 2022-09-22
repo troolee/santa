@@ -1,6 +1,6 @@
 import { ObjectSchema } from "yup";
-import { INode, INodeMutationPayload, IMutationInput } from "../graph/schema/interfaces";
-import { IContext } from "../graph/context";
+import { INode, INodeMutationPayload, IMutationInput } from "src/graph/schema/interfaces";
+import { IContext } from "src/graph/context";
 
 type Promisable<T> = T | Promise<T>;
 

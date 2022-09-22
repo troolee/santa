@@ -3,7 +3,7 @@ import axios from 'axios';
 import { ObjectId } from 'bson';
 import express from 'express';
 import _ from 'lodash';
-import { authRsaKey } from '../lib/crypto';
+import { authRsaKey } from 'src/lib/crypto';
 
 const router = express.Router();
 

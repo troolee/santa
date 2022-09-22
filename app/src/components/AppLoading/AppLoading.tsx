@@ -2,7 +2,7 @@ import * as Bulma from 'bloomer';
 import * as React from 'react';
 import {Loader} from 'react-feather';
 
-import './AppLoading.css';
+import 'src/components/AppLoading/AppLoading.css';
 
 export default class AppLoading extends React.Component {
   public render() {

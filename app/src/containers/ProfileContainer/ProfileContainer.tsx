@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IUser } from '../../interfaces';
-import { IState, IProfileState } from "../../reducers/interfaces";
-import { ProfilePage } from '../../pages/Profile';
-import { signout } from '../../reducers/auth';
-import { fetchParties } from '../../reducers/profile';
+import { IState, IProfileState } from "src/reducers/interfaces";
+import { ProfilePage } from 'src/pages/Profile';
+import { signout } from 'src/reducers/auth';
+import { fetchParties } from 'src/reducers/profile';
 
 interface IProps {
   user: IUser;

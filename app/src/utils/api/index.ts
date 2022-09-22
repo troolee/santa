@@ -1,3 +1,3 @@
-export { default as FacebookApi } from './facebook';
-export { default as Api } from './api';
-export { default as AuthApi } from './auth';
+export { default as FacebookApi } from 'src/utils/api/facebook';
+export { default as Api } from 'src/utils/api/api';
+export { default as AuthApi } from 'src/utils/api/auth';

@@ -1,2 +1,2 @@
-export { default as Toasts } from './Toasts';
-export { default as Toast } from './Toast';
+export { default as Toasts } from 'src/components/Toast/Toasts';
+export { default as Toast } from 'src/components/Toast/Toast';

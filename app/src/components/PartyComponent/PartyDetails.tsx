@@ -2,16 +2,16 @@ import * as Bulma from 'bloomer';
 import React from 'react';
 import Confetti from 'react-confetti';
 import { SyncLoader } from 'react-spinners';
-import { IParty, IUser } from '../../interfaces';
-import { GnomeSays } from '../GnomeSays';
-import { UnsplashCredit } from '../UnsplashCredit';
-import { Footer } from '..';
-import SecretText from '../SecretText';
-import GuestContent from './GuestContent';
-import HostContent from './HostContent';
-import PartyIsClosedContent from './PartyIsClosedContent';
+import { IParty, IUser } from 'src/interfaces';
+import { GnomeSays } from 'src/components/GnomeSays';
+import { UnsplashCredit } from 'src/components/UnsplashCredit';
+import { Footer } from 'src/components';
+import SecretText from 'src/components/SecretText';
+import GuestContent from 'src/components/PartyComponent/GuestContent';
+import HostContent from 'src/components/PartyComponent/HostContent';
+import PartyIsClosedContent from 'src/components/PartyComponent/PartyIsClosedContent';
 
-import './PartyDetails.css';
+import 'src/components/PartyComponent/PartyDetails.css';
 
 interface IProps {
   party: IParty;

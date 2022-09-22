@@ -1,7 +1,7 @@
 import { Api } from ".";
-import { AuthApiRequest } from "./api";
-import store from "../../store";
-import { initializeApp } from "../../reducers/app";
+import { AuthApiRequest } from "src/utils/api/api";
+import store from "src/store";
+import { initializeApp } from "src/reducers/app";
 
 type FacebookParams = {
   appId: string;

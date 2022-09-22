@@ -1,7 +1,7 @@
-import app from './app';
-import user from './user';
-import parties from './parties';
-import party from './party';
+import app from 'src/graph/schema/resolvers/app';
+import user from 'src/graph/schema/resolvers/user';
+import parties from 'src/graph/schema/resolvers/parties';
+import party from 'src/graph/schema/resolvers/party';
 
 export default {
   Query: {

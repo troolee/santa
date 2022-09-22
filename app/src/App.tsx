@@ -1,21 +1,21 @@
 import React from 'react';
 import DocumentMeta from 'react-document-meta';
 import { connect } from 'react-redux';
-import { AppLoading } from './components';
-import { MainContainer } from './containers/MainContainer';
-import ImagesPreloader from './containers/ImagesPreloader';
-import { initializeApp, appImagesPreloaded } from './reducers/app';
-import { IState } from './reducers/interfaces';
-import store from './store';
-import config from './config';
+import { AppLoading } from 'src/components';
+import { MainContainer } from 'src/containers/MainContainer';
+import ImagesPreloader from 'src/containers/ImagesPreloader';
+import { initializeApp, appImagesPreloaded } from 'src/reducers/app';
+import { IState } from 'src/reducers/interfaces';
+import store from 'src/store';
+import config from 'src/config';
 
-import './App.css';
+import 'src/App.css';
 
-import img1 from './components/LoginBox/garage-door.jpg';
-import img2 from './components/PartyComponent/background.jpg';
-import img3 from './components/PartyComponent/garage-door.jpg';
-import img4 from './components/PartyComponent/not-found.jpg';
-import img5 from './pages/Welcome/Welcome.jpg';
+import img1 from 'src/components/LoginBox/garage-door.jpg';
+import img2 from 'src/components/PartyComponent/background.jpg';
+import img3 from 'src/components/PartyComponent/garage-door.jpg';
+import img4 from 'src/components/PartyComponent/not-found.jpg';
+import img5 from 'src/pages/Welcome/Welcome.jpg';
 
 interface IProps {
   state: IState;

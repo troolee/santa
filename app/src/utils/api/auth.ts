@@ -1,7 +1,7 @@
 import { FacebookApi, Api } from ".";
-import store from "../../store";
-import { initializeApp } from "../../reducers/app";
-import { ToastsContainer } from "../../containers";
+import store from "src/store";
+import { initializeApp } from "src/reducers/app";
+import { ToastsContainer } from "src/containers";
 
 export default class AuthApi {
   public static async authorize() {

@@ -1,9 +1,9 @@
 import * as Bulma from 'bloomer';
 import * as React from 'react';
 import DocumentMeta from 'react-document-meta';
-import { MessageBoxProvider } from '.';
-import { IMessageBoxContentProps } from './MessageBoxContent';
-import buildTitle from '../../utils/title';
+import { MessageBoxProvider } from 'src/containers/MessageBox';
+import { IMessageBoxContentProps } from 'src/containers/MessageBox/MessageBoxContent';
+import buildTitle from 'src/utils/title';
 
 const DEFAULT_WIDTH = 'auto';
 

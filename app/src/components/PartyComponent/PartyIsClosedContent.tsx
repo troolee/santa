@@ -1,6 +1,6 @@
 import React from 'react';
-import { IParty, IUser } from '../../interfaces';
-import ConfettiButton from '../ConfettiButton';
+import { IParty, IUser } from 'src/interfaces';
+import ConfettiButton from 'src/components/ConfettiButton';
 
 interface IProps {
   party: IParty;

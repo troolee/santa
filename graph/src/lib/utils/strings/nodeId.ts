@@ -1,6 +1,6 @@
 import { ObjectID } from 'bson';
-import { atob, btoa } from '.';
-import { INodeId } from "../nodeId";
+import { atob, btoa } from 'src/lib/utils/strings';
+import { INodeId } from "src/lib/utils/nodeId";
 
 export function strToNodeId(str: string): INodeId {
   const errorMsg = `String "${str}" is not a valid Node ID.`;

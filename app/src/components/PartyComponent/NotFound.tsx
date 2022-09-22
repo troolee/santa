@@ -2,11 +2,11 @@ import * as Bulma from 'bloomer';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import DocumentMeta from 'react-document-meta';
-import { Footer } from '../Footer';
-import { UnsplashCredit } from '..';
+import { Footer } from 'src/components/Footer';
+import { UnsplashCredit } from 'src/components';
 
-import './NotFound.css';
-import buildTitle from '../../utils/title';
+import 'src/components/PartyComponent/NotFound.css';
+import buildTitle from 'src/utils/title';
 
 const NotFound: React.SFC = () => (
   <DocumentMeta title={buildTitle("Party not found")}>

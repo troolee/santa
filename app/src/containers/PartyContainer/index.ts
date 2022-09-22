@@ -1,1 +1,1 @@
-export { default as PartyContainer } from './PartyContainer';
+export { default as PartyContainer } from 'src/containers/PartyContainer/PartyContainer';

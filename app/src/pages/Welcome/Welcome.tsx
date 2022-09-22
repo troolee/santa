@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import { StartPartyComponent } from '../../containers/StartParty';
 import { JoinPartyComponent } from '../../containers/JoinParty';
 import { connect } from 'react-redux';
-import { IState } from '../../reducers/interfaces';
+import { IState } from 'src/reducers/interfaces';
 import { IUser } from '../../interfaces';
-import { UnsplashCredit, Divider, Footer } from '../../components';
-import { signout } from '../../reducers/auth';
+import { UnsplashCredit, Divider, Footer } from 'src/components';
+import { signout } from 'src/reducers/auth';
 import config from '../../config';
 
 import grinchImg from './grinch.png';

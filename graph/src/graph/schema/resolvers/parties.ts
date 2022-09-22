@@ -1,18 +1,18 @@
 import { ObjectId } from 'bson';
 import { Db } from "mongodb";
 import lodash from 'lodash';
-import _ from '../../../utils/resolvable';
+import _ from 'src/utils/resolvable';
 import {
   createPartyInputSchema, joinPartyInputSchema, leavePartyInputSchema, closePartyInputSchema,
-} from "../../../validationSchemas/parties";
+} from "src/validationSchemas/parties";
 import {
   ICreatePartyInput, IJoinPartyInput, IMutationPayload, ILeavePartyInput, IClosePartyInput,
-} from "../interfaces";
-import { randomString } from '../../../lib/utils/strings/random';
-import { partyEntityToNode } from './party';
-import NodeId from '../../../lib/utils/nodeId';
+} from "src/graph/schema/interfaces";
+import { randomString } from 'src/lib/utils/strings/random';
+import { partyEntityToNode } from 'src/graph/schema/resolvers/party';
+import NodeId from 'src/lib/utils/nodeId';
 import { IPartyEntity, IPartyMembershipEntity } from 'src/db/interfaces';
-import { santaShuffle } from '../../../utils/santaShuffle';
+import { santaShuffle } from 'src/utils/santaShuffle';
 
 const generatePartySlug = async (db: Db) => {
   const PartyCollection = db.collection('Party');

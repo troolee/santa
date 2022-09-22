@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router';
-import { WelcomePage } from '../../pages/Welcome';
-import { GarageDoor } from '../../components';
-import { LoginBoxContainer } from '..';
-import { IState } from '../../reducers/interfaces';
-import { PartyContainer } from '../PartyContainer';
-import { ProfileContainer } from '../ProfileContainer';
+import { WelcomePage } from 'src/pages/Welcome';
+import { GarageDoor } from 'src/components';
+import { LoginBoxContainer } from 'src/containers';
+import { IState } from 'src/reducers/interfaces';
+import { PartyContainer } from 'src/containers/PartyContainer';
+import { ProfileContainer } from 'src/containers/ProfileContainer';
 
 interface IProps {
   state: IState;

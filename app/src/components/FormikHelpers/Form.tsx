@@ -1,7 +1,7 @@
 import React from 'react';
 import { ObjectSchema } from 'yup';
 import { Formik } from 'formik';
-import { FormContext } from '.';
+import { FormContext } from 'src/components/FormikHelpers';
 
 interface IProps<P> {
   initialValues?: P;
