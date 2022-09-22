@@ -99,6 +99,13 @@ export const Page: React.SFC = () => (
       organization or a country unless there are adequate controls in place including the security of your data and
       other personal information.</p>
 
+    <h2>The Right to Delete Personal Data</h2>
+
+    <p>You have the right to request the deletion of Your Personal Data. You can send a free-form request to
+      <a href="mailto:info@uglyunicorn.ca">info@uglyunicorn.ca</a>. Once We receive and confirm Your request,
+      We will delete (and direct Our Service Providers to delete) Your personal information from our records. This
+      may take up to 30 days upon we recieve the request.</p>
+
     <h2>Disclosure Of Data</h2>
 
     <h3>Legal Requirements</h3>
