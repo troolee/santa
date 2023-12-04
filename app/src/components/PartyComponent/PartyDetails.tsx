@@ -26,7 +26,7 @@ const PartyDetails: React.SFC<IProps> = ({party, user, onLogout, onLeave, onFini
     const className = 'party-details-page';
 
     document.body.classList.add(className);
-    document.body.classList.add('cupid');
+    // document.body.classList.add('cupid');
     return () => document.body.classList.remove(className);
   });
 

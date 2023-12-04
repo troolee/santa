@@ -9,7 +9,7 @@ interface IProps {
 }
 
 const GnomeSays: React.SFC<IProps & BulmaHelpers.Helpers> = props => (
-  <Bulma.Message className="gnome-says cupid" isColor={props.isColor} {...props}>
+  <Bulma.Message className="gnome-says" isColor={props.isColor} {...props}>
     <Bulma.MessageBody>
       {props.children}
     </Bulma.MessageBody>
