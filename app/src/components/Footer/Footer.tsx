@@ -3,12 +3,16 @@ import { Link } from 'react-router-dom';
 
 import './Footer.css';
 
+import GitHubIcon from '../../imgs/github-mark.svg';
+import GitHubIconWhite from '../../imgs/github-mark-white.svg';
+
 interface IProps {
+  hasDarkBackground?: boolean;
   onLogout?: () => void;
   noProfile?: boolean;
 }
 
-export const Footer: React.SFC<IProps> = ({children, onLogout, noProfile}) => {
+export const Footer: React.SFC<IProps> = ({ children, onLogout, noProfile, hasDarkBackground }) => {
   const onLogoutHandler = (e: any) => {
     e.preventDefault();
     if (onLogout) {
@@ -18,7 +22,7 @@ export const Footer: React.SFC<IProps> = ({children, onLogout, noProfile}) => {
   }
   return (
     <>
-      <div className="has-text-right foot" style={{padding: '0.5rem 1rem'}}>
+      <div className="has-text-right foot" style={{ padding: '0.5rem 1rem' }}>
         <div className="is-size-6">
           <span>
             <Link to="/">Home</Link>
@@ -27,6 +31,9 @@ export const Footer: React.SFC<IProps> = ({children, onLogout, noProfile}) => {
             <> | </><a target="_blank" rel="noopener noreferrer" href="https://status.uglyunicorn.ca">Status</a>
             {onLogout && !noProfile && <><> | </> <Link to="/me">My Profile</Link></>}
             {onLogout && <><> | </> <a onClick={onLogoutHandler} href="/">Logout</a></>}
+            <> | </><a target="_blank" rel="noopener noreferrer" href="https://github.com/uglyunicorn-eh/santa">
+              <img src={hasDarkBackground ? GitHubIconWhite : GitHubIcon} alt="GitHub" style={{ height: '1rem', width: '1rem' }} />
+            </a>
           </span>
         </div>
         <div className="is-size-7">
