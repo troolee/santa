@@ -45,10 +45,10 @@
     "@types/yup": "^0.26.24",
     "react-scripts": "^3.2.0",
     "redux-devtools-extension": "^2.13.8",
-    "typescript": "^3.6.4"
+    "typescript": "^4.4.3"
   },
   "scripts": {
-    "develop": "(sleep 15 ; open https://adm.dev.troolee.com/ -a \"Google Chrome.app\") & BROWSER=none react-scripts start",
+    "develop": "react-scripts start",
     "build": "react-scripts build",
     "start": "yarn develop",
     "test": "react-scripts test",
